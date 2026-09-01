@@ -38,6 +38,7 @@ Everything that is not a lesson or a reference card. Start at
 | --- | --- |
 | ❓ **[FAQ](reference/faq.md)** | Cost, prerequisites, framework choice, lock-in |
 | 🎬 **[Video index](reference/video-index.md)** | Walkthrough tracking, per module |
+| 💬 **[Using Discussions](DISCUSSIONS.md)** | Where to post what, the label taxonomy, and how to find any of the 60+ threads |
 | 🎓 **[Training frameworks playbook](reference/training-frameworks-playbook.md)** | The instructional design behind the structure, if you want to teach from this |
 
 ## What comes next

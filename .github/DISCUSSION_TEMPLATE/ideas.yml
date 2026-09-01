@@ -1,0 +1,42 @@
+labels: ["type: vote"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before posting: the [extension roadmap](https://github.com/akash-coded/aws-bedrock-agentcore-strands/blob/main/docs/extension-roadmap.md)
+        lists 22 items already planned, and [PATHWAY.md](https://github.com/akash-coded/aws-bedrock-agentcore-strands/blob/main/labs/PATHWAY.md)
+        specifies 31 labs waiting to be authored. If yours is there, comment on it rather than opening a new thread.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of idea
+      options:
+        - "A new lab for the L.A.B. Simulator"
+        - "A new exercise or capstone"
+        - "A new framework or cheat sheet for the field guide"
+        - "A change to existing material"
+        - "Tooling or automation"
+        - "Something else"
+    validations:
+      required: true
+  - type: textarea
+    id: gap
+    attributes:
+      label: What gap does this fill
+      description: What can someone not currently do after working through the relevant material?
+    validations:
+      required: true
+  - type: textarea
+    id: shape
+    attributes:
+      label: What would it look like
+      description: >
+        For a lab: the decision the learner has to make, and the real failure that would break a working
+        solution. For a framework: the procedure and the output it produces.
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Have you hit this yourself?
+      description: >
+        Optional, and the most persuasive thing you can include. "This broke a build for us and here is
+        how we found it" moves an idea up the list faster than anything else.

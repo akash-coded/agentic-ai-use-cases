@@ -1,0 +1,23 @@
+body:
+  - type: markdown
+    attributes:
+      value: |
+        General is the right place if none of the other categories fit — introductions, war stories,
+        opinions, questions about direction.
+
+        **Not here:** a question you want answered (use
+        [Q&A](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/categories/q-a)),
+        or something broken (open an
+        [issue](https://github.com/akash-coded/aws-bedrock-agentcore-strands/issues/new/choose)).
+        Posting in the wrong place is fine though — maintainers move things.
+  - type: textarea
+    id: body
+    attributes:
+      label: What is on your mind
+    validations:
+      required: true
+  - type: input
+    id: context
+    attributes:
+      label: Where you are in the material, if it is relevant
+      placeholder: "Module 07, or the AGL labs, or just browsing"

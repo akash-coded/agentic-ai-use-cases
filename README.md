@@ -352,6 +352,10 @@ Corrections, better explanations, new exercises and updates for changed AWS beha
 
 - 🐛 **Something wrong or out of date?** [Open an issue](https://github.com/akash-coded/aws-bedrock-agentcore-strands/issues/new/choose)
 - 💬 **Question, or want to show what you built?** [Discussions](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions)
+  — 60+ threads, all tagged by track and level. Start with the
+  [index of every exercise and lab](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/64),
+  the [answered Q&A](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/categories/q-a),
+  or [where to post what](docs/DISCUSSIONS.md)
 - 🤝 **Want to contribute?** [`CONTRIBUTING.md`](CONTRIBUTING.md)
 - 🗺️ **What's next?** The [extension roadmap](docs/extension-roadmap.md) and its
   [public board](https://github.com/users/akash-coded/projects/6) — five phases, most items open to contributors

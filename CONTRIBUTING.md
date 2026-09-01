@@ -61,4 +61,7 @@ Rare, but if it is genuinely a new topic rather than a section of an existing on
 ## Questions
 
 Open a [Discussion](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions) rather than an
-issue. Issues are for defects.
+issue. Issues are for defects — something is broken and a change fixes it. Everything else is a discussion.
+
+[`docs/DISCUSSIONS.md`](docs/DISCUSSIONS.md) covers which category to use, the label taxonomy, and how to
+find anything among the 60+ existing threads.

@@ -1,0 +1,33 @@
+labels: ["type: exercise"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Working through an existing exercise?** Reply in that exercise's own thread rather than opening
+        a new one — the [index](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/64)
+        lists all of them by track and level. One thread with fifteen replies is worth more than fifteen threads.
+
+        Open a new thread here only if you are contributing a **new** exercise.
+  - type: input
+    id: which
+    attributes:
+      label: Which exercise, or the title of your new one
+    validations:
+      required: true
+  - type: textarea
+    id: body
+    attributes:
+      label: Your post
+      description: >
+        Contributing a new exercise? Include the task, what a good answer looks like, and the common wrong
+        answer. That last part is what makes an exercise teach rather than test.
+    validations:
+      required: true
+  - type: checkboxes
+    id: hygiene
+    attributes:
+      label: Before posting
+      options:
+        - label: Full solutions are wrapped in `<details>` so others can still attempt it
+        - label: No real account IDs or credentials in anything I pasted
+          required: true

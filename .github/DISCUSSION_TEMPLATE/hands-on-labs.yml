@@ -1,0 +1,44 @@
+labels: ["type: lab"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For the longer builds. **Stuck on setup?** Check
+        [environment and setup](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/50)
+        and [troubleshooting](https://github.com/akash-coded/aws-bedrock-agentcore-strands/blob/main/docs/setup/troubleshooting.md)
+        first — most setup problems are model access, the region, or an inference profile ID.
+  - type: input
+    id: which
+    attributes:
+      label: Which lab
+      placeholder: "AgentCore Lab A · ParcelPilot — or a L.A.B. Simulator ID like AGL-02"
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of post
+      options:
+        - "I am stuck"
+        - "Sharing my approach or answer"
+        - "I disagree with the solution"
+        - "Something in the lab is wrong or unclear"
+    validations:
+      required: true
+  - type: textarea
+    id: detail
+    attributes:
+      label: Detail
+      description: >
+        Stuck? The exact error, your region, and what you tried. On a L.A.B. lab, name the failing check —
+        check names are stable, so that alone is usually enough for someone to help.
+    validations:
+      required: true
+  - type: checkboxes
+    id: hygiene
+    attributes:
+      label: Before posting
+      options:
+        - label: My pasted output contains no real account IDs or credentials
+          required: true
+        - label: If I posted a full solution, I wrapped it in `<details>` so others can still attempt it
