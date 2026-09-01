@@ -12,6 +12,8 @@ jupyter lab
 
 Python 3.11 or newer. Some AgentCore tooling expects 3.11+.
 
+The notebook-generator scripts in [`modules/10-rag-opensearch-litellm/labs/rag-labs/build/`](../../modules/10-rag-opensearch-litellm/labs/rag-labs/build/) use 3.12 f-string syntax. You only need those if you want to regenerate the RAG lab notebooks — the labs themselves run on 3.11.
+
 ## Per-module requirements
 
 Several modules pin their own dependencies. Prefer those when working inside that module:
