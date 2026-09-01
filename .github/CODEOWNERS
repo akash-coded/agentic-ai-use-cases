@@ -1,0 +1,19 @@
+# Review is requested automatically from the owners listed here.
+# Last matching pattern wins.
+
+*                               @akash-coded
+
+# Content whose correctness is load-bearing
+/modules/                       @akash-coded
+/cheatsheets/frameworks/        @akash-coded
+/docs/prd/                      @akash-coded
+/docs/architecture/             @akash-coded
+
+# The labs are self-verifying, but a broken lab teaches the wrong thing
+/labs/catalog/                  @akash-coded
+/labs/runner/                   @akash-coded
+
+# Anything that changes how the repository is governed or gated
+/.github/workflows/             @akash-coded
+/.github/CODEOWNERS             @akash-coded
+/wiki/                          @akash-coded

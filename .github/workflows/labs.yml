@@ -4,8 +4,10 @@ on:
   push:
     branches: [main]
     paths: ["labs/**", ".github/workflows/labs.yml"]
+  # no paths filter: 'Catalog integrity' is a required status check, so it has to
+  # report on every pull request or a docs-only PR waits for it forever.
+  # It runs in seconds.
   pull_request:
-    paths: ["labs/**"]
   workflow_dispatch:
 
 permissions:
