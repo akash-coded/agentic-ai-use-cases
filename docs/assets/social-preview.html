@@ -1,0 +1,75 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1280px;height:640px;overflow:hidden}
+body{font-family:Inter,system-ui,sans-serif;background:#0a0f1a;color:#e8eef7;position:relative}
+.bg{position:absolute;inset:0;
+  background:
+   radial-gradient(900px 520px at 84% 12%, rgba(255,153,0,.20), transparent 62%),
+   radial-gradient(760px 520px at 10% 92%, rgba(31,95,139,.42), transparent 66%),
+   linear-gradient(160deg,#0a0f1a 0%,#0d1526 55%,#0a0f1a 100%);}
+.grid{position:absolute;inset:0;opacity:.055;
+  background-image:linear-gradient(#7fb2e5 1px,transparent 1px),linear-gradient(90deg,#7fb2e5 1px,transparent 1px);
+  background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(circle at 50% 45%,#000 45%,transparent 88%)}
+.wrap{position:relative;height:100%;padding:60px 68px;display:flex;flex-direction:column;justify-content:space-between}
+.kicker{display:flex;align-items:center;gap:14px;font-family:'JetBrains Mono',monospace;font-size:16px;
+  letter-spacing:.24em;text-transform:uppercase;color:#ff9900;font-weight:700}
+.kicker .bar{width:52px;height:3px;background:#ff9900;border-radius:2px}
+.kicker .free{color:#5fd08a;border:1.5px solid rgba(95,208,138,.45);border-radius:999px;
+  padding:4px 12px;font-size:12px;letter-spacing:.16em;background:rgba(95,208,138,.09)}
+h1{font-size:88px;line-height:.96;font-weight:900;letter-spacing:-.036em;margin:24px 0 0}
+h1 .grad{background:linear-gradient(96deg,#ffb84d 0%,#ff9900 42%,#6fb6ee 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sub{margin-top:20px;font-size:26px;line-height:1.42;color:#a9bdd6;font-weight:400;max-width:1040px}
+.sub b{color:#e8eef7;font-weight:600}
+.chips{display:flex;gap:9px;margin-top:26px;flex-wrap:wrap}
+.chip{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:500;padding:8px 15px;border-radius:8px;
+  background:rgba(111,182,238,.10);border:1px solid rgba(111,182,238,.26);color:#a8cef0}
+.chip.amber{background:rgba(255,153,0,.11);border-color:rgba(255,153,0,.32);color:#ffc266}
+.flow{display:flex;align-items:center;gap:13px;margin-top:40px}
+.step{display:flex;align-items:center;gap:13px}
+.dot{font-family:'JetBrains Mono',monospace;font-size:15.5px;font-weight:700;color:#cfe0f2;
+  padding:9px 17px;border-radius:9px;background:rgba(255,255,255,.055);border:1px solid rgba(168,206,240,.20)}
+.dot.last{background:rgba(95,208,138,.13);border-color:rgba(95,208,138,.42);color:#7fe0a4}
+.arw{color:#4d6party;color:#4d6a8c;font-size:17px;font-weight:700}
+.foot{display:flex;align-items:flex-end;justify-content:space-between;border-top:1px solid rgba(168,206,240,.15);padding-top:26px}
+.stats{display:flex;gap:46px}
+.n{font-size:44px;font-weight:800;letter-spacing:-.03em;line-height:1;
+  background:linear-gradient(180deg,#fff,#9fc4e8);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.l{font-size:13.5px;color:#8ba4c2;margin-top:8px;letter-spacing:.11em;text-transform:uppercase;font-weight:600}
+.repo{text-align:right}
+.repo .h{font-family:'JetBrains Mono',monospace;font-size:19px;color:#e8eef7;font-weight:700}
+.repo .p{font-size:14px;color:#7e97b6;margin-top:7px;letter-spacing:.03em}
+</style></head><body>
+<div class="bg"></div><div class="grid"></div>
+<div class="wrap">
+  <div>
+    <div class="kicker"><span class="bar"></span><span>Production AI Agents on AWS</span><span class="free">Free &amp; Open Source</span></div>
+    <h1>Agentic AI<br><span class="grad">on AWS</span></h1>
+    <div class="sub">A hands-on curriculum that goes past the demo — <b>build, evaluate, gate and ship</b> real agents.</div>
+    <div class="chips">
+      <span class="chip amber">Amazon Bedrock</span><span class="chip amber">AgentCore</span>
+      <span class="chip">Strands</span><span class="chip">LangGraph</span><span class="chip">RAG + OpenSearch</span>
+      <span class="chip">Multi-Agent</span><span class="chip">Evaluation</span><span class="chip">MCP · A2A</span>
+    </div>
+    <div class="flow">
+      <span class="dot">Think</span><span class="arw">&rarr;</span>
+      <span class="dot">Invoke</span><span class="arw">&rarr;</span>
+      <span class="dot">Build</span><span class="arw">&rarr;</span>
+      <span class="dot">Ground</span><span class="arw">&rarr;</span>
+      <span class="dot last">Ship</span>
+    </div>
+  </div>
+  <div class="foot">
+    <div class="stats">
+      <div><div class="n">16</div><div class="l">Modules</div></div>
+      <div><div class="n">102</div><div class="l">Notebooks</div></div>
+      <div><div class="n">92</div><div class="l">Exercises</div></div>
+      <div><div class="n">63</div><div class="l">Solutions</div></div>
+      <div><div class="n">~90h</div><div class="l">Curriculum</div></div>
+    </div>
+    <div class="repo"><div class="h">akash-coded/aws-bedrock-agentcore-strands</div><div class="p">Learn it · Build it · Prove it · Ship it</div></div>
+  </div>
+</div></body></html>
