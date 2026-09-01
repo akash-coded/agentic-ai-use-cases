@@ -1,0 +1,44 @@
+{
+  "name": "Agentic AI on AWS — L.A.B. Simulator",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12-bookworm",
+
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/aws-cli:1": {}
+  },
+
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+  "postAttachCommand": "bash .devcontainer/greet.sh",
+
+  "containerEnv": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONUNBUFFERED": "1",
+    "NO_COLOR": ""
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter",
+        "bierner.markdown-mermaid",
+        "yzhang.markdown-all-in-one",
+        "GitHub.vscode-pull-request-github"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.terminal.activateEnvironment": false,
+        "files.exclude": { "**/__pycache__": true, "**/.pytest_cache": true },
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "workbench.startupEditor": "readme",
+        "markdown.preview.breaks": true
+      }
+    },
+    "codespaces": {
+      "openFiles": ["labs/WELCOME.md"]
+    }
+  },
+
+  "remoteUser": "vscode",
+  "hostRequirements": { "cpus": 2, "memory": "4gb", "storage": "32gb" }
+}

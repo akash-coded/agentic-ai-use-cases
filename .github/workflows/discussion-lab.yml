@@ -1,0 +1,152 @@
+name: Simulator Arena
+
+# Grades a lab submission posted as a discussion comment and replies with the
+# per-check result.
+#
+# SECURITY — this executes code written by anyone on the internet. The design:
+#   * the grading job has `permissions: {}` — no GITHUB_TOKEN at all
+#   * submitted code runs inside a container with `--network none`, capped
+#     memory, CPU and PIDs, and a hard timeout
+#   * the comment body is passed via env, never interpolated into a shell
+#     command, so it cannot inject into the workflow
+#   * only the public and Break phases run. Hidden checks are never executed
+#     here — publishing their output would spoil the lab for the whole thread
+#   * the reply job never touches the submitted code
+#
+# Residual risk: ~45 seconds of sandboxed, network-isolated compute per comment.
+# To switch this off, delete this file.
+
+on:
+  discussion_comment:
+    types: [created]
+
+permissions: {}
+
+jobs:
+  parse:
+    # cheap gate first, so most comments cost nothing
+    if: |
+      github.event.discussion.category.slug == 'hands-on-labs' &&
+      startsWith(github.event.comment.body, '/lab ')
+    runs-on: ubuntu-latest
+    permissions: {}
+    timeout-minutes: 2
+    outputs:
+      found: ${{ steps.parse.outputs.found }}
+      lab: ${{ steps.parse.outputs.lab }}
+      reason: ${{ steps.parse.outputs.reason }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: parse
+        env:
+          COMMENT_BODY: ${{ github.event.comment.body }}   # via env, never inline
+        run: python3 .github/scripts/parse_submission.py
+      - name: Stash the submission
+        if: steps.parse.outputs.found == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: submission
+          path: sub/solution.py
+          retention-days: 1
+
+  grade:
+    needs: parse
+    if: needs.parse.outputs.found == 'true'
+    runs-on: ubuntu-latest
+    permissions: {}          # ← no token reaches the sandbox
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with: { name: submission, path: sub }
+
+      - name: Grade in a network-isolated container
+        env:
+          LAB: ${{ needs.parse.outputs.lab }}
+        run: |
+          set -o pipefail
+          mkdir -p result
+          docker run --rm \
+            --network none \
+            --memory 512m --cpus 1 --pids-limit 128 \
+            --read-only --tmpfs /tmp:size=32m \
+            -e PYTHONDONTWRITEBYTECODE=1 -e NO_COLOR=1 \
+            -v "$PWD:/repo:ro" \
+            -w /repo \
+            python:3.12-slim \
+            timeout --signal=KILL 45 \
+              python3 labs/runner/labctl.py grade \
+                --lab "$LAB" --file /repo/sub/solution.py \
+                --phases public,break --json \
+            > result/report.json || true
+
+          if [ ! -s result/report.json ]; then
+            printf '{"lab":"%s","ok":false,"phases":{"public":{"ran":false,"passed":0,"total":0,"error":"the submission timed out or crashed the sandbox","checks":[]}}}' "$LAB" > result/report.json
+          fi
+
+      - uses: actions/upload-artifact@v4
+        with: { name: report, path: result/report.json, retention-days: 1 }
+
+  reply:
+    needs: [parse, grade]
+    if: always() && needs.parse.outputs.found == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      discussions: write
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with: { name: report, path: result }
+
+      - name: Compose the reply
+        env:
+          LAB: ${{ needs.parse.outputs.lab }}
+        run: python3 .github/scripts/format_reply.py result/report.json > reply.md
+
+      - name: Post it as a threaded reply
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DISCUSSION_ID: ${{ github.event.discussion.node_id }}
+          COMMENT_ID: ${{ github.event.comment.node_id }}
+        run: |
+          gh api graphql -F discussionId="$DISCUSSION_ID" -F replyToId="$COMMENT_ID" \
+            -F body=@reply.md -f query='
+            mutation($discussionId:ID!,$replyToId:ID!,$body:String!){
+              addDiscussionComment(input:{
+                discussionId:$discussionId, replyToId:$replyToId, body:$body
+              }){ comment { url } } }' --jq '.data.addDiscussionComment.comment.url'
+
+  # A comment that tried to submit but was malformed gets a short, kind reply
+  # rather than silence.
+  nudge:
+    needs: parse
+    if: needs.parse.outputs.found == 'false'
+    runs-on: ubuntu-latest
+    permissions:
+      discussions: write
+    timeout-minutes: 2
+    steps:
+      - name: Explain what was wrong
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DISCUSSION_ID: ${{ github.event.discussion.node_id }}
+          COMMENT_ID: ${{ github.event.comment.node_id }}
+          REASON: ${{ needs.parse.outputs.reason }}
+        run: |
+          case "$REASON" in
+            unknown-lab)  MSG="I do not recognise that lab id. \`lab list\` shows the catalog, or see [PATHWAY.md](https://github.com/akash-coded/aws-bedrock-agentcore-strands/blob/main/labs/PATHWAY.md)." ;;
+            no-code)      MSG="I found the \`/lab\` line but no \`\`\`python code block. Put your solution in one." ;;
+            many-fences)  MSG="More than one \`\`\`python block — I do not know which is the submission. Please post one." ;;
+            too-long)     MSG="That submission is over 20 KB. A lab solution should be far smaller; check you pasted only the function." ;;
+            empty-code)   MSG="The code block is empty." ;;
+            *)            exit 0 ;;
+          esac
+          printf '%s\n\n<sub>Format: a `/lab <ID>` line, then one ```python block. [How this works](https://github.com/akash-coded/aws-bedrock-agentcore-strands/blob/main/labs/ARENA.md)</sub>\n' "$MSG" > nudge.md
+          gh api graphql -F discussionId="$DISCUSSION_ID" -F replyToId="$COMMENT_ID" \
+            -F body=@nudge.md -f query='
+            mutation($discussionId:ID!,$replyToId:ID!,$body:String!){
+              addDiscussionComment(input:{
+                discussionId:$discussionId, replyToId:$replyToId, body:$body
+              }){ comment { url } } }' >/dev/null

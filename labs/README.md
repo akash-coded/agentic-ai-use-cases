@@ -9,6 +9,11 @@
 Every lab makes you decide something before you write code, grades your implementation against checks that
 explain themselves, and then **tries to break it** with the failure modes that do not appear in tutorials.
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/akash-coded/aws-bedrock-agentcore-strands?quickstart=1)
+
+**One click, zero setup.** Every lab is stdlib-only and offline, so the container is usable the moment it
+starts — no dependencies to install, no AWS account, no credentials.
+
 </div>
 
 ---
@@ -35,6 +40,10 @@ The Break phase is the point. Anyone can pass a happy-path test.
 ---
 
 ## Start in 60 seconds
+
+**In Codespaces** — [open one](https://codespaces.new/akash-coded/aws-bedrock-agentcore-strands?quickstart=1) and type `lab next`. That is the whole setup.
+
+**Locally:**
 
 ```bash
 python labs/runner/labctl.py list          # the catalog
@@ -173,6 +182,17 @@ have the [seven PRD artefacts](../docs/prd/) filled in for a system you actually
 difference between finishing exercises and being able to defend a design.
 
 ---
+
+## Three ways to run a lab
+
+| | Setup | You get |
+| --- | --- | --- |
+| 🚀 **[Codespaces](https://codespaces.new/akash-coded/aws-bedrock-agentcore-strands?quickstart=1)** | One click | Everything — hidden checks, progress, the DAG, briefs beside your editor |
+| 💻 **Local** | `git clone`, Python 3.11+ | The same, on your machine |
+| 💬 **[Simulator Arena](ARENA.md)** | None. A comment box | Public + Break checks, graded by a bot in the thread |
+
+The Arena is the lightest way in — paste a solution as a discussion comment and a bot replies with every
+check. Hidden checks never run there, deliberately: publishing them would spoil the lab for the thread.
 
 ## Grading in CI
 

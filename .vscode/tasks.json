@@ -1,0 +1,82 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Lab · what's next",
+      "type": "shell",
+      "command": "python3 labs/runner/labctl.py next",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true },
+      "group": { "kind": "build", "isDefault": true }
+    },
+    {
+      "label": "Lab · list the catalog",
+      "type": "shell",
+      "command": "python3 labs/runner/labctl.py list",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true }
+    },
+    {
+      "label": "Lab · start…",
+      "type": "shell",
+      "command": "python3 labs/runner/labctl.py start ${input:labId} && code labs/workspace/${input:labId}/solution.py",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
+    {
+      "label": "Lab · run public checks",
+      "type": "shell",
+      "command": "python3 labs/runner/labctl.py run ${input:labId}",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true }
+    },
+    {
+      "label": "Lab · Break phase",
+      "type": "shell",
+      "command": "python3 labs/runner/labctl.py break ${input:labId}",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true }
+    },
+    {
+      "label": "Lab · submit (public + hidden)",
+      "type": "shell",
+      "command": "python3 labs/runner/labctl.py submit ${input:labId}",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true }
+    },
+    {
+      "label": "Lab · my progress",
+      "type": "shell",
+      "command": "python3 labs/runner/labctl.py progress",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true }
+    },
+    {
+      "label": "Lab · open the brief",
+      "type": "shell",
+      "command": "code labs/catalog/*/${input:labId}/README.md",
+      "problemMatcher": [],
+      "presentation": { "reveal": "never" }
+    },
+    {
+      "label": "Setup · install curriculum dependencies",
+      "detail": "Only needed to run the notebooks under modules/. Labs need nothing.",
+      "type": "shell",
+      "command": "pip install -r requirements.txt",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "labId",
+      "type": "pickString",
+      "description": "Which lab?",
+      "options": [
+        "PDL-01", "AGL-01", "AGL-02", "AGL-03", "TOOL-03",
+        "MEM-01", "RET-05", "MAS-02", "EVAL-03", "PROD-02"
+      ],
+      "default": "PDL-01"
+    }
+  ]
+}

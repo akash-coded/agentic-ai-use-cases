@@ -178,6 +178,58 @@ def resolve_target(lab: Lab, use_reference: bool) -> tuple[object | None, str]:
         sys.path.pop(0)
 
 
+def _import_error_detail(exc: BaseException, source: Path) -> str:
+    """Explain an import failure without exposing the runner's own frames."""
+    if isinstance(exc, SyntaxError):
+        line = (exc.text or "").rstrip()
+        caret = " " * max(0, (exc.offset or 1) - 1) + "^"
+        return "\n".join(x for x in [
+            f"{type(exc).__name__}: {exc.msg}",
+            f"  line {exc.lineno}:  {line}" if line else "",
+            f"             {caret}" if line else "",
+        ] if x)
+    import traceback
+    frames = [f for f in traceback.extract_tb(exc.__traceback__)
+              if Path(f.filename or "").name == source.name]
+    head = f"{type(exc).__name__}: {exc}"
+    if not frames:
+        return head
+    f = frames[-1]
+    return f"{head}\n  line {f.lineno}:  {(f.line or '').strip()}"
+
+
+def grade_phase(lab: Lab, phase: str, source: Path) -> dict:
+    """Grade one phase of `lab` against an arbitrary source file.
+
+    Returns structured results — used by `labctl grade --json`, which backs both
+    the Discussions bot and any other machine consumer.
+    """
+    checks = load_checks(lab, phase)
+    if not checks:
+        return {"ran": False, "passed": 0, "total": 0, "checks": []}
+    _purge_foreign_lab_modules(lab.path)
+    sys.path.insert(0, str(lab.path))
+    try:
+        mod = load_module(source, f"graded_{lab.id.replace('-', '_')}_{phase}")
+    except BaseException as exc:  # noqa: BLE001
+        sys.path.pop(0)
+        return {"ran": False, "passed": 0, "total": len(checks),
+                "error": "the submission did not import",
+                "detail": _import_error_detail(exc, source),
+                "checks": []}
+    finally:
+        if sys.path and sys.path[0] == str(lab.path):
+            sys.path.pop(0)
+
+    results, passed = [], 0
+    for chk in checks:
+        ok, msg = harness.run_one(chk, mod)
+        passed += ok
+        results.append({"name": chk.name, "ok": ok, "description": chk.description,
+                        "teaches": chk.teaches, "message": "" if ok else msg})
+    return {"ran": True, "passed": passed, "total": len(checks), "checks": results}
+
+
 def run_phase(lab: Lab, phase: str, *, use_reference=False, quiet=False):
     checks = load_checks(lab, phase)
     if not checks:
@@ -524,6 +576,39 @@ def cmd_index(args):
         print(md)
 
 
+def cmd_grade(args):
+    """Grade an arbitrary file. Machine-readable with --json."""
+    lab = _need(args.lab)
+    source = Path(args.file).resolve()
+    if not source.exists():
+        out = {"lab": lab.id, "ok": False, "error": f"no such file: {args.file}"}
+        print(json.dumps(out) if args.json else out["error"]); sys.exit(1)
+
+    phases = [p.strip() for p in args.phases.split(",") if p.strip()]
+    report = {"lab": lab.id, "title": lab.title, "track": lab.track,
+              "difficulty": lab.difficulty, "phases": {}}
+    ok = True
+    for phase in phases:
+        if phase not in PHASES:
+            continue
+        r = grade_phase(lab, phase, source)
+        report["phases"][phase] = r
+        if r.get("ran") and r["passed"] != r["total"]:
+            ok = False
+        if not r.get("ran") and r.get("error"):
+            ok = False
+    report["ok"] = ok
+
+    if args.json:
+        print(json.dumps(report, indent=2))
+    else:
+        for phase, r in report["phases"].items():
+            print(f"\n{phase}: {r['passed']}/{r['total']}")
+            for c in r["checks"]:
+                print(f"  {'PASS' if c['ok'] else 'FAIL'}  {c['name']}")
+    sys.exit(0 if ok else 1)
+
+
 def main():
     ap = argparse.ArgumentParser(prog="labctl", description="L.A.B. Simulator")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -547,6 +632,13 @@ def main():
     sub.add_parser("next", help="what to do next").set_defaults(func=cmd_next)
     sub.add_parser("progress", help="your progress").set_defaults(func=cmd_progress)
     sub.add_parser("verify", help="maintainers: validate every lab").set_defaults(func=cmd_verify)
+
+    g = sub.add_parser("grade", help="grade an arbitrary file (machine-readable with --json)")
+    g.add_argument("--lab", required=True)
+    g.add_argument("--file", required=True)
+    g.add_argument("--phases", default="public")
+    g.add_argument("--json", action="store_true")
+    g.set_defaults(func=cmd_grade)
 
     i = sub.add_parser("index", help="maintainers: regenerate the catalog table in labs/README.md")
     i.add_argument("--write", action="store_true"); i.add_argument("--check", action="store_true")

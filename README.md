@@ -14,6 +14,7 @@
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![Field guide](https://img.shields.io/badge/field%20guide-77%20pages-8b6f2e.svg)](cheatsheets/)
 [![L.A.B. Simulator](https://img.shields.io/badge/L.A.B.%20simulator-auto--graded-2e8b57.svg)](labs/)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/akash-coded/aws-bedrock-agentcore-strands?quickstart=1)
 [![Discussions](https://img.shields.io/badge/discussions-open-8b5cf6.svg)](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions)
 
 **[▶ Start here](docs/START-HERE.md)** &nbsp;·&nbsp;
@@ -261,6 +262,8 @@ the artefact that *is* the specification. Architects get [topology selection wit
 
 **Learn → Apply → Break.** Auto-graded, bite-sized labs where you build the pieces yourself and then try
 to break them. No API keys, no dependencies — every lab runs offline on Python 3.11+.
+
+**[Open in Codespaces](https://codespaces.new/akash-coded/aws-bedrock-agentcore-strands?quickstart=1)** and type `lab next` — that is the entire setup. Or locally:
 
 ```bash
 python labs/runner/labctl.py next          # what you can start right now
