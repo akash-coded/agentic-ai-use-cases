@@ -22,6 +22,7 @@
 **[🧭 Field guide](cheatsheets/)** &nbsp;·&nbsp;
 **[🧪 L.A.B. Simulator](labs/)** &nbsp;·&nbsp;
 **[⚙️ Setup](docs/setup/aws-account-setup.md)** &nbsp;·&nbsp;
+**[📖 Wiki](https://github.com/akash-coded/aws-bedrock-agentcore-strands/wiki)** &nbsp;·&nbsp;
 **[💬 Discussions](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions)**
 
 </div>
@@ -320,6 +321,7 @@ Because "how do I design one of these" is the question the demos never answer.
 │   ├── playbooks/            4 strategic playbooks
 │   ├── interviews/           6 role guides, both sides of the table
 │   └── how-to/               17 recipes across 6 roles
+├── wiki/             seed for the wiki — living notes, kept out of docs/ on purpose
 ├── docs/
 │   ├── START-HERE.md         entry point
 │   ├── learning-paths/       5 paths by role and time budget
@@ -360,6 +362,13 @@ Corrections, better explanations, new exercises and updates for changed AWS beha
 - 🗺️ **What's next?** The [extension roadmap](docs/extension-roadmap.md) and its
   [public board](https://github.com/users/akash-coded/projects/6) — five phases, most items open to contributors
 - 📜 **What changed?** [`CHANGELOG.md`](CHANGELOG.md)
+- 📖 **Living notes** — the [wiki](https://github.com/akash-coded/aws-bedrock-agentcore-strands/wiki) holds
+  what changes too often to freeze in a reviewed file: a growing
+  [error index](https://github.com/akash-coded/aws-bedrock-agentcore-strands/wiki/Error-Index),
+  [model and region notes](https://github.com/akash-coded/aws-bedrock-agentcore-strands/wiki/Model-and-Region-Notes),
+  a community [cost log](https://github.com/akash-coded/aws-bedrock-agentcore-strands/wiki/Cost-Log),
+  and calendar-shaped [study plans](https://github.com/akash-coded/aws-bedrock-agentcore-strands/wiki/Study-Plans).
+  Anyone can edit it
 
 AWS moves quickly. If something here no longer matches reality, that is a bug worth reporting.
 
