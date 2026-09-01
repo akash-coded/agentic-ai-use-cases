@@ -25,9 +25,13 @@ permissions: {}
 jobs:
   parse:
     # cheap gate first, so most comments cost nothing
+    # Cheap gate. `contains` rather than `startsWith` on purpose: the docs
+    # encourage explaining your reasoning above the code, so the /lab line is
+    # rarely the first thing in the comment. parse_submission.py does the strict
+    # check (its own line, valid id, exactly one python fence).
     if: |
       github.event.discussion.category.slug == 'hands-on-labs' &&
-      startsWith(github.event.comment.body, '/lab ')
+      contains(github.event.comment.body, '/lab ')
     runs-on: ubuntu-latest
     permissions: {}
     timeout-minutes: 2
