@@ -34,3 +34,7 @@ package-lock.json
 # OS
 .DS_Store
 Thumbs.db
+
+# L.A.B. Simulator — local progress only
+labs/.progress.json
+labs/catalog/**/_starter_probe.py

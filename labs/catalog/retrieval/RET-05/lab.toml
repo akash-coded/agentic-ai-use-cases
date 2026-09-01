@@ -1,0 +1,18 @@
+id = "RET-05"
+title = "Citations that survive verification"
+track = "retrieval"
+difficulty = "medium"
+est_minutes = 35
+prerequisites = ["TOOL-03"]
+concepts = ["citation integrity", "grounding", "provenance", "citation theatre"]
+module = "10-rag-opensearch-litellm"
+entrypoint = "build_context"
+evidence_rung = "E3"
+
+[pdlc]
+stage = "validate"
+artefact = "evaluation-plan"
+produces = "Your citation contract: what a citation asserts, and how you would check it."
+
+[frameworks]
+read = ["grounding-triangle", "abstention-budget"]

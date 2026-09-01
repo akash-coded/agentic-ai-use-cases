@@ -4,7 +4,7 @@
 
 ### Build, evaluate and ship production AI agents with Amazon Bedrock, AgentCore, Strands, LangGraph and RAG
 
-**A complete, free, hands-on curriculum — plus a 77-page field guide.**
+**A complete, free, hands-on curriculum — plus a 77-page field guide and auto-graded labs.**
 16 modules · 102 notebooks · 92 exercises · 63 worked solutions · 30 decision workbooks · ~90 hours
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -13,12 +13,14 @@
 [![Solutions](https://img.shields.io/badge/worked%20solutions-63-2e8b57.svg)](#63-worked-solutions--and-honesty-about-the-rest)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![Field guide](https://img.shields.io/badge/field%20guide-77%20pages-8b6f2e.svg)](cheatsheets/)
+[![L.A.B. Simulator](https://img.shields.io/badge/L.A.B.%20simulator-auto--graded-2e8b57.svg)](labs/)
 [![Discussions](https://img.shields.io/badge/discussions-open-8b5cf6.svg)](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions)
 
 **[▶ Start here](docs/START-HERE.md)** &nbsp;·&nbsp;
 **[🗺️ Learning paths](docs/learning-paths/)** &nbsp;·&nbsp;
 **[🏛️ Architecture](docs/architecture/)** &nbsp;·&nbsp;
 **[🧭 Field guide](cheatsheets/)** &nbsp;·&nbsp;
+**[🧪 L.A.B. Simulator](labs/)** &nbsp;·&nbsp;
 **[⚙️ Setup](docs/setup/aws-account-setup.md)** &nbsp;·&nbsp;
 **[💬 Discussions](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions)**
 
@@ -254,6 +256,39 @@ the artefact that *is* the specification. Architects get [topology selection wit
 
 ---
 
+## 🧪 The L.A.B. Simulator
+
+**Learn → Apply → Break.** Auto-graded, bite-sized labs where you build the pieces yourself and then try
+to break them. No API keys, no dependencies — every lab runs offline on Python 3.11+.
+
+```bash
+python labs/runner/labctl.py next          # what you can start right now
+python labs/runner/labctl.py start PDL-01
+python labs/runner/labctl.py run   PDL-01  # public checks
+python labs/runner/labctl.py break PDL-01  # now survive the failures that end real runs
+```
+
+Most practice platforms give you a stub and a happy-path test. Agents do not fail on the happy path — they
+fail when a tool returns `[]` and the model reads it as "nothing applies". So every lab has three phases:
+
+| | Phase | What you get |
+| --- | --- | --- |
+| **L** | Learn | A mental model, a diagram, and **one decision with the answer withheld**. Your choice changes what you build |
+| **A** | Apply | A spec, public checks you can see, hidden checks on submit. Every check explains what it teaches when it fails |
+| **B** | Break | `SystemExit` from a library. A chunk bigger than the whole budget. A footnote `[1]` corrupting your citation map. Survive them |
+
+**[10 labs across 8 tracks](labs/)**, ordered by a [justified pathway](labs/PATHWAY.md) — and the decision
+inside each one accumulates into the [seven PRD artefacts](docs/prd/), so you finish with a working system
+*and* the paperwork to defend it.
+
+The catalog is **self-verifying**: CI proves every reference solution passes all three phases and every
+starter fails, so no lab can ship with TODOs that do not need doing. Fork the repo, commit your solutions,
+and [the workflow grades your pull request](.github/workflows/labs.yml).
+
+**[→ Open the L.A.B. Simulator](labs/)**
+
+---
+
 ## Design documents
 
 Because "how do I design one of these" is the question the demos never answer.
@@ -273,6 +308,11 @@ Because "how do I design one of these" is the question the demos never answer.
 ```
 .
 ├── modules/          16 topic modules — the curriculum
+├── labs/             the L.A.B. Simulator — auto-graded, decision-driven labs
+│   ├── catalog/              labs, by track
+│   ├── runner/               labctl — list · start · run · break · submit · verify
+│   ├── workspace/            your solutions (graded in CI on a PR)
+│   └── PATHWAY.md            the justified 41-lab progression
 ├── cheatsheets/      the field guide — 77 reference pages
 │   ├── frameworks/           17 original mental models
 │   ├── quick-reference/      10 API and decision cheat sheets

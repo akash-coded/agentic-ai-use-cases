@@ -1,0 +1,17 @@
+id = "PROD-02"
+title = "Failover that cannot be silent"
+track = "production"
+difficulty = "medium"
+est_minutes = 30
+prerequisites = ["AGL-03"]
+concepts = ["model failover", "silent degradation", "observable fallback"]
+module = "14-end-to-end-production"
+entrypoint = "invoke_with_failover"
+evidence_rung = "E3"
+
+[pdlc]
+stage = "operate"
+artefact = "production-readiness"
+produces = "Your failover policy, and the signal that tells you it fired."
+[frameworks]
+read = ["silent-degradation-watchlist", "reversibility-test"]

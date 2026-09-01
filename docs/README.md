@@ -53,6 +53,7 @@ Everything that is not a lesson or a reference card. Start at
 
 - **The lessons** are in [`modules/`](../modules/) — 16 topic modules with slides, notebooks, exercises and solutions
 - **The reference cards** are in [`cheatsheets/`](../cheatsheets/) — 77 pages of frameworks, runbooks, playbooks and how-tos
+- **The labs** are in [`labs/`](../labs/) — auto-graded Learn → Apply → Break exercises with a CLI runner
 
 ---
 

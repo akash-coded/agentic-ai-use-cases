@@ -1,0 +1,17 @@
+id = "MEM-01"
+title = "A buffer that cannot overflow"
+track = "memory"
+difficulty = "medium"
+est_minutes = 30
+prerequisites = ["AGL-02"]
+concepts = ["context budget", "eviction policy", "summarisation threshold"]
+module = "09-llm-memory"
+entrypoint = "trim_history"
+evidence_rung = "E2"
+
+[pdlc]
+stage = "build"
+artefact = "technical-design"
+produces = "Your eviction policy: what gets dropped first, and what is never dropped."
+[frameworks]
+read = ["context-budget-ledger", "token-tax-ledger"]

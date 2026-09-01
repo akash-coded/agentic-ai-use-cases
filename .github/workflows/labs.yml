@@ -1,0 +1,101 @@
+name: L.A.B. Simulator
+
+on:
+  push:
+    branches: [main]
+    paths: ["labs/**", ".github/workflows/labs.yml"]
+  pull_request:
+    paths: ["labs/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  integrity:
+    name: Catalog integrity
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Every reference passes, every starter fails
+        run: python labs/runner/labctl.py verify
+
+      - name: Catalog index is current
+        run: python labs/runner/labctl.py index --check
+
+      - name: Labs run offline
+        run: |
+          # a lab that reaches the network cannot be graded reliably in CI
+          if grep -rlE '\b(requests\.|urllib\.request|boto3\.client|httpx\.)' \
+               labs/catalog --include='*.py' ; then
+            echo "::error::a lab imports a network client — labs must be deterministic and offline"
+            exit 1
+          fi
+          echo "no network calls in the catalog"
+
+  grade:
+    name: Grade submitted solutions
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Find solutions changed in this PR
+        id: changed
+        run: |
+          base="${{ github.event.pull_request.base.sha }}"
+          ids=$(git diff --name-only "$base"...HEAD -- 'labs/workspace/*/solution.py' \
+                | sed -E 's|labs/workspace/([^/]+)/solution\.py|\1|' | sort -u | tr '\n' ' ')
+          echo "ids=$ids" >> "$GITHUB_OUTPUT"
+          [ -n "$ids" ] && echo "found: $ids" || echo "no lab solutions in this PR"
+
+      - name: Grade them
+        if: steps.changed.outputs.ids != ''
+        id: grade
+        env:
+          NO_COLOR: "1"
+        run: |
+          : > result.md
+          echo "### L.A.B. Simulator results" >> result.md
+          echo "" >> result.md
+          overall=0
+          for id in ${{ steps.changed.outputs.ids }}; do
+            echo "<details><summary><b>$id</b></summary>" >> result.md
+            echo "" >> result.md
+            echo '```' >> result.md
+            if python labs/runner/labctl.py submit "$id" >> result.md 2>&1; then
+              status="passed"
+            else
+              status="not yet"; overall=1
+            fi
+            python labs/runner/labctl.py break "$id" >> result.md 2>&1 || true
+            echo '```' >> result.md
+            echo "" >> result.md
+            echo "</details>" >> result.md
+            echo "" >> result.md
+            echo "- **$id** — $status" >> summary.md
+          done
+          cat summary.md >> result.md 2>/dev/null || true
+          echo "overall=$overall" >> "$GITHUB_OUTPUT"
+
+      - name: Comment the results
+        if: steps.changed.outputs.ids != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh pr comment "${{ github.event.pull_request.number }}" --body-file result.md
+
+      - name: Reflect the outcome
+        if: steps.changed.outputs.ids != '' && steps.grade.outputs.overall == '1'
+        run: |
+          echo "::notice::Some labs are not passing yet — see the PR comment for per-check feedback."

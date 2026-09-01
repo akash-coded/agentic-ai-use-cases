@@ -1,0 +1,18 @@
+id = "EVAL-03"
+title = "A gate that can say no"
+track = "evaluation"
+difficulty = "medium"
+est_minutes = 30
+prerequisites = []
+concepts = ["release gating", "absolute vs average metrics", "threshold governance"]
+module = "13-agentic-qa-and-evaluation"
+entrypoint = "evaluate_gate"
+evidence_rung = "E4"
+
+[pdlc]
+stage = "release"
+artefact = "production-readiness"
+produces = "Your gate thresholds, and which of them are absolute rather than averages."
+
+[frameworks]
+read = ["evidence-ladder", "agent-readiness-scorecard"]

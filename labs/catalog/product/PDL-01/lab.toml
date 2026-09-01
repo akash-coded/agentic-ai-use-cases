@@ -1,0 +1,18 @@
+id = "PDL-01"
+title = "Agent, workflow, or script"
+track = "product"
+difficulty = "easy"
+est_minutes = 25
+prerequisites = []
+concepts = ["autonomy ladder", "control flow", "scoping"]
+module = "00-agentic-foundations"
+entrypoint = "classify"
+evidence_rung = "E2"
+
+[pdlc]
+stage = "discovery"
+artefact = "idea-brief"
+produces = "The rung each of your candidate use cases actually needs — the first artefact in the trail."
+
+[frameworks]
+read = ["autonomy-ladder", "scope-fence"]

@@ -1,0 +1,18 @@
+id = "AGL-03"
+title = "Stop the loop"
+track = "agent-loop"
+difficulty = "medium"
+est_minutes = 30
+prerequisites = ["AGL-02"]
+concepts = ["termination", "step budget", "oscillation", "escalation"]
+module = "05-agent-loop-no-framework-to-strands"
+entrypoint = "run_loop"
+evidence_rung = "E2"
+
+[pdlc]
+stage = "build"
+artefact = "technical-design"
+produces = "Your termination policy: the cap, and what the agent returns when it binds."
+
+[frameworks]
+read = ["cost-cliff-map", "abstention-budget"]

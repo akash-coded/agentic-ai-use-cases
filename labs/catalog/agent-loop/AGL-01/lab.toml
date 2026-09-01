@@ -1,0 +1,18 @@
+id = "AGL-01"
+title = "Dispatch a tool call"
+track = "agent-loop"
+difficulty = "easy"
+est_minutes = 20
+prerequisites = []
+concepts = ["tool dispatch", "toolUse / toolResult", "unknown-tool handling"]
+module = "05-agent-loop-no-framework-to-strands"
+entrypoint = "dispatch"
+evidence_rung = "E2"
+
+[pdlc]
+stage = "build"
+artefact = "technical-design"
+produces = "Your unknown-tool policy, and the failure it prevents."
+
+[frameworks]
+read = ["autonomy-ladder", "tool-surface-audit"]

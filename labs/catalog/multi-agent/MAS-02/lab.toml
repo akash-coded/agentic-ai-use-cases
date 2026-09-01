@@ -1,0 +1,17 @@
+id = "MAS-02"
+title = "Cost a topology before you build it"
+track = "multi-agent"
+difficulty = "medium"
+est_minutes = 30
+prerequisites = ["AGL-03"]
+concepts = ["handoff multiplier", "context re-transmission", "merge cost"]
+module = "07-strands-multi-agent-patterns"
+entrypoint = "estimate_topology"
+evidence_rung = "E3"
+
+[pdlc]
+stage = "spec"
+artefact = "technical-design"
+produces = "Your topology's H×, and the number you would defend at a design review."
+[frameworks]
+read = ["handoff-multiplier", "token-tax-ledger"]

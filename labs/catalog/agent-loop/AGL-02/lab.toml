@@ -1,0 +1,18 @@
+id = "AGL-02"
+title = "Close the loop"
+track = "agent-loop"
+difficulty = "easy"
+est_minutes = 25
+prerequisites = ["AGL-01"]
+concepts = ["message history", "role alternation", "parallel tool calls"]
+module = "05-agent-loop-no-framework-to-strands"
+entrypoint = "advance"
+evidence_rung = "E2"
+
+[pdlc]
+stage = "build"
+artefact = "technical-design"
+produces = "Why the tool result is a user turn, in one sentence you could defend in review."
+
+[frameworks]
+read = ["failure-signature-catalog"]
