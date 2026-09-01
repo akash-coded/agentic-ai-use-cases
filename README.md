@@ -4,18 +4,21 @@
 
 ### Build, evaluate and ship production AI agents with Amazon Bedrock, AgentCore, Strands, LangGraph and RAG
 
-**A complete, free, hands-on curriculum.** 16 modules · 102 notebooks · 92 exercises · 63 worked solutions · 30 decision workbooks · ~90 hours
+**A complete, free, hands-on curriculum — plus a 77-page field guide.**
+16 modules · 102 notebooks · 92 exercises · 63 worked solutions · 30 decision workbooks · ~90 hours
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Notebooks](https://img.shields.io/badge/notebooks-102-orange.svg)](#the-curriculum)
 [![Modules](https://img.shields.io/badge/modules-16-1f5f8b.svg)](#the-curriculum)
 [![Solutions included](https://img.shields.io/badge/solutions-included-2e8b57.svg)](#every-exercise-has-a-worked-solution)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![Field guide](https://img.shields.io/badge/field%20guide-77%20pages-8b6f2e.svg)](cheatsheets/)
 [![Discussions](https://img.shields.io/badge/discussions-open-8b5cf6.svg)](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions)
 
 **[▶ Start here](docs/START-HERE.md)** &nbsp;·&nbsp;
 **[🗺️ Learning paths](docs/learning-paths/)** &nbsp;·&nbsp;
 **[🏛️ Architecture](docs/architecture/)** &nbsp;·&nbsp;
+**[🗺️ Field guide](cheatsheets/)** &nbsp;·&nbsp;
 **[⚙️ Setup](docs/setup/aws-account-setup.md)** &nbsp;·&nbsp;
 **[💬 Discussions](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions)**
 
@@ -220,6 +223,30 @@ surface is concentrated in the platform layer.
 
 ---
 
+## 🗺️ The Field Guide
+
+The curriculum teaches you to build agents. The **[field guide](cheatsheets/)** is what you reach for once
+you are building them — in a design review, at 2 a.m. during an incident, in a budget meeting, or in an
+interview.
+
+| Section | Contents |
+| --- | --- |
+| 🧠 **[Frameworks](cheatsheets/frameworks/)** | 17 original mental models — the [Autonomy Ladder](cheatsheets/frameworks/autonomy-ladder.md), [Token Tax Ledger](cheatsheets/frameworks/token-tax-ledger.md), [Handoff Multiplier](cheatsheets/frameworks/handoff-multiplier.md), [Blast Radius Grid](cheatsheets/frameworks/blast-radius-grid.md), [Evidence Ladder](cheatsheets/frameworks/evidence-ladder.md) and more. Each has a procedure and an output, not just a concept |
+| 📖 **[Quick reference](cheatsheets/quick-reference/)** | 10 cheat sheets: [Bedrock Converse](cheatsheets/quick-reference/bedrock-converse.md), [Strands](cheatsheets/quick-reference/strands.md), [LangGraph](cheatsheets/quick-reference/langgraph.md), [AgentCore](cheatsheets/quick-reference/agentcore.md), [RAG](cheatsheets/quick-reference/rag-pipeline.md), [IAM](cheatsheets/quick-reference/iam-for-agents.md), [observability](cheatsheets/quick-reference/observability.md) |
+| 🚨 **[Runbooks](cheatsheets/runbooks/)** | 9 procedures for when it breaks — [wrong answers](cheatsheets/runbooks/incident-wrong-answers.md), [cost spikes](cheatsheets/runbooks/incident-cost-spike.md), [runaway loops](cheatsheets/runbooks/incident-runaway-loop.md), [rollback](cheatsheets/runbooks/rollback.md), [inheriting an agent](cheatsheets/runbooks/inheriting-an-agent.md) |
+| 📋 **[Playbooks](cheatsheets/playbooks/)** | [Design reviews](cheatsheets/playbooks/agent-design-review.md), [build-buy-or-wait](cheatsheets/playbooks/build-buy-or-wait.md), [scoping an engagement](cheatsheets/playbooks/scoping-an-engagement.md), [killing a project well](cheatsheets/playbooks/killing-an-agent-project.md) |
+| 💼 **[Interview guides](cheatsheets/interviews/)** | Both sides of the table for [engineer](cheatsheets/interviews/agent-engineer.md), [architect](cheatsheets/interviews/solutions-architect.md), [PM](cheatsheets/interviews/product-manager.md), [BA](cheatsheets/interviews/business-analyst.md), [QA](cheatsheets/interviews/qa-engineer.md) — plus a [hiring guide](cheatsheets/interviews/as-the-interviewer.md) |
+| 🎓 **[How-to by role](cheatsheets/how-to/)** | 17 recipes for [engineers](cheatsheets/how-to/engineers/), [PMs](cheatsheets/how-to/product/), [architects](cheatsheets/how-to/architects/), [business analysts](cheatsheets/how-to/business-analysts/), [QA](cheatsheets/how-to/qa-and-test/) and [engineering managers](cheatsheets/how-to/engineering-managers/) |
+
+**Not only for engineers.** Product managers get [acceptance criteria for non-deterministic systems](cheatsheets/how-to/product/write-acceptance-criteria.md)
+and [how to price a feature](cheatsheets/how-to/product/price-an-agent-feature.md). Business analysts get
+[how to build a golden set from real tickets](cheatsheets/how-to/business-analysts/build-a-golden-set.md) —
+the artefact that *is* the specification. Architects get [topology selection with cost multipliers](cheatsheets/how-to/architects/choose-a-topology.md).
+
+**[→ Open the field guide](cheatsheets/)**
+
+---
+
 ## Design documents
 
 Because "how do I design one of these" is the question the demos never answer.
@@ -239,6 +266,13 @@ Because "how do I design one of these" is the question the demos never answer.
 ```
 .
 ├── modules/          16 topic modules — the curriculum
+├── cheatsheets/      the field guide — 77 reference pages
+│   ├── frameworks/           17 original mental models
+│   ├── quick-reference/      10 API and decision cheat sheets
+│   ├── runbooks/             9 incident and operational procedures
+│   ├── playbooks/            4 strategic playbooks
+│   ├── interviews/           6 role guides, both sides of the table
+│   └── how-to/               17 recipes across 6 roles
 ├── docs/
 │   ├── START-HERE.md         entry point
 │   ├── learning-paths/       5 paths by role and time budget
