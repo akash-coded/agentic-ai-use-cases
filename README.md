@@ -308,6 +308,7 @@ Corrections, better explanations, new exercises and updates for changed AWS beha
 - 🤝 **Want to contribute?** [`CONTRIBUTING.md`](CONTRIBUTING.md)
 - 🗺️ **What's next?** The [extension roadmap](docs/extension-roadmap.md) and its
   [public board](https://github.com/users/akash-coded/projects/6) — five phases, most items open to contributors
+- 📜 **What changed?** [`CHANGELOG.md`](CHANGELOG.md)
 
 AWS moves quickly. If something here no longer matches reality, that is a bug worth reporting.
 

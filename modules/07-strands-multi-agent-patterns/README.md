@@ -73,6 +73,24 @@ solutions        9 file(s)
 src              1 file(s)
 ```
 
+## Field guide for this module
+
+Reference material for the ideas in this module — open these while you work, not before.
+
+**Frameworks**
+
+- [Handoff Multiplier](../../cheatsheets/frameworks/handoff-multiplier.md) — H× — what a topology costs versus one agent
+- [Cost Cliff Map](../../cheatsheets/frameworks/cost-cliff-map.md) — Unbounded swarms are cliff 3
+- [Three Clocks](../../cheatsheets/frameworks/three-clocks.md) — Turns multiply two of the three clocks
+
+**Quick reference**
+
+- [Strands](../../cheatsheets/quick-reference/strands.md) — Graph, swarm, delegation in code
+
+**Recipes and procedures**
+
+- [Choose a topology](../../cheatsheets/how-to/architects/choose-a-topology.md) — Choose one and justify it in an hour
+
 ---
 
 ⬅️ [Module 06 · Strands Foundations: Tools, Memory and MCP](../06-strands-foundations/) &nbsp;·&nbsp; 🏠 [All modules](../) &nbsp;·&nbsp; 🗺️ [Learning paths](../../docs/learning-paths/) &nbsp;·&nbsp; [Module 08 · LangChain and LangGraph](../08-langchain-and-langgraph/) ➡️

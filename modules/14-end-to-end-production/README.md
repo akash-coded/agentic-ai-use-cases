@@ -77,6 +77,25 @@ src             12 file(s)
 tools            1 file(s)
 ```
 
+## Field guide for this module
+
+Reference material for the ideas in this module — open these while you work, not before.
+
+**Frameworks**
+
+- [Demo To Production Gap](../../cheatsheets/frameworks/demo-to-production-gap.md) — Nine deltas, as a pre-mortem
+- [Reversibility Test](../../cheatsheets/frameworks/reversibility-test.md) — Rehearse the rollback, then time it
+- [Agent Readiness Scorecard](../../cheatsheets/frameworks/agent-readiness-scorecard.md) — Seven dimensions before you ship
+
+**Quick reference**
+
+- [Observability](../../cheatsheets/quick-reference/observability.md) — What to instrument before launch
+
+**Recipes and procedures**
+
+- [Runbook · rolling back](../../cheatsheets/runbooks/rollback.md) — The four things that roll back together
+- [Runbook · first 30 days in production](../../cheatsheets/runbooks/first-30-days-in-production.md) — A schedule, window by window
+
 ---
 
 ⬅️ [Module 13 · Agentic QA and Evaluation](../13-agentic-qa-and-evaluation/) &nbsp;·&nbsp; 🏠 [All modules](../) &nbsp;·&nbsp; 🗺️ [Learning paths](../../docs/learning-paths/) &nbsp;·&nbsp; [Module 15 · Agentic Product Lifecycle](../15-agentic-product-lifecycle/) ➡️

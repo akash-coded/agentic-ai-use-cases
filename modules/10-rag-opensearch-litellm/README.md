@@ -89,6 +89,25 @@ solutions        6 file(s)
 src              1 file(s)
 ```
 
+## Field guide for this module
+
+Reference material for the ideas in this module — open these while you work, not before.
+
+**Frameworks**
+
+- [Grounding Triangle](../../cheatsheets/frameworks/grounding-triangle.md) — The three sides most systems confuse
+- [Context Budget Ledger](../../cheatsheets/frameworks/context-budget-ledger.md) — Pack to a token budget, not a top-k
+- [Evidence Ladder](../../cheatsheets/frameworks/evidence-ladder.md) — Why the golden set must be frozen first
+
+**Quick reference**
+
+- [RAG pipeline](../../cheatsheets/quick-reference/rag-pipeline.md) — Stage by stage, with the failure decoder
+- [Model selection](../../cheatsheets/quick-reference/model-selection.md) — Routing and provider portability
+
+**Recipes and procedures**
+
+- [Runbook · stale knowledge base](../../cheatsheets/runbooks/incident-stale-knowledge.md) — Index freshness as a gate check
+
 ---
 
 ⬅️ [Module 09 · LLM Memory Mechanics](../09-llm-memory/) &nbsp;·&nbsp; 🏠 [All modules](../) &nbsp;·&nbsp; 🗺️ [Learning paths](../../docs/learning-paths/) &nbsp;·&nbsp; [Module 11 · Amazon Bedrock AgentCore](../11-bedrock-agentcore/) ➡️

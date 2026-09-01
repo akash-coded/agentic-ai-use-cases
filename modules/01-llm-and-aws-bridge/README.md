@@ -64,6 +64,19 @@ exercises        2 file(s)
 slides           1 file(s)
 ```
 
+## Field guide for this module
+
+Reference material for the ideas in this module — open these while you work, not before.
+
+**Frameworks**
+
+- [Token Tax Ledger](../../cheatsheets/frameworks/token-tax-ledger.md) — Where every token goes, and who pays
+
+**Quick reference**
+
+- [Model selection](../../cheatsheets/quick-reference/model-selection.md) — Four dimensions, the routing move, cost per *resolved* task
+- [Bedrock Converse API](../../cheatsheets/quick-reference/bedrock-converse.md) — The API you are about to meet
+
 ---
 
 ⬅️ [Module 00 · Agentic Foundations](../00-agentic-foundations/) &nbsp;·&nbsp; 🏠 [All modules](../) &nbsp;·&nbsp; 🗺️ [Learning paths](../../docs/learning-paths/) &nbsp;·&nbsp; [Module 02 · Amazon Bedrock Essentials](../02-bedrock-essentials/) ➡️

@@ -69,6 +69,22 @@ slides           1 file(s)
 solutions       12 file(s)
 ```
 
+## Field guide for this module
+
+Reference material for the ideas in this module — open these while you work, not before.
+
+**Frameworks**
+
+- [Scope Fence](../../cheatsheets/frameworks/scope-fence.md) — Intake questions that convert enthusiasm into a request
+- [Value Trace](../../cheatsheets/frameworks/value-trace.md) — The ②→③ link is where value leaks
+- [Agent Readiness Scorecard](../../cheatsheets/frameworks/agent-readiness-scorecard.md) — Bring this to the gate, not an opinion
+
+**Recipes and procedures**
+
+- [Agent design review](../../cheatsheets/playbooks/agent-design-review.md) — 60 minutes, ending in a named condition
+- [Killing an agent project](../../cheatsheets/playbooks/killing-an-agent-project.md) — Stopping well is a capability
+- [Write acceptance criteria](../../cheatsheets/how-to/product/write-acceptance-criteria.md) — Rates on a named set
+
 ---
 
 ⬅️ [Module 14 · End-to-End Production Pipeline](../14-end-to-end-production/) &nbsp;·&nbsp; 🏠 [All modules](../) &nbsp;·&nbsp; 🗺️ [Learning paths](../../docs/learning-paths/)

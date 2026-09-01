@@ -71,6 +71,19 @@ solutions        2 file(s)
 src              3 file(s)
 ```
 
+## Field guide for this module
+
+Reference material for the ideas in this module — open these while you work, not before.
+
+**Frameworks**
+
+- [Handoff Multiplier](../../cheatsheets/frameworks/handoff-multiplier.md) — Each protocol hop is a full agent run
+- [Tool Surface Audit](../../cheatsheets/frameworks/tool-surface-audit.md) — Trust an agent card like any other tool
+
+**Quick reference**
+
+- [MCP and A2A](../../cheatsheets/quick-reference/mcp-and-a2a.md) — When neither is the answer
+
 ---
 
 ⬅️ [Module 11 · Amazon Bedrock AgentCore](../11-bedrock-agentcore/) &nbsp;·&nbsp; 🏠 [All modules](../) &nbsp;·&nbsp; 🗺️ [Learning paths](../../docs/learning-paths/) &nbsp;·&nbsp; [Module 13 · Agentic QA and Evaluation](../13-agentic-qa-and-evaluation/) ➡️

@@ -70,6 +70,26 @@ slides           1 file(s)
 src             11 file(s)
 ```
 
+## Field guide for this module
+
+Reference material for the ideas in this module — open these while you work, not before.
+
+**Frameworks**
+
+- [Evidence Ladder](../../cheatsheets/frameworks/evidence-ladder.md) — Never claim above your rung
+- [Abstention Budget](../../cheatsheets/frameworks/abstention-budget.md) — The vital sign, and how to target it
+- [Failure Signature Catalog](../../cheatsheets/frameworks/failure-signature-catalog.md) — Debug from evidence, not the prompt
+- [Silent Degradation Watchlist](../../cheatsheets/frameworks/silent-degradation-watchlist.md) — 12 failures that never raise an error
+
+**Quick reference**
+
+- [Observability](../../cheatsheets/quick-reference/observability.md) — Ten log fields and Logs Insights queries
+
+**Recipes and procedures**
+
+- [Build a quality gate](../../cheatsheets/how-to/engineers/build-a-quality-gate.md) — A gate that exits non-zero
+- [Validate an LLM judge](../../cheatsheets/how-to/qa-and-test/validate-an-llm-judge.md) — Calibrate before you trust
+
 ---
 
 ⬅️ [Module 12 · A2A and A2UI: Agent Interoperability](../12-a2a-and-a2ui-interop/) &nbsp;·&nbsp; 🏠 [All modules](../) &nbsp;·&nbsp; 🗺️ [Learning paths](../../docs/learning-paths/) &nbsp;·&nbsp; [Module 14 · End-to-End Production Pipeline](../14-end-to-end-production/) ➡️

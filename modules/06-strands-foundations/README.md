@@ -72,6 +72,25 @@ slides           2 file(s)
 src              2 file(s)
 ```
 
+## Field guide for this module
+
+Reference material for the ideas in this module — open these while you work, not before.
+
+**Frameworks**
+
+- [Tool Surface Audit](../../cheatsheets/frameworks/tool-surface-audit.md) — Distinctness, sufficiency, failure honesty
+- [Context Budget Ledger](../../cheatsheets/frameworks/context-budget-ledger.md) — Allocate the window like a budget
+
+**Quick reference**
+
+- [Strands](../../cheatsheets/quick-reference/strands.md) — Agents, @tool, models, MCP
+- [MCP and A2A](../../cheatsheets/quick-reference/mcp-and-a2a.md) — Hands versus colleagues
+
+**Recipes and procedures**
+
+- [Add a tool properly](../../cheatsheets/how-to/engineers/add-a-tool-properly.md) — The recipe
+- [Memory that does not grow forever](../../cheatsheets/how-to/engineers/memory-that-doesnt-grow-forever.md) — Bounded memory in 2 hours
+
 ---
 
 ⬅️ [Module 05 · The Agent Loop: No Framework to Strands](../05-agent-loop-no-framework-to-strands/) &nbsp;·&nbsp; 🏠 [All modules](../) &nbsp;·&nbsp; 🗺️ [Learning paths](../../docs/learning-paths/) &nbsp;·&nbsp; [Module 07 · Multi-Agent Patterns with Strands](../07-strands-multi-agent-patterns/) ➡️

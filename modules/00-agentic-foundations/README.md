@@ -72,6 +72,21 @@ slides           2 file(s)
 solutions        2 file(s)
 ```
 
+## Field guide for this module
+
+Reference material for the ideas in this module — open these while you work, not before.
+
+**Frameworks**
+
+- [Autonomy Ladder](../../cheatsheets/frameworks/autonomy-ladder.md) — Build the lowest rung that passes your acceptance test
+- [Scope Fence](../../cheatsheets/frameworks/scope-fence.md) — Four posts that stop "just add it to the prompt" creep
+- [Evidence Ladder](../../cheatsheets/frameworks/evidence-ladder.md) — Six rungs of proof, and the claim each licenses
+- [Value Trace](../../cheatsheets/frameworks/value-trace.md) — Five links from model metric to money
+
+**Recipes and procedures**
+
+- [Agent design review](../../cheatsheets/playbooks/agent-design-review.md) — Running the review this module prepares you for
+
 ---
 
 🏠 [All modules](../) &nbsp;·&nbsp; 🗺️ [Learning paths](../../docs/learning-paths/) &nbsp;·&nbsp; [Module 01 · LLM Intuition and the AWS Bridge](../01-llm-and-aws-bridge/) ➡️

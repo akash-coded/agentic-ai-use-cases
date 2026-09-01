@@ -79,6 +79,25 @@ solutions        5 file(s)
 src              1 file(s)
 ```
 
+## Field guide for this module
+
+Reference material for the ideas in this module — open these while you work, not before.
+
+**Frameworks**
+
+- [Token Tax Ledger](../../cheatsheets/frameworks/token-tax-ledger.md) — Four of six taxes are charged on every turn
+- [Grounding Triangle](../../cheatsheets/frameworks/grounding-triangle.md) — Retrieved ≠ cited ≠ verified
+- [Tool Surface Audit](../../cheatsheets/frameworks/tool-surface-audit.md) — Six axes per tool — the schema is what the model sees
+
+**Quick reference**
+
+- [Bedrock Converse API](../../cheatsheets/quick-reference/bedrock-converse.md) — Clients, message shape, and the tool-use round trip
+- [Prompting for agents](../../cheatsheets/quick-reference/prompt-engineering-for-agents.md) — The three prompts in an agent
+
+**Recipes and procedures**
+
+- [Add a tool properly](../../cheatsheets/how-to/engineers/add-a-tool-properly.md) — 30-minute recipe for a tool the model calls correctly
+
 ---
 
 ⬅️ [Module 01 · LLM Intuition and the AWS Bridge](../01-llm-and-aws-bridge/) &nbsp;·&nbsp; 🏠 [All modules](../) &nbsp;·&nbsp; 🗺️ [Learning paths](../../docs/learning-paths/) &nbsp;·&nbsp; [Module 03 · Amazon Bedrock Agents](../03-bedrock-agents/) ➡️

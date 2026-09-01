@@ -61,6 +61,23 @@ notebooks        1 file(s)
 slides           3 file(s)
 ```
 
+## Field guide for this module
+
+Reference material for the ideas in this module — open these while you work, not before.
+
+**Frameworks**
+
+- [Context Budget Ledger](../../cheatsheets/frameworks/context-budget-ledger.md) — The overflow protocol
+- [Silent Degradation Watchlist](../../cheatsheets/frameworks/silent-degradation-watchlist.md) — Summary memory drops the decisive fact
+
+**Quick reference**
+
+- [AgentCore](../../cheatsheets/quick-reference/agentcore.md) — Managed memory and retention
+
+**Recipes and procedures**
+
+- [Memory that does not grow forever](../../cheatsheets/how-to/engineers/memory-that-doesnt-grow-forever.md) — Caps, TTLs, and the test everyone skips
+
 ---
 
 ⬅️ [Module 08 · LangChain and LangGraph](../08-langchain-and-langgraph/) &nbsp;·&nbsp; 🏠 [All modules](../) &nbsp;·&nbsp; 🗺️ [Learning paths](../../docs/learning-paths/) &nbsp;·&nbsp; [Module 10 · RAG, OpenSearch and LiteLLM](../10-rag-opensearch-litellm/) ➡️

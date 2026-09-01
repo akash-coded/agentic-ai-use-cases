@@ -89,6 +89,26 @@ src             31 file(s)
 walkthroughs    14 file(s)
 ```
 
+## Field guide for this module
+
+Reference material for the ideas in this module — open these while you work, not before.
+
+**Frameworks**
+
+- [Blast Radius Grid](../../cheatsheets/frameworks/blast-radius-grid.md) — Scope identity per tool, not per agent
+- [Cost Cliff Map](../../cheatsheets/frameworks/cost-cliff-map.md) — Runtimes and memory bill for existing
+- [Reversibility Test](../../cheatsheets/frameworks/reversibility-test.md) — Four things must roll back together
+
+**Quick reference**
+
+- [AgentCore](../../cheatsheets/quick-reference/agentcore.md) — The five primitives
+- [IAM for agents](../../cheatsheets/quick-reference/iam-for-agents.md) — Least privilege that actually holds
+- [Observability](../../cheatsheets/quick-reference/observability.md) — The three vital signs
+
+**Recipes and procedures**
+
+- [Deploy any agent to AgentCore](../../cheatsheets/how-to/engineers/deploy-any-agent-to-agentcore.md) — Framework-agnostic deploy path
+
 ---
 
 ⬅️ [Module 10 · RAG, OpenSearch and LiteLLM](../10-rag-opensearch-litellm/) &nbsp;·&nbsp; 🏠 [All modules](../) &nbsp;·&nbsp; 🗺️ [Learning paths](../../docs/learning-paths/) &nbsp;·&nbsp; [Module 12 · A2A and A2UI: Agent Interoperability](../12-a2a-and-a2ui-interop/) ➡️

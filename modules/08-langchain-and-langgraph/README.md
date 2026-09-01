@@ -73,6 +73,24 @@ slides           3 file(s)
 solutions       12 file(s)
 ```
 
+## Field guide for this module
+
+Reference material for the ideas in this module — open these while you work, not before.
+
+**Frameworks**
+
+- [Handoff Multiplier](../../cheatsheets/frameworks/handoff-multiplier.md) — Cost the topology, whichever framework
+- [Context Budget Ledger](../../cheatsheets/frameworks/context-budget-ledger.md) — Checkpointed state is not free
+
+**Quick reference**
+
+- [LangChain and LangGraph](../../cheatsheets/quick-reference/langgraph.md) — Runnables, state machines, checkpointing
+- [Strands](../../cheatsheets/quick-reference/strands.md) — The other side of the comparison
+
+**Recipes and procedures**
+
+- [Migrate LangChain ↔ Strands](../../cheatsheets/how-to/engineers/migrate-langchain-to-strands.md) — And when not to
+
 ---
 
 ⬅️ [Module 07 · Multi-Agent Patterns with Strands](../07-strands-multi-agent-patterns/) &nbsp;·&nbsp; 🏠 [All modules](../) &nbsp;·&nbsp; 🗺️ [Learning paths](../../docs/learning-paths/) &nbsp;·&nbsp; [Module 09 · LLM Memory Mechanics](../09-llm-memory/) ➡️

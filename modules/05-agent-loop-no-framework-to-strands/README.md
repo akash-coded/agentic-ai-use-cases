@@ -71,6 +71,24 @@ slides           2 file(s)
 solutions        4 file(s)
 ```
 
+## Field guide for this module
+
+Reference material for the ideas in this module — open these while you work, not before.
+
+**Frameworks**
+
+- [Autonomy Ladder](../../cheatsheets/frameworks/autonomy-ladder.md) — R3 vs R4 — where most money is lost
+- [Failure Signature Catalog](../../cheatsheets/frameworks/failure-signature-catalog.md) — Tool ping-pong and its cause
+
+**Quick reference**
+
+- [Bedrock Converse API](../../cheatsheets/quick-reference/bedrock-converse.md) — The round trip you are writing by hand
+- [Strands](../../cheatsheets/quick-reference/strands.md) — The same loop, framework-managed
+
+**Recipes and procedures**
+
+- [Runbook · runaway loop](../../cheatsheets/runbooks/incident-runaway-loop.md) — Caps belong in code, not the prompt
+
 ---
 
 ⬅️ [Module 04 · Agent Builder, Knowledge Bases and Guardrails](../04-agent-builder-and-knowledge-bases/) &nbsp;·&nbsp; 🏠 [All modules](../) &nbsp;·&nbsp; 🗺️ [Learning paths](../../docs/learning-paths/) &nbsp;·&nbsp; [Module 06 · Strands Foundations: Tools, Memory and MCP](../06-strands-foundations/) ➡️

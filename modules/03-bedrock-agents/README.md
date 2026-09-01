@@ -75,6 +75,25 @@ slides           3 file(s)
 solutions        3 file(s)
 ```
 
+## Field guide for this module
+
+Reference material for the ideas in this module — open these while you work, not before.
+
+**Frameworks**
+
+- [Autonomy Ladder](../../cheatsheets/frameworks/autonomy-ladder.md) — What the managed loop is doing for you
+- [Token Tax Ledger](../../cheatsheets/frameworks/token-tax-ledger.md) — The verbosity tax, quantified
+- [Failure Signature Catalog](../../cheatsheets/frameworks/failure-signature-catalog.md) — 16 signatures → cause → fix
+
+**Quick reference**
+
+- [Bedrock Converse API](../../cheatsheets/quick-reference/bedrock-converse.md) — The loop underneath the managed agent
+- [IAM for agents](../../cheatsheets/quick-reference/iam-for-agents.md) — Agent → Lambda resource policies
+
+**Recipes and procedures**
+
+- [Runbook · runaway loop](../../cheatsheets/runbooks/incident-runaway-loop.md) — When the loop does not converge
+
 ---
 
 ⬅️ [Module 02 · Amazon Bedrock Essentials](../02-bedrock-essentials/) &nbsp;·&nbsp; 🏠 [All modules](../) &nbsp;·&nbsp; 🗺️ [Learning paths](../../docs/learning-paths/) &nbsp;·&nbsp; [Module 04 · Agent Builder, Knowledge Bases and Guardrails](../04-agent-builder-and-knowledge-bases/) ➡️

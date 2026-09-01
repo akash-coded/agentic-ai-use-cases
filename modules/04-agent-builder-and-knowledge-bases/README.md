@@ -65,6 +65,24 @@ notebooks        3 file(s)
 slides           3 file(s)
 ```
 
+## Field guide for this module
+
+Reference material for the ideas in this module — open these while you work, not before.
+
+**Frameworks**
+
+- [Grounding Triangle](../../cheatsheets/frameworks/grounding-triangle.md) — Is it retrieved, cited, or actually verified?
+- [Blast Radius Grid](../../cheatsheets/frameworks/blast-radius-grid.md) — Score every tool before you wire it
+
+**Quick reference**
+
+- [RAG pipeline](../../cheatsheets/quick-reference/rag-pipeline.md) — Every stage, and the failure each causes
+- [IAM for agents](../../cheatsheets/quick-reference/iam-for-agents.md) — KB service roles and the three-role split
+
+**Recipes and procedures**
+
+- [Runbook · stale knowledge base](../../cheatsheets/runbooks/incident-stale-knowledge.md) — The silent failure of a KB nobody re-syncs
+
 ---
 
 ⬅️ [Module 03 · Amazon Bedrock Agents](../03-bedrock-agents/) &nbsp;·&nbsp; 🏠 [All modules](../) &nbsp;·&nbsp; 🗺️ [Learning paths](../../docs/learning-paths/) &nbsp;·&nbsp; [Module 05 · The Agent Loop: No Framework to Strands](../05-agent-loop-no-framework-to-strands/) ➡️
