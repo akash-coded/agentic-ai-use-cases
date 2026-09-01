@@ -69,7 +69,7 @@ default production mistake.
 
 ## 7. Verify
 
-Run [`PreWave5_Bedrock_Onboarding.ipynb`](../../modules/02-bedrock-essentials/notebooks/PreWave5_Bedrock_Onboarding.ipynb).
+Run [`00_Bedrock_Onboarding.ipynb`](../../modules/02-bedrock-essentials/notebooks/00_Bedrock_Onboarding.ipynb).
 It checks access, invokes a model and prints token usage. If it runs clean, you are set up.
 
 ---

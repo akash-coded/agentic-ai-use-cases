@@ -38,7 +38,7 @@ Start with [Module 00](../../modules/00-agentic-foundations/),
 
 ## Verify you are ready
 
-Run [`PreWave5_Bedrock_Onboarding.ipynb`](../../modules/02-bedrock-essentials/notebooks/PreWave5_Bedrock_Onboarding.ipynb).
+Run [`00_Bedrock_Onboarding.ipynb`](../../modules/02-bedrock-essentials/notebooks/00_Bedrock_Onboarding.ipynb).
 It checks access, invokes a model and prints token usage. Clean run means you are set up.
 
 ---

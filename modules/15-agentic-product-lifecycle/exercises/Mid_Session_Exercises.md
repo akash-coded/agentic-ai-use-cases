@@ -1,4 +1,4 @@
-# Day 3 mid-session exercises
+# Mid-session exercises — the agentic artefact set
 
 ## The Agentic Artefact Set
 

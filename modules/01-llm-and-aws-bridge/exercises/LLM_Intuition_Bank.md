@@ -1,7 +1,6 @@
 # LLM Intuition Bank
-### MCQs, diagrams, error-fixing, and a systems recap — Day 1.5 companion
+### MCQs, diagrams, error-fixing, and a systems recap — companion to Module 01
 
-**Agentic AI Practitioner Program · Cohort 2**
 
 Zero math. Builds intuition, application, and key-term fluency. TravelMind is the running example.
 

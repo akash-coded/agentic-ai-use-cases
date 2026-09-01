@@ -33,7 +33,7 @@ Portable concepts transfer to any stack. The AWS column is where this module tou
 | # | | Step | What it is |
 | --- | --- | --- | --- |
 | 1 | 📖 | [`slides/Bedrock_Chapters_1_to_4.pptx`](slides/Bedrock_Chapters_1_to_4.pptx) | Chapters 1–4: access, models, first calls, tokens |
-| 2 | 💻 | [`notebooks/PreWave5_Bedrock_Onboarding.ipynb`](notebooks/PreWave5_Bedrock_Onboarding.ipynb) | Onboarding notebook — verify your access works |
+| 2 | 💻 | [`notebooks/00_Bedrock_Onboarding.ipynb`](notebooks/00_Bedrock_Onboarding.ipynb) | Onboarding notebook — verify your access works |
 | 3 | ✏️ | [`exercises/Exercise_1_First_Calls_and_the_Converse_API.pdf`](exercises/Exercise_1_First_Calls_and_the_Converse_API.pdf) | Exercise 1 · first calls |
 | 4 | 💻 | [`notebooks/converse_api_masterclass.ipynb`](notebooks/converse_api_masterclass.ipynb) | Converse API masterclass |
 | 5 | ✏️ | [`exercises/Exercise_2_Tokens_and_Multi-Turn_Conversations.pdf`](exercises/Exercise_2_Tokens_and_Multi-Turn_Conversations.pdf) | Exercise 2 · tokens and multi-turn |

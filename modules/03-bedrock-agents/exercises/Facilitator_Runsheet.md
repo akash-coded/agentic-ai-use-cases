@@ -1,4 +1,4 @@
-# Day 8 Facilitator Run-Sheet (3 hours, solo)
+# Facilitator runsheet — Bedrock Agents
 
 **What the room can do by the end**
 1. Say what the model does versus what Bedrock does.

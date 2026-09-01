@@ -1,4 +1,4 @@
-# TravelMind on Amazon Bedrock — Day 4 Hands-On (Notebooks 1–5)
+# TravelMind on Amazon Bedrock — Module 03 exercises
 
 End-to-end, build-from-scratch walkthrough of calling, building, controlling, and operating a Bedrock agent. Everything runs against one use case (**TravelMind**, an airline booking/disruption assistant) and one region (`us-east-1`). The notebooks pick up from the Day 3 agent you built in the Bedrock console.
 

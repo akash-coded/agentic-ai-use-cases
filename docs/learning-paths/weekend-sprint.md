@@ -12,7 +12,7 @@
 | | Step |
 | --- | --- |
 | 1 | [Module 01 deck](../../modules/01-llm-and-aws-bridge/slides/Day1.5_LLM_AWS_Bridge.pptx) — skim for model choice and the regional prefix rule |
-| 2 | [`PreWave5_Bedrock_Onboarding.ipynb`](../../modules/02-bedrock-essentials/notebooks/PreWave5_Bedrock_Onboarding.ipynb) — prove access works |
+| 2 | [`00_Bedrock_Onboarding.ipynb`](../../modules/02-bedrock-essentials/notebooks/00_Bedrock_Onboarding.ipynb) — prove access works |
 | 3 | [`converse_api_masterclass.ipynb`](../../modules/02-bedrock-essentials/notebooks/converse_api_masterclass.ipynb) — the API you will use all weekend |
 
 ## Saturday afternoon · 3 h — give it hands
