@@ -41,6 +41,12 @@ These are genuinely wanted and not started. Comment on the relevant issue before
 - **Framework advocacy.** [Module 08](../modules/08-langchain-and-langgraph/) compares Strands and LangChain
   on the same task and lets the comparison stand. That will not become a recommendation.
 
+## The extension roadmap
+
+Beyond the items above, there is a five-phase [extension roadmap](extension-roadmap.md) covering depth,
+reach, interactive tooling, team adoption and currency — tracked on a
+[public board](https://github.com/users/akash-coded/projects/6). Most items are open to contributors.
+
 ---
 
 Want something that is not here? [Open a Discussion](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/categories/ideas).

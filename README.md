@@ -306,6 +306,8 @@ Corrections, better explanations, new exercises and updates for changed AWS beha
 - 🐛 **Something wrong or out of date?** [Open an issue](https://github.com/akash-coded/aws-bedrock-agentcore-strands/issues/new/choose)
 - 💬 **Question, or want to show what you built?** [Discussions](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions)
 - 🤝 **Want to contribute?** [`CONTRIBUTING.md`](CONTRIBUTING.md)
+- 🗺️ **What's next?** The [extension roadmap](docs/extension-roadmap.md) and its
+  [public board](https://github.com/users/akash-coded/projects/6) — five phases, most items open to contributors
 
 AWS moves quickly. If something here no longer matches reality, that is a bug worth reporting.
 

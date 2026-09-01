@@ -1,0 +1,83 @@
+name: Freshness
+
+on:
+  schedule:
+    - cron: "0 7 * * 1"      # Mondays 07:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check relative links
+        id: links
+        run: |
+          python - <<'PY' | tee link_report.txt
+          import re
+          from pathlib import Path
+          bad = []
+          for md in Path('.').rglob('*.md'):
+              if '.git' in md.parts: continue
+              text = md.read_text(encoding='utf-8', errors='ignore')
+              for m in re.finditer(r'\[[^\]]*\]\(([^)\s]+)\)', text):
+                  link = m.group(1)
+                  if link.startswith(('http://', 'https://', '#', 'mailto:')): continue
+                  path = link.split('#')[0].strip()
+                  if not path: continue
+                  if '*' in path or (('/' not in path) and ('.' not in path)): continue
+                  if not (md.parent / path).resolve().exists():
+                      bad.append(f"- `{md}` → `{link}`")
+          print("\n".join(bad) if bad else "OK")
+          PY
+          if ! grep -q '^OK$' link_report.txt; then echo "failed=true" >> "$GITHUB_OUTPUT"; fi
+
+      - name: Check external links
+        id: external
+        continue-on-error: true
+        run: |
+          grep -rhoE 'https://[a-zA-Z0-9./_#?=&%-]+' --include='*.md' . \
+            | sed 's/[.,)]*$//' | sort -u \
+            | grep -vE 'github\.com/akash-coded|img\.shields\.io|example\.com' > urls.txt || true
+          : > external_report.txt
+          while read -r url; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' -L --max-time 15 "$url" || echo 000)
+            case "$code" in 2*|3*|401|403|429) ;; *) echo "- $code $url" >> external_report.txt ;; esac
+          done < urls.txt
+          if [ -s external_report.txt ]; then echo "failed=true" >> "$GITHUB_OUTPUT"; fi
+
+      - name: Open an issue if anything rotted
+        if: steps.links.outputs.failed == 'true' || steps.external.outputs.failed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            echo "Weekly freshness check found problems."
+            echo
+            if [ -s link_report.txt ] && ! grep -q '^OK$' link_report.txt; then
+              echo "### Broken relative links"; echo; cat link_report.txt; echo
+            fi
+            if [ -s external_report.txt ]; then
+              echo "### External links not responding"; echo; cat external_report.txt; echo
+              echo "_Some may be transient or rate-limited — verify before editing._"
+            fi
+            echo
+            echo "Opened automatically by \`.github/workflows/freshness.yml\`."
+          } > body.md
+
+          existing=$(gh issue list --label freshness --state open --limit 1 --json number --jq '.[0].number // empty')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body-file body.md
+          else
+            gh issue create --title "Freshness check: broken links detected" \
+                            --label freshness --body-file body.md
+          fi

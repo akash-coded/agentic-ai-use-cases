@@ -1,0 +1,47 @@
+name: Welcome
+
+on:
+  pull_request_target:
+    types: [opened]
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/first-interaction@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-message: >
+            Thanks for opening your first issue here.
+
+
+            If this is a **broken notebook or an AWS behaviour change**, that is the most valuable kind of
+            report this project gets — services move and material goes stale, and we would rather hear it
+            from you than from a learner who gave up.
+
+
+            Two things that speed up a fix: the **exact error text**, and your **region**. If you have not
+            already, the
+            [troubleshooting guide](https://github.com/akash-coded/aws-bedrock-agentcore-strands/blob/main/docs/setup/troubleshooting.md)
+            covers the errors this curriculum produces most often.
+          pr-message: >
+            Thanks for your first pull request here.
+
+
+            Two quick checks before review, both from
+            [CONTRIBUTING.md](https://github.com/akash-coded/aws-bedrock-agentcore-strands/blob/main/CONTRIBUTING.md):
+
+
+            - **No credentials, real account IDs or local paths** — including inside notebook *outputs*.
+              Account IDs in this repo are the placeholder `123456789012`.
+
+            - **New exercises ship with a worked solution.**
+
+
+            CI checks notebook JSON, Python syntax, relative links and secret leakage automatically.
