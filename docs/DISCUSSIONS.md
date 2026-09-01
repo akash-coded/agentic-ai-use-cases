@@ -17,6 +17,7 @@ content, but you can reply to it.
 | Report a broken notebook or wrong doc | **[Issues](https://github.com/akash-coded/aws-bedrock-agentcore-strands/issues/new/choose)** | Not a discussion. Issues get tracked and closed |
 | Work an exercise, or compare answers | **[Exercises](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/categories/exercises)** | Reply *in that exercise's thread* |
 | Work a multi-hour lab or capstone | **[Hands-on Labs](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/categories/hands-on-labs)** | Same, for longer builds |
+| **Get a lab solution graded by a bot** | **[Simulator Arena](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/75)** | Post `/lab <ID>` + a python block; a workflow grades it and replies in-thread |
 | Share what you built | **[Show and tell](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/categories/show-and-tell)** | The most persuasive content here |
 | Propose a topic, lab or improvement | **[Ideas](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/categories/ideas)** | Feeds the [extension roadmap](extension-roadmap.md) |
 | Vote on what gets built next | **[Polls](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/categories/polls)** | Reaction-vote threads that steer the roadmap |
@@ -93,6 +94,18 @@ Where a question has a definite answer, maintainers mark one — that is what ma
 | **Spoilers wrapped** | `<details><summary>Solution</summary>` so others can still attempt it |
 | **Code in fences**, with a language tag | And errors in full |
 | **Disagreement is welcome** | On specifics. Several exercises have more than one defensible answer |
+
+---
+
+## The Simulator Arena
+
+[Hands-on Labs](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/categories/hands-on-labs) doubles as a graded arena. A comment containing a
+`/lab <ID>` line and one ```python block is picked up by the
+[Simulator Arena workflow](https://github.com/akash-coded/aws-bedrock-agentcore-strands/blob/main/.github/workflows/discussion-lab.yml), run against that lab's
+public and Break checks, and answered with a threaded reply.
+
+Hidden checks never run there — publishing their output would spoil the lab for everyone reading. Full
+mechanics and the sandbox design: [ARENA.md](https://github.com/akash-coded/aws-bedrock-agentcore-strands/blob/main/labs/ARENA.md).
 
 ---
 

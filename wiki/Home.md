@@ -24,6 +24,7 @@ Four surfaces, ~800 files, 66 discussion threads. This page exists because no si
 | **Fit this around a job** | **[Study Plans](Study-Plans)** |
 | **Know what it will cost** | **[Cost Log](Cost-Log)** |
 | **Find a specific thing** | **[Where do I find…?](Where-do-I-find-it)** |
+| **Get a lab graded without installing anything** | [Simulator Arena](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/75) — post a comment, a bot replies |
 | **Ask a person** | [Q&A](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/categories/q-a) — check the [answered ones](Community-Answers) first |
 
 ---
