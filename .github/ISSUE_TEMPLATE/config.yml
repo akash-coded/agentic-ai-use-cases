@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Question or help getting unstuck
+    url: https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/categories/q-a
+    about: Ask in Discussions — questions get better answers there, and stay searchable for the next person.
+  - name: 🎉 Show what you built
+    url: https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/categories/show-and-tell
+    about: Built an agent from this material? Share it.
+  - name: 🧭 Troubleshooting guide
+    url: https://github.com/akash-coded/aws-bedrock-agentcore-strands/blob/main/docs/setup/troubleshooting.md
+    about: The errors this curriculum actually produces — check here first.

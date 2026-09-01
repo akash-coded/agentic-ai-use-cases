@@ -1,0 +1,39 @@
+name: 🤔 This explanation did not land
+description: You got stuck on something the material claims is clear
+title: "[unclear] "
+labels: ["documentation", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        If you got stuck on something described as obvious, that is a defect in the writing, not in you.
+        These reports directly improve the material.
+  - type: input
+    id: where
+    attributes:
+      label: Where
+      placeholder: modules/07-strands-multi-agent-patterns/README.md — the swarm section
+    validations:
+      required: true
+  - type: textarea
+    id: confusion
+    attributes:
+      label: What was confusing
+      description: What did you think it meant, and what did it turn out to mean?
+    validations:
+      required: true
+  - type: textarea
+    id: unblocked
+    attributes:
+      label: What unblocked you
+      description: If anything did. This often becomes the fix.
+  - type: dropdown
+    id: background
+    attributes:
+      label: Your background
+      description: Helps calibrate what the material can assume.
+      options:
+        - "New to LLMs and to AWS"
+        - "Comfortable with AWS, new to LLMs"
+        - "Comfortable with LLMs, new to AWS"
+        - "Experienced in both"

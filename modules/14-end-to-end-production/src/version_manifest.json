@@ -1,0 +1,33 @@
+{
+  "_comment": "One release = these pinned together. Behavior is a function of prompt + config + model, so all three are versioned as one unit. release.py reads and writes this file.",
+
+  "release": "travelmind-2026.06.12-rc1",
+  "created": "2026-06-12",
+  "environment": "staging",
+
+  "prompt_version": "v6",
+  "prompt_sha": "a91f3c7e",
+  "prompt_file": "prompts/travelmind_v6.txt",
+
+  "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+
+  "agent_config": {
+    "temperature": 0.2,
+    "max_tokens": 1024
+  },
+
+  "gate": {
+    "status": "passed",
+    "eval_pass_rate": 0.94,
+    "cost_per_resolution_usd": 0.011,
+    "p95_latency_ms": 3200,
+    "safety_pass_rate": 1.0
+  },
+
+  "rollout": {
+    "phase": "canary",
+    "traffic_percent": 10
+  },
+
+  "rollback_target": "travelmind-2026.06.11-rc3"
+}

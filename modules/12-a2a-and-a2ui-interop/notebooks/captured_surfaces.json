@@ -1,0 +1,377 @@
+[
+  {
+    "surfaceId": "flights",
+    "kind": "options",
+    "ts": "2026-06-09T07:32:54Z",
+    "messages": [
+      {
+        "surfaceUpdate": {
+          "surfaceId": "flights",
+          "components": [
+            {
+              "id": "flt-JX490",
+              "component": {
+                "Text": {
+                  "text": {
+                    "literalString": "JX490  dep 18:05"
+                  }
+                }
+              }
+            },
+            {
+              "id": "fare-JX490",
+              "component": {
+                "Text": {
+                  "text": {
+                    "literalString": "INR 9,400"
+                  }
+                }
+              }
+            },
+            {
+              "id": "lbl-JX490",
+              "component": {
+                "Text": {
+                  "text": {
+                    "literalString": "Rebook"
+                  }
+                }
+              }
+            },
+            {
+              "id": "book-JX490",
+              "component": {
+                "Button": {
+                  "child": "lbl-JX490",
+                  "action": {
+                    "name": "select_flight",
+                    "context": [
+                      "/flights/JX490"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "id": "row-JX490",
+              "component": {
+                "Row": {
+                  "children": {
+                    "explicitList": [
+                      "flt-JX490",
+                      "fare-JX490",
+                      "book-JX490"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "id": "flt-JX511",
+              "component": {
+                "Text": {
+                  "text": {
+                    "literalString": "JX511  dep 13:40"
+                  }
+                }
+              }
+            },
+            {
+              "id": "fare-JX511",
+              "component": {
+                "Text": {
+                  "text": {
+                    "literalString": "INR 11,800"
+                  }
+                }
+              }
+            },
+            {
+              "id": "lbl-JX511",
+              "component": {
+                "Text": {
+                  "text": {
+                    "literalString": "Rebook"
+                  }
+                }
+              }
+            },
+            {
+              "id": "book-JX511",
+              "component": {
+                "Button": {
+                  "child": "lbl-JX511",
+                  "action": {
+                    "name": "select_flight",
+                    "context": [
+                      "/flights/JX511"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "id": "row-JX511",
+              "component": {
+                "Row": {
+                  "children": {
+                    "explicitList": [
+                      "flt-JX511",
+                      "fare-JX511",
+                      "book-JX511"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "id": "flt-JX482",
+              "component": {
+                "Text": {
+                  "text": {
+                    "literalString": "JX482  dep 09:15"
+                  }
+                }
+              }
+            },
+            {
+              "id": "fare-JX482",
+              "component": {
+                "Text": {
+                  "text": {
+                    "literalString": "INR 14,200"
+                  }
+                }
+              }
+            },
+            {
+              "id": "lbl-JX482",
+              "component": {
+                "Text": {
+                  "text": {
+                    "literalString": "Rebook"
+                  }
+                }
+              }
+            },
+            {
+              "id": "book-JX482",
+              "component": {
+                "Button": {
+                  "child": "lbl-JX482",
+                  "action": {
+                    "name": "select_flight",
+                    "context": [
+                      "/flights/JX482"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "id": "row-JX482",
+              "component": {
+                "Row": {
+                  "children": {
+                    "explicitList": [
+                      "flt-JX482",
+                      "fare-JX482",
+                      "book-JX482"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "id": "hdr",
+              "component": {
+                "Text": {
+                  "text": {
+                    "literalString": "Available flights"
+                  }
+                }
+              }
+            },
+            {
+              "id": "root",
+              "component": {
+                "Column": {
+                  "children": {
+                    "explicitList": [
+                      "hdr",
+                      "row-JX490",
+                      "row-JX511",
+                      "row-JX482"
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "beginRendering": {
+          "surfaceId": "flights",
+          "root": "root"
+        }
+      }
+    ]
+  },
+  {
+    "surfaceId": "approve",
+    "kind": "approval",
+    "ts": "2026-06-09T07:32:54Z",
+    "messages": [
+      {
+        "surfaceUpdate": {
+          "surfaceId": "approve",
+          "components": [
+            {
+              "id": "q",
+              "component": {
+                "Text": {
+                  "text": {
+                    "literalString": "Rebook JX511 for INR 11,800?"
+                  }
+                }
+              }
+            },
+            {
+              "id": "tool",
+              "component": {
+                "Text": {
+                  "text": {
+                    "literalString": "tool: book_flight   flight=JX511   pnr=JX48Q2"
+                  }
+                }
+              }
+            },
+            {
+              "id": "ok-l",
+              "component": {
+                "Text": {
+                  "text": {
+                    "literalString": "Approve"
+                  }
+                }
+              }
+            },
+            {
+              "id": "ok",
+              "component": {
+                "Button": {
+                  "child": "ok-l",
+                  "action": {
+                    "name": "approve_booking",
+                    "context": [
+                      "/pending/JX511"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "id": "no-l",
+              "component": {
+                "Text": {
+                  "text": {
+                    "literalString": "Reject"
+                  }
+                }
+              }
+            },
+            {
+              "id": "no",
+              "component": {
+                "Button": {
+                  "child": "no-l",
+                  "action": {
+                    "name": "reject_booking"
+                  }
+                }
+              }
+            },
+            {
+              "id": "root",
+              "component": {
+                "Column": {
+                  "children": {
+                    "explicitList": [
+                      "q",
+                      "tool",
+                      "ok",
+                      "no"
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "beginRendering": {
+          "surfaceId": "approve",
+          "root": "root"
+        }
+      }
+    ]
+  },
+  {
+    "surfaceId": "confirm",
+    "kind": "confirmation",
+    "ts": "2026-06-09T07:32:54Z",
+    "messages": [
+      {
+        "surfaceUpdate": {
+          "surfaceId": "confirm",
+          "components": [
+            {
+              "id": "m",
+              "component": {
+                "MetricCard": {
+                  "label": {
+                    "literalString": "Booking confirmed"
+                  },
+                  "value": {
+                    "literalString": "JX511 . INR 11,800"
+                  }
+                }
+              }
+            },
+            {
+              "id": "p",
+              "component": {
+                "Text": {
+                  "text": {
+                    "literalString": "PNR JX48Q2 updated"
+                  }
+                }
+              }
+            },
+            {
+              "id": "root",
+              "component": {
+                "Column": {
+                  "children": {
+                    "explicitList": [
+                      "m",
+                      "p"
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "beginRendering": {
+          "surfaceId": "confirm",
+          "root": "root"
+        }
+      }
+    ]
+  }
+]

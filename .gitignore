@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment & credentials  — never commit these
+.env
+.env.local
+*.pem
+credentials
+*credentials*.csv
+
+# AgentCore / CDK build output
+.agentcore/
+.bedrock_agentcore.yaml
+cdk.out/
+node_modules/
+package-lock.json
+
+# Local state
+*.sqlite
+*.log
+.cli/
+
+# OS
+.DS_Store
+Thumbs.db

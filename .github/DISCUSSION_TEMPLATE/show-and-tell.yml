@@ -1,0 +1,22 @@
+labels: ["show-and-tell"]
+body:
+  - type: textarea
+    id: built
+    attributes:
+      label: What you built
+    validations:
+      required: true
+  - type: input
+    id: modules
+    attributes:
+      label: Which modules it came from
+      placeholder: Modules 06, 07 and 11
+  - type: textarea
+    id: hard
+    attributes:
+      label: What was harder than expected
+      description: Often the most useful part for everyone else.
+  - type: input
+    id: link
+    attributes:
+      label: Link, if it is public

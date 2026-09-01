@@ -1,0 +1,74 @@
+name: 🐛 Something is broken
+description: A notebook fails, a link is dead, or code does not work as described
+title: "[broken] "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. AWS changes frequently — breakage reports are the most valuable
+        contribution to this repo.
+  - type: dropdown
+    id: module
+    attributes:
+      label: Module
+      options:
+        - "00 · Agentic Foundations"
+        - "01 · LLM and AWS Bridge"
+        - "02 · Bedrock Essentials"
+        - "03 · Bedrock Agents"
+        - "04 · Agent Builder and Knowledge Bases"
+        - "05 · Agent Loop — No Framework to Strands"
+        - "06 · Strands Foundations"
+        - "07 · Strands Multi-Agent Patterns"
+        - "08 · LangChain and LangGraph"
+        - "09 · LLM Memory"
+        - "10 · RAG, OpenSearch and LiteLLM"
+        - "11 · Bedrock AgentCore"
+        - "12 · A2A and A2UI Interop"
+        - "13 · Agentic QA and Evaluation"
+        - "14 · End-to-End Production"
+        - "15 · Agentic Product Lifecycle"
+        - "Docs / setup / other"
+    validations:
+      required: true
+  - type: input
+    id: file
+    attributes:
+      label: File
+      placeholder: modules/02-bedrock-essentials/notebooks/converse_api_masterclass.ipynb
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: Paste the full error. The exact message matters more than your summary of it.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: input
+    id: region
+    attributes:
+      label: AWS region
+      placeholder: us-east-1
+  - type: textarea
+    id: tried
+    attributes:
+      label: What you already tried
+      description: Including anything from the troubleshooting guide.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I checked [troubleshooting](https://github.com/akash-coded/aws-bedrock-agentcore-strands/blob/main/docs/setup/troubleshooting.md)
+          required: true
+        - label: My error message contains no credentials or real account IDs
+          required: true

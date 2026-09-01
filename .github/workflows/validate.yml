@@ -1,0 +1,79 @@
+name: Validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Notebooks are valid JSON
+        run: |
+          fail=0
+          while IFS= read -r -d '' f; do
+            python -c "import json,sys; json.load(open(sys.argv[1]))" "$f" || { echo "::error file=$f::invalid notebook JSON"; fail=1; }
+          done < <(find . -name '*.ipynb' -not -path './.git/*' -print0)
+          exit $fail
+
+      - name: Python files compile
+        run: |
+          fail=0
+          while IFS= read -r -d '' f; do
+            python -m py_compile "$f" || { echo "::error file=$f::syntax error"; fail=1; }
+          done < <(find . -name '*.py' -not -path './.git/*' -print0)
+          exit $fail
+
+      - name: No secrets, real account IDs or local paths
+        run: |
+          fail=0
+          if grep -rlE 'AKIA[0-9A-Z]{16}|ASIA[0-9A-Z]{16}' --exclude-dir=.git . ; then
+            echo "::error::AWS access key pattern found"; fail=1
+          fi
+          # 12-digit ids other than the placeholder 123456789012
+          if grep -rhoE '\b[0-9]{12}\b' --include='*.ipynb' --include='*.py' --include='*.md' --include='*.json' --include='*.yaml' --exclude-dir=.git . \
+             | grep -v '^123456789012$' | sort -u | grep . ; then
+            echo "::error::possible real AWS account id — use the placeholder 123456789012"; fail=1
+          fi
+          if grep -rlE '/Users/[a-zA-Z0-9._-]+/(Documents|Desktop|Repos)' --include='*.ipynb' --include='*.py' --include='*.md' --exclude-dir=.git . ; then
+            echo "::error::local filesystem path leaked — use /workspace/"; fail=1
+          fi
+          exit $fail
+
+      - name: No client branding
+        run: |
+          if grep -rloE '\bIBS\b' --include='*.md' --include='*.py' --include='*.ipynb' --include='*.json' --exclude-dir=.git . ; then
+            echo "::error::client branding found — this material is unbranded"; exit 1
+          fi
+
+      - name: Relative markdown links resolve
+        run: |
+          python - <<'PY'
+          import re, sys
+          from pathlib import Path
+          bad = []
+          for md in Path('.').rglob('*.md'):
+              if '.git' in md.parts: continue
+              text = md.read_text(encoding='utf-8', errors='ignore')
+              for m in re.finditer(r'\[[^\]]*\]\(([^)\s]+)\)', text):
+                  link = m.group(1)
+                  if link.startswith(('http://', 'https://', '#', 'mailto:')): continue
+                  path = link.split('#')[0].strip()
+                  if not path: continue
+                  # skip prose that only looks like a link (no slash and no extension)
+                  if '*' in path or (('/' not in path) and ('.' not in path)): continue
+                  if not (md.parent / path).resolve().exists():
+                      bad.append(f"{md}: {link}")
+          if bad:
+              for b in bad: print(f"::error::broken link {b}")
+              sys.exit(1)
+          print("all relative links resolve")
+          PY

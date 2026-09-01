@@ -1,0 +1,31 @@
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before posting, a quick check of
+        [troubleshooting](https://github.com/akash-coded/aws-bedrock-agentcore-strands/blob/main/docs/setup/troubleshooting.md)
+        often saves you the wait — it covers the errors this curriculum actually produces.
+  - type: input
+    id: module
+    attributes:
+      label: Which module and file
+      placeholder: Module 11 — notebooks/02_agentcore_runtime.ipynb
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: What are you trying to do, and what happened instead
+    validations:
+      required: true
+  - type: textarea
+    id: error
+    attributes:
+      label: Error, if any
+      description: Paste it in full. Remove any account IDs or credentials first.
+      render: shell
+  - type: textarea
+    id: tried
+    attributes:
+      label: What you have already tried

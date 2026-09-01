@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+title: "Agentic AI on AWS — Bedrock, AgentCore and Strands"
+message: "If you use this curriculum, please cite it."
+type: dataset
+authors:
+  - family-names: Das
+    given-names: Akash
+repository-code: "https://github.com/akash-coded/aws-bedrock-agentcore-strands"
+license: MIT
+keywords:
+  - agentic-ai
+  - amazon-bedrock
+  - bedrock-agentcore
+  - strands-agents
+  - langchain
+  - langgraph
+  - rag
+  - multi-agent-systems
+  - aws

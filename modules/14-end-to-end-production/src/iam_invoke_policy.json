@@ -1,0 +1,30 @@
+{
+  "_comment": "Attach this to the agent's EXECUTION ROLE to clear the 403 on invoke. It grants invoke on the inference profile AND on the three regional foundation-model ARNs the profile fronts. Replace ACCOUNT_ID. This is for Haiku 4.5; add a second statement (or more ARNs) if you also use Sonnet.",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "InvokeHaikuViaInferenceProfile",
+      "Effect": "Allow",
+      "Action": [
+        "bedrock:InvokeModel",
+        "bedrock:InvokeModelWithResponseStream"
+      ],
+      "Resource": [
+        "arn:aws:bedrock:us-east-1:ACCOUNT_ID:inference-profile/us.anthropic.claude-haiku-4-5-20251001-v1:0",
+        "arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-haiku-4-5-20251001-v1:0",
+        "arn:aws:bedrock:us-east-2::foundation-model/anthropic.claude-haiku-4-5-20251001-v1:0",
+        "arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-haiku-4-5-20251001-v1:0"
+      ]
+    },
+    {
+      "Sid": "WriteAgentLogs",
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogStream",
+        "logs:PutLogEvents",
+        "logs:CreateLogGroup"
+      ],
+      "Resource": "arn:aws:logs:us-east-1:ACCOUNT_ID:log-group:/aws/bedrock-agentcore/*"
+    }
+  ]
+}

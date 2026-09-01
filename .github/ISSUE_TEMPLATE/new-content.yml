@@ -1,0 +1,41 @@
+name: ✨ Propose new content
+description: A new exercise, module, or topic worth covering
+title: "[content] "
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: dropdown
+    id: type
+    attributes:
+      label: What kind
+      options:
+        - "New exercise (with solution)"
+        - "New notebook or lab"
+        - "New module"
+        - "New reference doc"
+        - "Expanded coverage of an existing topic"
+    validations:
+      required: true
+  - type: textarea
+    id: gap
+    attributes:
+      label: What gap does this fill
+      description: What can someone not currently do after finishing the relevant module?
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Where it would live
+      placeholder: modules/10-rag-opensearch-litellm/exercises/
+  - type: textarea
+    id: outline
+    attributes:
+      label: Outline
+      description: Objectives, and how someone would know they got it right.
+  - type: checkboxes
+    id: solution
+    attributes:
+      label: Solutions
+      options:
+        - label: I understand new exercises must ship with a worked solution
+          required: true

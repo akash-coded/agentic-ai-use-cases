@@ -1,0 +1,94 @@
+
+model_list:
+  # ---------------- tl-fast : two regions, 3:1 canary weighting ----------------
+  - model_name: tl-fast
+    litellm_params:
+      model: bedrock/us.amazon.nova-micro-v1:0
+      aws_region_name: us-east-1
+      weight: 3
+      rpm: 600
+      tags: ["general"]
+    model_info:
+      id: micro-use1
+      max_input_tokens: 128000
+
+  - model_name: tl-fast
+    litellm_params:
+      model: bedrock/us.amazon.nova-micro-v1:0
+      aws_region_name: us-west-2
+      weight: 1
+      rpm: 200
+      tags: ["general"]
+    model_info:
+      id: micro-usw2
+      max_input_tokens: 128000
+
+  # ---------------- tl-balanced : 300k context, vision ----------------
+  - model_name: tl-balanced
+    litellm_params:
+      model: bedrock/us.amazon.nova-lite-v1:0
+      aws_region_name: us-east-1
+      rpm: 400
+      tags: ["general", "long-context"]
+    model_info:
+      id: lite-use1
+      max_input_tokens: 300000
+
+  # ---------------- tl-deep : reasoning and tools ----------------
+  - model_name: tl-deep
+    litellm_params:
+      model: bedrock/us.anthropic.claude-haiku-4-5-20251001-v1:0
+      aws_region_name: us-east-1
+      rpm: 200
+      tags: ["general"]
+    model_info:
+      id: haiku-use1
+      max_input_tokens: 200000
+
+  # ---------------- tl-guard : safety critical only ----------------
+  - model_name: tl-guard
+    litellm_params:
+      model: bedrock/us.anthropic.claude-sonnet-4-5-20250929-v1:0
+      aws_region_name: us-east-1
+      rpm: 60
+      tags: ["safety"]
+    model_info:
+      id: sonnet-use1
+      max_input_tokens: 200000
+
+router_settings:
+  routing_strategy: simple-shuffle
+  num_retries: 2
+  timeout: 30
+  cooldown_time: 20
+  allowed_fails: 2
+  enable_pre_call_checks: true
+  enable_tag_filtering: true
+  redis_host: os.environ/REDIS_HOST      # shared rpm/tpm across replicas
+  redis_port: os.environ/REDIS_PORT
+
+  fallbacks:
+    - tl-fast: ["tl-deep"]
+    - tl-deep: ["tl-guard"]
+  context_window_fallbacks:
+    - tl-fast: ["tl-balanced"]
+    - tl-deep: ["tl-balanced"]
+  content_policy_fallbacks:
+    - tl-fast: ["tl-guard"]
+
+litellm_settings:
+  drop_params: true
+  set_verbose: false
+  cache: true
+  cache_params:
+    type: redis
+    ttl: 3600
+    supported_call_types: ["acompletion", "completion"]
+  callbacks: ["torchlight_plugins.instance"]   # your S8 plugin, loaded by dotted path
+  failure_callback: ["langfuse"]
+
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY
+  database_url: os.environ/DATABASE_URL       # spend logs, virtual keys, teams
+  alerting: ["slack"]
+  proxy_batch_write_at: 60

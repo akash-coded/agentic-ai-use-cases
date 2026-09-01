@@ -1,0 +1,5 @@
+strands-agents==1.42.0
+bedrock-agentcore==1.14.0
+bedrock-agentcore-starter-toolkit>=0.1.21
+boto3>=1.40
+streamlit>=1.40

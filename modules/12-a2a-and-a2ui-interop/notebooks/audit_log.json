@@ -1,0 +1,48 @@
+[
+  {
+    "ts": "2026-06-09T07:32:54Z",
+    "kind": "ui_emitted",
+    "surface": "flights",
+    "role": "customer",
+    "components": 17
+  },
+  {
+    "ts": "2026-06-09T07:32:54Z",
+    "kind": "ui_emitted",
+    "surface": "approve",
+    "role": "customer",
+    "components": 7
+  },
+  {
+    "ts": "2026-06-09T07:32:54Z",
+    "kind": "user_action",
+    "surface": "approve",
+    "role": "customer",
+    "action": "approve_booking",
+    "context": {
+      "flight": "JX511"
+    }
+  },
+  {
+    "ts": "2026-06-09T07:32:54Z",
+    "kind": "authorization",
+    "action": "book_flight",
+    "role": "customer",
+    "allowed": true,
+    "reason": "permitted"
+  },
+  {
+    "ts": "2026-06-09T07:32:54Z",
+    "kind": "tool_executed",
+    "tool": "book_flight",
+    "flight": "JX511",
+    "result": "confirmed"
+  },
+  {
+    "ts": "2026-06-09T07:32:54Z",
+    "kind": "ui_emitted",
+    "surface": "confirm",
+    "role": "customer",
+    "components": 3
+  }
+]
