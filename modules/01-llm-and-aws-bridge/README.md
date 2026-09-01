@@ -49,7 +49,9 @@ Portable concepts transfer to any stack. The AWS column is where this module tou
 
 ## Solutions
 
-This module has no separate solution set; the notebooks carry the worked answers inline.
+There is no separate `solutions/` folder here because the answers travel with the questions: the
+[LLM Intuition Bank](exercises/LLM_Intuition_Bank.md) carries its own **answer key at the end**.
+Attempt each section closed-book first — the italic *Breadcrumb* lines are nudges, not answers.
 
 ## Common mistakes
 

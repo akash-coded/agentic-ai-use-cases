@@ -54,7 +54,18 @@ Portable concepts transfer to any stack. The AWS column is where this module tou
 
 ## Solutions
 
-This module has no separate solution set; the notebooks carry the worked answers inline.
+**These exercises have no answer key, deliberately.** The three builds and the take-home are open-ended:
+you are designing an agent for a domain you choose, and there is no single correct implementation.
+
+What they give you instead:
+- Each build works in **levels** — give it a role, stop it guessing, then push it — so you always know
+  whether you have cleared the current one
+- Each ends with **Notice this** and **Poke at it** sections that tell you what should have happened and
+  what to break next
+- The take-home has a **What to hand in** section that defines done
+
+If you want something to compare against, the multi-agent notebooks in this module and the worked
+solutions in [Module 07](../07-strands-multi-agent-patterns/solutions/) are the nearest reference.
 
 ## Common mistakes
 

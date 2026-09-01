@@ -47,7 +47,10 @@ Portable concepts transfer to any stack. The AWS column is where this module tou
 
 ## Solutions
 
-This module has no separate solution set; the notebooks carry the worked answers inline.
+There is no separate `solutions/` folder because the answers are inline: the
+[activities notebook](exercises/02_activities_llm_memory.ipynb) carries `# SOLUTION` cells and collapsed
+`<details>` reveals next to each task. Write your own answer into the `my_answer_` variables before you
+expand anything.
 
 ## Common mistakes
 

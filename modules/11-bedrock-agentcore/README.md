@@ -70,7 +70,14 @@ Portable concepts transfer to any stack. The AWS column is where this module tou
 
 ## Solutions
 
-This module has no separate solution set; the notebooks carry the worked answers inline.
+**These exercises are graded against a rubric rather than an answer key.** Each one is a fresh domain
+(not TravelMind) with layered Base / Stretch / Advanced targets, and each ends with:
+
+- a **self-check rubric** scored out of 100, so you can grade your own work honestly
+- a **pass/fail LLM-integrated task** that is required regardless of how far you got
+- **facilitator and TA notes** in an appendix, if you are running this for a group
+
+[`README_exercises.md`](exercises/README_exercises.md) explains how the three map onto the notebooks.
 
 ## Common mistakes
 

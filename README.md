@@ -10,7 +10,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Notebooks](https://img.shields.io/badge/notebooks-102-orange.svg)](#the-curriculum)
 [![Modules](https://img.shields.io/badge/modules-16-1f5f8b.svg)](#the-curriculum)
-[![Solutions included](https://img.shields.io/badge/solutions-included-2e8b57.svg)](#every-exercise-has-a-worked-solution)
+[![Solutions](https://img.shields.io/badge/worked%20solutions-63-2e8b57.svg)](#63-worked-solutions--and-honesty-about-the-rest)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![Field guide](https://img.shields.io/badge/field%20guide-77%20pages-8b6f2e.svg)](cheatsheets/)
 [![Discussions](https://img.shields.io/badge/discussions-open-8b5cf6.svg)](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions)
@@ -18,7 +18,7 @@
 **[▶ Start here](docs/START-HERE.md)** &nbsp;·&nbsp;
 **[🗺️ Learning paths](docs/learning-paths/)** &nbsp;·&nbsp;
 **[🏛️ Architecture](docs/architecture/)** &nbsp;·&nbsp;
-**[🗺️ Field guide](cheatsheets/)** &nbsp;·&nbsp;
+**[🧭 Field guide](cheatsheets/)** &nbsp;·&nbsp;
 **[⚙️ Setup](docs/setup/aws-account-setup.md)** &nbsp;·&nbsp;
 **[💬 Discussions](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions)**
 
@@ -177,10 +177,17 @@ flowchart LR
     SOL --> W --> N["Next module"]
 ```
 
-### Every exercise has a worked solution
+### 63 worked solutions — and honesty about the rest
 
-63 of them. They are written to be read **after** you have a wrong answer to compare against — that is
-where the learning is. Reading them first turns an hour of work into five minutes of nodding.
+Most exercises ship with a worked solution, written to be read **after** you have a wrong answer to compare
+against. That comparison is where the learning is; reading them first turns an hour of work into five
+minutes of nodding.
+
+Where there is no answer key, it is deliberate and the module says so:
+[Module 06](modules/06-strands-foundations/)'s builds are open-ended designs with levels and
+acceptance criteria rather than one right implementation, and
+[Module 11](modules/11-bedrock-agentcore/)'s exercises are graded against a self-check rubric.
+No module claims a solution set it does not have.
 
 ---
 

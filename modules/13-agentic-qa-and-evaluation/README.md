@@ -54,7 +54,10 @@ Portable concepts transfer to any stack. The AWS column is where this module tou
 
 ## Solutions
 
-This module has no separate solution set; the notebooks carry the worked answers inline.
+There is no separate `solutions/` folder — [the exercise](exercises/QA_Exercise_TravelMind.md) carries its
+own **answer key**, and the module's `src/` is itself the worked reference: a real golden set, real
+contract tests, and a [quality gate](src/quality_gate.py) that exits non-zero. Read those after you have
+attempted the exercise, not before.
 
 ## Common mistakes
 

@@ -50,7 +50,13 @@ Portable concepts transfer to any stack. The AWS column is where this module tou
 
 ## Solutions
 
-This module has no separate solution set; the notebooks carry the worked answers inline.
+This module has **no separate exercises or solutions**. It is a guided build: the three notebooks are
+the practice, and each is worked end to end with the decisions explained as they are made.
+
+For graded practice on the same material, use
+[Module 03's exercises](../03-bedrock-agents/exercises/) (agent behaviour and action groups) and
+[Module 10's RAG exercises](../10-rag-opensearch-litellm/exercises/) (retrieval quality), both of
+which have worked solutions.
 
 ## Common mistakes
 
