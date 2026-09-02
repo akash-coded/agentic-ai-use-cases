@@ -1,0 +1,8 @@
+[pass]
+message = "All four blanks encode the distinction the model cannot recover on its own. An exception is safer than an empty list because it cannot be misread as data — you have just made the empty result equally unmistakable, and the advice line removes a judgement call the model reliably gets wrong."
+[partial]
+message = "The statuses are usually right; blank 4 is where most attempts stall. 'No policy was found' is honest but passive — the model still has to decide what an absence means. The advice must say what NOT to conclude, and where to go instead."
+hint = "Two phrases do the work: a prohibition ('do not conclude that …') and a destination ('… and escalate')."
+[fail]
+message = "Start with the two statuses: they need different words because they mean different things — one corpus was searched, one was not. Then count the corpus. Then write the sentence you would want the model to obey."
+hint = "Blank 3 is just len(corpus)."

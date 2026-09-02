@@ -1,0 +1,8 @@
+[pass]
+message = "6.65× — this shape costs six and two-thirds single agents per task. The question the review should now ask is the one you were asked in prose: what do three specialists buy for the extra 5.65×? If the honest answer is 'focus', that is a prompt problem, and splitting it runs the prompt problem three times."
+[partial]
+message = "The two terms people drop are the orchestrator's own reasoning turns (3 × 2000) and the merge call (2000 + 3 × 300). The check names which one you missed — add it back and the number lands on 6.65."
+hint = "Write the four terms on separate lines and add them: 2000 / 6000 / 2400 / 2900."
+[fail]
+message = "Four terms, then divide by 2000. Orchestrator context, orchestrator turns × context, specialists × (handoff + result), and the merge (context + specialists × result)."
+hint = "The total is 13 300."

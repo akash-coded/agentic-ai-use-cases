@@ -1,0 +1,8 @@
+[pass]
+message = "Three defaults flipped, and now silence means 'the simplest thing' instead of 'the most expensive thing'. That is the whole tie-breaker: building a workflow and discovering you needed an agent costs a small rewrite plus evidence; building an agent and discovering a workflow would do costs the rewrite plus everything that accreted around 'our agent'."
+[partial]
+message = "Usually one default is still pointing up. Check each .get(): an unknown 'needs_language' should read as no language; an unknown 'branches' should read as no branching; unknown 'steps known' should read as known. Every unanswered question, least autonomous reading."
+hint = "The empty dict should return 'script'."
+[fail]
+message = "Run classify({}) in your head with the current defaults: known=False, language=True, branches=True → falls through to 'agent'. Flip each default to the answer that keeps the use case lowest on the ladder."
+hint = "known → True, language → False, branches → False."

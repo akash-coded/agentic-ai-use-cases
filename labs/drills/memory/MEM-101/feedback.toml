@@ -1,0 +1,8 @@
+[pass]
+message = "Both fixed. The first bug was invisible in any single request — it only showed up on the bill, as a summarisation call on every turn. The second was invisible until a long conversation, when pop() quietly deleted the question being answered. Neither raised an error. That is the shape of most memory bugs."
+[partial]
+message = "One of the two is still there. If the 'no model call under budget' check fails, summarise still runs unconditionally — guard it with the total. If the 'newest survives' check fails, you are popping from the wrong end: pop() takes the last element, which is the newest turn."
+hint = "Check the total first and return early; evict with pop(0), and stop while one message remains."
+[fail]
+message = "Two separate fixes. First: compute the total and return immediately if it fits — no summarise call. Second: when trimming, remove from the front of the list, never the back."
+hint = "The newest message is msgs[-1]. Nothing you do should ever remove it."

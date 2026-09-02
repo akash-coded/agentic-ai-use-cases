@@ -1,0 +1,15 @@
+id = "AGL-101"
+title = "Pull the answer out of a model message"
+track = "agent-loop"
+difficulty = "easy"
+kind = "implement"
+est_minutes = 8
+skill = "Reading the Converse message shape without guessing"
+next = "AGL-102"
+prerequisites = []
+[[reads]]
+label = "Bedrock Converse API cheat sheet · message shape"
+path = "cheatsheets/quick-reference/bedrock-converse.md#message-shape"
+[[reads]]
+label = "AGL-02 · Close the loop"
+path = "labs/catalog/agent-loop/AGL-02/"

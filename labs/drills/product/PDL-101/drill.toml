@@ -1,0 +1,15 @@
+id = "PDL-101"
+title = "A classifier that promotes by default"
+track = "product"
+difficulty = "easy"
+kind = "fix"
+est_minutes = 8
+skill = "Defaulting down the autonomy ladder when a question has not been answered"
+next = "AGL-01"
+prerequisites = ["PROD-101"]
+[[reads]]
+label = "PDL-01 · Agent, workflow, or script (the full lab)"
+path = "labs/catalog/product/PDL-01/"
+[[reads]]
+label = "Autonomy Ladder"
+path = "cheatsheets/frameworks/autonomy-ladder.md"

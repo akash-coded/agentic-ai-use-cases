@@ -1,0 +1,8 @@
+[pass]
+message = "One boolean, and the six-week quality slump becomes a Tuesday-morning alert: fallback share above 5%. Notice the last check too — you made the logger default rather than throw, which is what stops an observability call from becoming the outage it was meant to detect."
+[partial]
+message = "The usual gap is the partial-response check: usage is missing and .get chains into a KeyError. Default every field. A logger that can raise is a logger that will, on the one request you needed logged."
+hint = "usage = (response or {}).get('usage') or {} — then .get() every field with a default."
+[fail]
+message = "Six keys, straight from the docstring. The only judgement in this function is `degraded = model_id != primary_id`. Everything else is defaults."
+hint = "Start with the dict literal and fill each key from the docstring."

@@ -1,0 +1,8 @@
+[pass]
+message = "You read the shape, not the demo. Every check here fails a solution that grabs content[0] or content[-1] — the two shortcuts that survive a happy-path test and break the first time the model narrates before a tool call."
+[partial]
+message = "Most of the shape is right. The failing checks are usually one of two things: joining only the last block, or letting a text-free message return None. Both are boundary cases, and the boundary is exactly where loops break in production."
+hint = "Filter for blocks that have a string under 'text', keep their order, and default to '' when nothing matches."
+[fail]
+message = "The message is a list of blocks; the answer is the text ones, joined in order. Start by iterating message['content'] and printing each block's keys — the shape becomes obvious in one line of output."
+hint = "b.get('text') is None for a toolUse block. Use that."

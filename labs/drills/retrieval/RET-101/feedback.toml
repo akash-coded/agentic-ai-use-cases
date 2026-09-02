@@ -1,0 +1,8 @@
+[pass]
+message = "Traced correctly. Now the harder question you were asked to answer in prose: c2 was the second-best chunk by rank and it was dropped entirely, while c4 — ranked below it — got in. A packer that skips-and-continues optimises for *fullness*, not for *rank fidelity*. Whether that is right depends on whether your reranker's ordering is trustworthy. Most teams never decide."
+[partial]
+message = "Close. The two places people slip: forgetting that `continue` keeps scanning after the 900-token chunk fails to fit, or forgetting that c4 (200) fills the budget to 950 so c5 (300) no longer fits. Trace it with a running total."
+hint = "Running total after each accepted chunk: 400 → 750 → 950. Which chunk pushed it past 1000?"
+[fail]
+message = "Walk it by hand with a running total. Start at 0, add each chunk's tokens if the total would stay ≤ 1000, otherwise skip that one and keep going."
+hint = "The answer has three ids."

@@ -1,0 +1,15 @@
+id = "PROD-101"
+title = "Log the field that makes failover visible"
+track = "production"
+difficulty = "easy"
+kind = "implement"
+est_minutes = 8
+skill = "Emitting the one log record that turns silent degradation into a metric"
+next = "PDL-101"
+prerequisites = ["MAS-101"]
+[[reads]]
+label = "Silent Degradation Watchlist"
+path = "cheatsheets/frameworks/silent-degradation-watchlist.md"
+[[reads]]
+label = "Observability cheat sheet · the three vital signs"
+path = "cheatsheets/quick-reference/observability.md"

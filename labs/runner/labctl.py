@@ -29,6 +29,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 LABS = HERE.parent
 CATALOG = LABS / "catalog"
+DRILLS = LABS / "drills"          # bite-sized, single-phase, thread-native
 WORKSPACE = LABS / "workspace"
 PROGRESS = LABS / ".progress.json"
 
@@ -80,6 +81,28 @@ class Lab:
     def workspace_solution(self) -> Path:
         return WORKSPACE / self.id / "solution.py"
 
+    @property
+    def is_drill(self) -> bool:
+        return self.meta.get("_kind") == "drill"
+
+    @property
+    def kind(self) -> str:
+        """implement | fix | blank | predict — drills only."""
+        return self.meta.get("kind", "implement")
+
+
+def load_drills() -> dict[str, Lab]:
+    """Drills: one checks.py, no hidden or Break phase, a feedback.toml."""
+    out: dict[str, Lab] = {}
+    if not DRILLS.exists():
+        return out
+    for toml in sorted(DRILLS.rglob("drill.toml")):
+        meta = tomllib.loads(toml.read_text(encoding="utf-8"))
+        meta["_kind"] = "drill"
+        d = Lab(id=meta["id"], path=toml.parent, meta=meta)
+        out[d.id] = d
+    return out
+
 
 def load_labs() -> dict[str, Lab]:
     labs: dict[str, Lab] = {}
@@ -120,7 +143,12 @@ def _purge_foreign_lab_modules(keep: Path) -> None:
 
 
 def load_checks(lab: Lab, phase: str):
-    fname = {"public": "checks_public.py", "hidden": "checks_hidden.py", "break": "checks_break.py"}[phase]
+    if lab.is_drill:
+        fname = "checks.py" if phase == "public" else None
+    else:
+        fname = {"public": "checks_public.py", "hidden": "checks_hidden.py", "break": "checks_break.py"}[phase]
+    if fname is None:
+        return []
     p = lab.file(fname)
     if not p.exists():
         return []
@@ -401,9 +429,9 @@ def cmd_progress(args):
 
 
 def _need(lab_id: str) -> Lab:
-    lab = load_labs().get(lab_id.upper())
+    lab = load_labs().get(lab_id.upper()) or load_drills().get(lab_id.upper())
     if not lab:
-        print(f"Unknown lab: {lab_id}"); sys.exit(1)
+        print(f"Unknown lab or drill: {lab_id}"); sys.exit(1)
     return lab
 
 
@@ -478,6 +506,28 @@ def cmd_verify(args):
                     problems.append(f"{p}: starter.py already passes every public check — the TODOs are not real")
         finally:
             tmp.unlink(missing_ok=True)
+
+    # ---- drills ----
+    drills = load_drills()
+    all_ids = ids | set(drills)
+    for d in sorted(drills.values(), key=lambda x: x.id):
+        for f in ("README.md", "starter.py", "reference.py", "checks.py", "feedback.toml"):
+            if not d.file(f).exists():
+                problems.append(f"{d.id}: missing {f}")
+        if d.meta.get("kind") not in ("implement", "fix", "blank", "predict"):
+            problems.append(f"{d.id}: kind must be implement|fix|blank|predict")
+        nxt = d.meta.get("next")
+        if nxt and nxt not in all_ids:
+            problems.append(f"{d.id}: next points at unknown id {nxt!r}")
+        if d.file("reference.py").exists() and d.file("checks.py").exists():
+            r = grade_phase(d, "public", d.file("reference.py"))
+            if not r.get("ran") or r["passed"] != r["total"]:
+                problems.append(f"{d.id}: reference.py fails checks ({r.get('passed')}/{r.get('total')})")
+            st = grade_phase(d, "public", d.file("starter.py"))
+            if st.get("ran") and st["total"] and st["passed"] == st["total"]:
+                problems.append(f"{d.id}: starter.py already passes — the drill teaches nothing")
+    if drills:
+        print(f"  {c('drills', 'b')}  {len(drills)} checked")
 
     # cycle detection over the prerequisite DAG
     colour: dict[str, int] = {}
@@ -576,6 +626,16 @@ def cmd_index(args):
         print(md)
 
 
+def _load_feedback(lab: Lab) -> dict:
+    f = lab.file("feedback.toml")
+    if not f.exists():
+        return {}
+    try:
+        return tomllib.loads(f.read_text(encoding="utf-8"))
+    except tomllib.TOMLDecodeError:
+        return {}
+
+
 def cmd_grade(args):
     """Grade an arbitrary file. Machine-readable with --json."""
     lab = _need(args.lab)
@@ -586,7 +646,19 @@ def cmd_grade(args):
 
     phases = [p.strip() for p in args.phases.split(",") if p.strip()]
     report = {"lab": lab.id, "title": lab.title, "track": lab.track,
-              "difficulty": lab.difficulty, "phases": {}}
+              "difficulty": lab.difficulty, "phases": {},
+              "is_drill": lab.is_drill, "kind": lab.kind if lab.is_drill else None,
+              "skill": lab.meta.get("skill"), "next": lab.meta.get("next"),
+              "reads": lab.meta.get("reads", []),
+              "feedback": _load_feedback(lab),
+              "path": str(lab.path.relative_to(LABS.parent))}
+    nxt_id = lab.meta.get("next")
+    if nxt_id:
+        nxt = load_labs().get(nxt_id) or load_drills().get(nxt_id)
+        if nxt:
+            report["next_title"] = nxt.title
+            report["next_path"] = str(nxt.path.relative_to(LABS.parent))
+            report["next_kind"] = nxt.kind if nxt.is_drill else "lab"
     ok = True
     for phase in phases:
         if phase not in PHASES:

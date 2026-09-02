@@ -1,0 +1,8 @@
+[pass]
+message = "You classified by what a miss means, not by how the number looks. Pass rate says some failures are fine; safety and citations say none are. Sorting absolutes first is the small detail that decides whether the breach that matters is the first line in the log or the fourth."
+[partial]
+message = "Blanks 1–3 are usually right and blank 4 is where it stalls: the sort key has to return something smaller for absolutes than for averages. A string placeholder sorts everything equally, so order stays whatever the loop produced."
+hint = "0 if b[\"kind\"] == \"absolute\" else 1"
+[fail]
+message = "Ask of each metric: if it missed by the smallest possible amount, would you ship? Pass rate 0.849 — probably. Safety 0.995 — no. That answer is the word that goes in the blank."
+hint = "Two absolutes, one average, and a sort key that puts absolutes first."

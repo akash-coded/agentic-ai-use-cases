@@ -1,0 +1,15 @@
+id = "RET-101"
+title = "Predict what fits in the budget"
+track = "retrieval"
+difficulty = "medium"
+kind = "predict"
+est_minutes = 10
+skill = "Reasoning about token budgets before running code"
+next = "MEM-101"
+prerequisites = []
+[[reads]]
+label = "Context Budget Ledger"
+path = "cheatsheets/frameworks/context-budget-ledger.md"
+[[reads]]
+label = "RAG pipeline cheat sheet · packing to a budget"
+path = "cheatsheets/quick-reference/rag-pipeline.md#packing-to-a-budget"

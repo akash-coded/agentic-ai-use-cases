@@ -1,0 +1,96 @@
+{
+ "tracker": {
+  "id": "PVT_kwHOA5UEGM4BiM1N",
+  "number": 9,
+  "fields": {
+   "Learner": "PVTF_lAHOA5UEGM4BiM1NzhhFuzc",
+   "Item": "PVTF_lAHOA5UEGM4BiM1NzhhFu0Y",
+   "Track": "PVTSSF_lAHOA5UEGM4BiM1NzhhFu0c",
+   "Level": "PVTSSF_lAHOA5UEGM4BiM1NzhhFu0g",
+   "Outcome": "PVTSSF_lAHOA5UEGM4BiM1NzhhFu0o",
+   "Attempts": "PVTF_lAHOA5UEGM4BiM1NzhhFu2c",
+   "First attempt": "PVTF_lAHOA5UEGM4BiM1NzhhFu2g",
+   "Passed on": "PVTF_lAHOA5UEGM4BiM1NzhhFu2s",
+   "Session": "PVTF_lAHOA5UEGM4BiM1NzhhFu4w",
+   "Assigned by": "PVTF_lAHOA5UEGM4BiM1NzhhFu40",
+   "Due": "PVTF_lAHOA5UEGM4BiM1NzhhFu44",
+   "Thread": "PVTF_lAHOA5UEGM4BiM1NzhhFu50"
+  },
+  "options": {
+   "Status": {
+    "Todo": "f75ad846",
+    "In Progress": "47fc9ee4",
+    "Done": "98236657"
+   },
+   "Track": {
+    "product": "1eedefda",
+    "agent-loop": "56c1894e",
+    "tools": "c05f1792",
+    "memory": "d3beb5d5",
+    "retrieval": "9d8df917",
+    "multi-agent": "9c9b0fb0",
+    "evaluation": "725887a3",
+    "production": "f5aeed80",
+    "frameworks": "0f6f687a",
+    "bedrock": "428f0fd2",
+    "agentcore": "ca1b05d4",
+    "interop": "f1f736d1",
+    "foundations": "9cba09a9"
+   },
+   "Level": {
+    "foundational": "20c35d4d",
+    "intermediate": "1800348b",
+    "advanced": "b16ce029"
+   },
+   "Outcome": {
+    "Assigned": "c3fc19a4",
+    "Attempted": "94153163",
+    "Retrying": "2ad15fbe",
+    "Passed": "feaf6c12",
+    "Passed after retry": "0884e199"
+   }
+  }
+ },
+ "pulse": {
+  "id": "PVT_kwHOA5UEGM4BiM1W",
+  "number": 10,
+  "fields": {
+   "Kind": "PVTSSF_lAHOA5UEGM4BiM1WzhhFu8g",
+   "Heat": "PVTSSF_lAHOA5UEGM4BiM1WzhhFu9c",
+   "Engagement": "PVTF_lAHOA5UEGM4BiM1WzhhFu9g",
+   "Last activity": "PVTF_lAHOA5UEGM4BiM1WzhhFu-c",
+   "Area": "PVTSSF_lAHOA5UEGM4BiM1WzhhFvAQ",
+   "Link": "PVTF_lAHOA5UEGM4BiM1WzhhFvJE"
+  },
+  "options": {
+   "Status": {
+    "Todo": "f75ad846",
+    "In Progress": "47fc9ee4",
+    "Done": "98236657"
+   },
+   "Kind": {
+    "Discussion": "983b0d75",
+    "Unanswered Q&A": "5f40ecbd",
+    "Issue": "31b7a0d7",
+    "Pull request": "792684c8",
+    "Content changed": "c356c92d",
+    "Arena activity": "58eb6532",
+    "New learner": "d56b7338"
+   },
+   "Heat": {
+    "\ud83d\udd25 Hot": "35911241",
+    "Warm": "6b759a23",
+    "Quiet": "8c4440e2"
+   },
+   "Area": {
+    "modules": "f173f0de",
+    "labs": "990bec0a",
+    "cheatsheets": "cb561698",
+    "docs": "5a36c83d",
+    "wiki": "4b64a174",
+    "discussions": "d02f9936",
+    "workflows": "dc807cae"
+   }
+  }
+ }
+}

@@ -1,0 +1,49 @@
+name: Pulse & Scoreboard
+
+# Rebuilds labs/SCOREBOARD.md from the Arena's own replies, and — when the
+# PROJECT_TOKEN secret exists — the Hands-on Tracker and Repo Pulse boards.
+# GITHUB_TOKEN cannot access Projects v2, so the boards need a fine-grained
+# PAT with Projects read/write stored as PROJECT_TOKEN. Without it, only the
+# scoreboard updates, and the run says so.
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["Simulator Arena"]
+    types: [completed]
+
+permissions:
+  contents: write
+  discussions: read
+  issues: read
+  pull-requests: read
+
+concurrency: { group: pulse, cancel-in-progress: true }
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Rebuild scoreboard (and boards, if a token exists)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PROJECT_TOKEN: ${{ secrets.PROJECT_TOKEN }}
+        run: python3 .github/scripts/sync_boards.py --boards
+      - name: Commit the scoreboard if it changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet -- labs/SCOREBOARD.md; then
+            git add labs/SCOREBOARD.md
+            git commit -m "Rebuild scoreboard from Arena replies"
+            git push
+          else
+            echo "scoreboard unchanged"
+          fi

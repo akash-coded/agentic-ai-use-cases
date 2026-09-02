@@ -1,0 +1,8 @@
+[pass]
+message = "Both leaks closed. You treated the dispatcher as a boundary — the one function whose whole job is turning anything at all into a block the loop can continue from. `except BaseException` is normally a smell; here it is the point."
+[partial]
+message = "One of the two bugs is still open. If the SystemExit check fails, you are catching Exception and not BaseException — the classic miss. If the unknown-tool check fails, something on that path still returns None, and None is a reply the model never receives."
+hint = "Ask of every return path: could the *loop* append this to history and call the model again?"
+[fail]
+message = "Read the function as the loop that calls it. After `return None`, what does the loop append to history? After an uncaught SystemExit, does the loop exist at all?"
+hint = "Two changes, one per bug: the unknown-tool branch must return an error toolResult; the except clause must catch BaseException."

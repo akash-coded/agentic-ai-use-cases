@@ -1,0 +1,15 @@
+id = "EVAL-101"
+title = "Which bars are absolute?"
+track = "evaluation"
+difficulty = "medium"
+kind = "blank"
+est_minutes = 10
+skill = "Separating absolute gates from averaged metrics so a safety failure cannot hide"
+next = "MAS-101"
+prerequisites = ["MEM-101"]
+[[reads]]
+label = "EVAL-03 · A gate that can say no (the full lab)"
+path = "labs/catalog/evaluation/EVAL-03/"
+[[reads]]
+label = "Build a quality gate that actually blocks"
+path = "cheatsheets/how-to/engineers/build-a-quality-gate.md"

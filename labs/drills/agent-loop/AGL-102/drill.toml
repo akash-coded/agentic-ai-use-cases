@@ -1,0 +1,15 @@
+id = "AGL-102"
+title = "Two bugs in a working dispatcher"
+track = "agent-loop"
+difficulty = "medium"
+kind = "fix"
+est_minutes = 12
+skill = "Boundary error handling: what a dispatcher must never let escape"
+next = "TOOL-101"
+prerequisites = ["AGL-101"]
+[[reads]]
+label = "AGL-01 · Dispatch a tool call (the full lab)"
+path = "labs/catalog/agent-loop/AGL-01/"
+[[reads]]
+label = "Failure Signature Catalog · rows 1 and 13"
+path = "cheatsheets/frameworks/failure-signature-catalog.md"

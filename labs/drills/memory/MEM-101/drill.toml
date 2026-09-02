@@ -1,0 +1,15 @@
+id = "MEM-101"
+title = "The summariser that runs every turn"
+track = "memory"
+difficulty = "medium"
+kind = "fix"
+est_minutes = 12
+skill = "Threshold, not schedule: spending a model call only when the budget demands it"
+next = "EVAL-101"
+prerequisites = ["RET-101"]
+[[reads]]
+label = "MEM-01 · A buffer that cannot overflow (the full lab)"
+path = "labs/catalog/memory/MEM-01/"
+[[reads]]
+label = "Context Budget Ledger · the overflow protocol"
+path = "cheatsheets/frameworks/context-budget-ledger.md"

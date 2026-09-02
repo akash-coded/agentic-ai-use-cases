@@ -1,0 +1,15 @@
+id = "TOOL-101"
+title = "Fill in the honest empty result"
+track = "tools"
+difficulty = "easy"
+kind = "blank"
+est_minutes = 8
+skill = "Distinguishing 'found nothing' from 'could not look' in a tool contract"
+next = "RET-101"
+prerequisites = []
+[[reads]]
+label = "TOOL-03 · Fail honestly (the full lab)"
+path = "labs/catalog/tools/TOOL-03/"
+[[reads]]
+label = "Tool Surface Audit · failure honesty"
+path = "cheatsheets/frameworks/tool-surface-audit.md"

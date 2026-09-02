@@ -1,0 +1,15 @@
+id = "MAS-101"
+title = "Cost this topology by hand"
+track = "multi-agent"
+difficulty = "medium"
+kind = "predict"
+est_minutes = 10
+skill = "Estimating a topology's H× before building it, including the terms people forget"
+next = "PROD-101"
+prerequisites = ["EVAL-101"]
+[[reads]]
+label = "Handoff Multiplier"
+path = "cheatsheets/frameworks/handoff-multiplier.md"
+[[reads]]
+label = "MAS-02 · Cost a topology before you build it (the full lab)"
+path = "labs/catalog/multi-agent/MAS-02/"
