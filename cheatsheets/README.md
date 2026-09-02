@@ -27,6 +27,19 @@ budget meeting, or in an interview.
 
 ---
 
+## Copy-paste
+
+Four runnable gists, each one file, each a framework reduced to the code you would actually paste:
+
+| Gist | What it is | From |
+| --- | --- | --- |
+| [`agent_history_invariant.py`](https://gist.github.com/akash-coded/12cd36b5e5ced3e0c5414af3abffa221) | Two lines that catch the most common agent-loop bug at the cause | [Failure Signature Catalog](frameworks/failure-signature-catalog.md) |
+| [`honest_tool_result.py`](https://gist.github.com/akash-coded/e3748d8f0accfedf0a2509ee16195d51) | A tool return the model cannot misread — and a router that proves it | [Tool Surface Audit](frameworks/tool-surface-audit.md) |
+| [`release_gate.py`](https://gist.github.com/akash-coded/908a2f096a89de29d3b3221244773a1b) | A 40-line gate that exits non-zero, puts safety first, and never raises | [Build a quality gate](how-to/engineers/build-a-quality-gate.md) |
+| [`handoff_multiplier.py`](https://gist.github.com/akash-coded/407c5e9ddcca84afe7099439591d3ec2) | H× with the merge call everyone forgets, for common shapes | [Handoff Multiplier](frameworks/handoff-multiplier.md) |
+
+---
+
 ## Start here, by role
 
 | You are a… | Read these three first |

@@ -80,3 +80,5 @@ Before adding an agent, answer all three:
 
 **Related:** [Token Tax Ledger](token-tax-ledger.md) · [Autonomy Ladder](autonomy-ladder.md) ·
 [Cost Cliff Map](cost-cliff-map.md)
+
+**Runnable:** [`handoff_multiplier.py`](https://gist.github.com/akash-coded/407c5e9ddcca84afe7099439591d3ec2) — the H× function with the merge term, printing the multiplier for common shapes. Copy it into a design review.

@@ -21,6 +21,7 @@ out, because people bookmark deep links.
 - Boards: **Hands-on Tracker** (#9), **Repo Pulse** (#10), and **Agentic PDLC · Lifecycle Reference** (#8)
 - **Codespaces**: one-click environment, `lab` command with completion, VS Code tasks, welcome page
 - `labctl grade --json` and drill support in the runner and `verify`
+- Four runnable public gists: the [history invariant](https://gist.github.com/akash-coded/12cd36b5e5ced3e0c5414af3abffa221), an [honest tool result](https://gist.github.com/akash-coded/e3748d8f0accfedf0a2509ee16195d51), a [release gate](https://gist.github.com/akash-coded/908a2f096a89de29d3b3221244773a1b), and an [H× calculator](https://gist.github.com/akash-coded/407c5e9ddcca84afe7099439591d3ec2)
 
 ### Needs a secret
 - The two live boards are synced only when `PROJECT_TOKEN` (a fine-grained PAT with Projects read/write)

@@ -68,3 +68,5 @@ Start by asking whether it reproduces. Half the catalog is eliminated by that on
 
 **Related:** [Silent Degradation Watchlist](silent-degradation-watchlist.md) ·
 [Grounding Triangle](grounding-triangle.md) · [Three Clocks](three-clocks.md)
+
+**Runnable:** [`agent_history_invariant.py`](https://gist.github.com/akash-coded/12cd36b5e5ced3e0c5414af3abffa221) — the two-line assertion that catches row 1 at the cause, with a demo of the bug and the fix.

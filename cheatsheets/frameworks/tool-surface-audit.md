@@ -85,3 +85,5 @@ combination worth exploiting.
 
 **Related:** [Blast Radius Grid](blast-radius-grid.md) · [Failure Signature Catalog](failure-signature-catalog.md) ·
 [Token Tax Ledger](token-tax-ledger.md)
+
+**Runnable:** [`honest_tool_result.py`](https://gist.github.com/akash-coded/e3748d8f0accfedf0a2509ee16195d51) — the three-outcome return contract and a six-line router that proves it is unambiguous. Adapt it for your own tools.

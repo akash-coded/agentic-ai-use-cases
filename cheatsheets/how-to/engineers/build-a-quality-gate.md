@@ -108,3 +108,5 @@ Beyond the five above, these catch agent-specific failures:
 **Related:** [Evidence Ladder](../../frameworks/evidence-ladder.md) ·
 [Module 13](../../../modules/13-agentic-qa-and-evaluation/) ·
 [QA interview guide](../../interviews/qa-engineer.md)
+
+**Runnable:** [`release_gate.py`](https://gist.github.com/akash-coded/908a2f096a89de29d3b3221244773a1b) — the whole gate in forty lines: exits non-zero, absolutes first, never raises. Its demo deliberately feeds it a build that a headline score would promote, so running it ends with exit code 1 — that is the gate working.

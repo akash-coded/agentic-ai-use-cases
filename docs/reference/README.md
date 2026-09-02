@@ -12,6 +12,7 @@
 
 | You want | Go to |
 | --- | --- |
+| Runnable, copy-paste versions of the frameworks | [Four gists](../../cheatsheets/README.md#copy-paste) |
 | API syntax and cheat sheets | [Field guide · quick reference](../../cheatsheets/quick-reference/) |
 | Decision frameworks | [Field guide · frameworks](../../cheatsheets/frameworks/) |
 | Incident procedures | [Field guide · runbooks](../../cheatsheets/runbooks/) |

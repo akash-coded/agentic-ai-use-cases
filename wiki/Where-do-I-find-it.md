@@ -48,6 +48,15 @@ A lookup table across all four surfaces. If you know what you want but not where
 | An incident procedure | [Runbooks](https://github.com/akash-coded/aws-bedrock-agentcore-strands/tree/main/cheatsheets/runbooks) |
 | Things that break silently | [Silent Degradation Watchlist](https://github.com/akash-coded/aws-bedrock-agentcore-strands/blob/main/cheatsheets/frameworks/silent-degradation-watchlist.md) |
 
+## Copy-paste
+
+| I want… | It is here |
+| --- | --- |
+| The two-line check for the repeating-tool-call bug | [`agent_history_invariant.py`](https://gist.github.com/akash-coded/12cd36b5e5ced3e0c5414af3abffa221) |
+| A tool return contract the model cannot misread | [`honest_tool_result.py`](https://gist.github.com/akash-coded/e3748d8f0accfedf0a2509ee16195d51) |
+| A release gate in 40 lines that can say no | [`release_gate.py`](https://gist.github.com/akash-coded/908a2f096a89de29d3b3221244773a1b) |
+| An H× calculator for a design review | [`handoff_multiplier.py`](https://gist.github.com/akash-coded/407c5e9ddcca84afe7099439591d3ec2) |
+
 ## Career
 
 | I want… | It is here |
