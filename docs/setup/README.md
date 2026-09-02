@@ -7,6 +7,7 @@ Do these in order. The first one has a waiting step, so start it early.
 | 1️⃣ | **[AWS account setup](aws-account-setup.md)** | Model access is per model, **per region**, and requested manually — approval is not always instant |
 | 2️⃣ | **[Cost controls](cost-controls.md)** | Budget alarm and the teardown checklist. **Read before you create anything** |
 | 3️⃣ | **[Local environment](local-environment.md)** | Python, virtual environments, per-module requirements, notebook hygiene |
+| 🔑 | **[Board sync token](project-token.md)** | Maintainers only: the one secret that turns on the tracker and pulse boards |
 | 🧯 | **[Troubleshooting](troubleshooting.md)** | The errors this curriculum actually produces, in the order you meet them |
 
 ---

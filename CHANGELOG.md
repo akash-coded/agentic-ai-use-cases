@@ -25,8 +25,9 @@ out, because people bookmark deep links.
 - Four runnable public gists: the [history invariant](https://gist.github.com/akash-coded/12cd36b5e5ced3e0c5414af3abffa221), an [honest tool result](https://gist.github.com/akash-coded/e3748d8f0accfedf0a2509ee16195d51), a [release gate](https://gist.github.com/akash-coded/908a2f096a89de29d3b3221244773a1b), and an [H× calculator](https://gist.github.com/akash-coded/407c5e9ddcca84afe7099439591d3ec2)
 
 ### Needs a secret
-- The two live boards are synced only when `PROJECT_TOKEN` (a fine-grained PAT with Projects read/write)
-  exists. `GITHUB_TOKEN` cannot access Projects v2. The scoreboard works without it.
+- The two live boards are synced only when `PROJECT_TOKEN` exists — a **classic** PAT with the `project`
+  scope, because neither `GITHUB_TOKEN` nor a fine-grained PAT can access user-owned Projects v2.
+  [Setup](docs/setup/project-token.md). The scoreboard works without it.
 
 ## 2026-09-01 · The field guide
 

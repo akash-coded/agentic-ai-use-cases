@@ -89,6 +89,7 @@ Save the rediscovery:
 | **Pinning** discussions | No `pinDiscussion` mutation — UI only |
 | Setting the **social preview** image | No REST field; the API silently ignores it — Settings → General |
 | Creating the **wiki** | No API. The wiki git repo does not exist until the first page is created in the UI |
+| Syncing the **boards** from Actions | `GITHUB_TOKEN` cannot access Projects v2, and a fine-grained PAT cannot access *user-owned* projects. Needs a classic PAT, `project` scope only — [setup](https://github.com/akash-coded/aws-bedrock-agentcore-strands/blob/main/docs/setup/project-token.md) |
 
 ---
 

@@ -121,8 +121,9 @@ derived views are rebuilt from it every six hours and after every Arena run:
 | **[Hands-on Tracker](https://github.com/users/akash-coded/projects/9)** | One row per learner × item, with outcome, attempt count, session and due date | `PROJECT_TOKEN` |
 | **[Repo Pulse](https://github.com/users/akash-coded/projects/10)** | Hot threads, unanswered Q&A, open issues and PRs, what changed this week, Arena activity | `PROJECT_TOKEN` |
 
-`GITHUB_TOKEN` cannot touch Projects v2, so the two boards need a fine-grained PAT with Projects read/write
-stored as the `PROJECT_TOKEN` secret. Without it the scoreboard still updates and the run says so.
+`GITHUB_TOKEN` cannot touch Projects v2, and neither can a fine-grained PAT on user-owned boards, so the two
+boards need a **classic** PAT with only the `project` scope, stored as the `PROJECT_TOKEN` secret —
+[two-minute setup](../docs/setup/project-token.md). Without it the scoreboard still updates and the run says so.
 
 **A pass after a retry counts more than a first-time pass** on the scoreboard, deliberately. Retrying is the
 behaviour being encouraged.

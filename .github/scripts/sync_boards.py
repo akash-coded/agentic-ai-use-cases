@@ -409,13 +409,21 @@ def main():
     if a.boards:
         token = os.environ.get("PROJECT_TOKEN", "")
         if not token:
-            print("boards: PROJECT_TOKEN not set — skipped (GITHUB_TOKEN cannot access Projects v2). Add the secret to enable."); return
+            print("::warning title=Boards not synced::PROJECT_TOKEN is not set. GITHUB_TOKEN cannot access "
+                  "Projects v2; see docs/setup/project-token.md. The scoreboard still publishes.")
+            return
         cfg = json.loads((ROOT / ".github" / "boards.json").read_text())
-        n_new, n_all = upsert_tracker(agg, cfg["tracker"], token)
-        print(f"tracker board: {n_all} rows ({n_new} new)")
-        if summaries:
-            n, gone = rebuild_pulse(pulse_rows(summaries, entries), cfg["pulse"], token)
-            print(f"pulse board: {n} live items ({gone} stale removed)")
+        try:
+            n_new, n_all = upsert_tracker(agg, cfg["tracker"], token)
+            print(f"tracker board: {n_all} rows ({n_new} new)")
+            if summaries:
+                n, gone = rebuild_pulse(pulse_rows(summaries, entries), cfg["pulse"], token)
+                print(f"pulse board: {n} live items ({gone} stale removed)")
+        except RuntimeError as e:
+            # an expired or under-scoped token must not stop the scoreboard from publishing
+            print(f"::warning title=Boards not synced::{str(e)[:300]} — rotate PROJECT_TOKEN "
+                  f"(classic PAT, `project` scope only); see docs/setup/project-token.md")
+
 
 if __name__ == "__main__":
     main()
