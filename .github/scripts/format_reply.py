@@ -100,7 +100,7 @@ else:
     A("")
 
 A(f"<sub>Graded in a network-isolated sandbox · public{' and Break' if b else ''} checks only · "
-  f"[how this works]({RAW}/labs/ARENA.md) · [scoreboard]({RAW}/labs/SCOREBOARD.md)</sub>")
+  f"[how this works]({RAW}/labs/ARENA.md) · [scoreboard](https://github.com/akash-coded/aws-bedrock-agentcore-strands/wiki/Scoreboard)</sub>")
 
 print("\n".join(out) + ledger(type="attempt", item=r["lab"], kind=("drill:" + kind) if is_drill else "lab",
                               learner=learner, ok=bool(r.get("ok")), outcome=outcome,

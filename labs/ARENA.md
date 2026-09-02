@@ -106,7 +106,7 @@ derived views are rebuilt from it every six hours and after every Arena run:
 
 | View | What it shows | Needs |
 | --- | --- | --- |
-| **[`SCOREBOARD.md`](SCOREBOARD.md)** | Learners, attempts, passes, passes-after-retry, assigned-not-attempted, hardest items | nothing |
+| **[Scoreboard](https://github.com/akash-coded/aws-bedrock-agentcore-strands/wiki/Scoreboard)** | Learners, attempts, passes, passes-after-retry, assigned-not-attempted, hardest items | nothing |
 | **[Hands-on Tracker](https://github.com/users/akash-coded/projects/9)** | One row per learner × item, with outcome, attempt count, session and due date | `PROJECT_TOKEN` |
 | **[Repo Pulse](https://github.com/users/akash-coded/projects/10)** | Hot threads, unanswered Q&A, open issues and PRs, what changed this week, Arena activity | `PROJECT_TOKEN` |
 

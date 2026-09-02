@@ -31,7 +31,7 @@ for it in a["items"]:
 A("")
 A("Post each solution as a **comment in this thread** (or the item's own Arena thread). The bot grades it and replies; retries are welcome and tracked — a pass after a retry counts.")
 A("")
-A(f"<sub>Progress appears on the [Hands-on Tracker](https://github.com/users/akash-coded/projects/9) and in [SCOREBOARD.md](https://github.com/{REPO}/blob/main/labs/SCOREBOARD.md) after the next sync.</sub>")
+A(f"<sub>Progress appears on the [Hands-on Tracker](https://github.com/users/akash-coded/projects/9) and in [Scoreboard](https://github.com/{REPO}/wiki/Scoreboard) after the next sync.</sub>")
 led = {"v": 1, "type": "assignment", "learners": a["learners"], "items": a["items"],
        "session": a.get("session", ""), "due": a.get("due", ""), "by": a["by"],
        "discussion": disc, "ts": datetime.now(timezone.utc).isoformat(timespec="seconds")}

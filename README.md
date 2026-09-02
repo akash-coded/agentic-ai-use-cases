@@ -287,7 +287,7 @@ inside each one accumulates into the [seven PRD artefacts](docs/prd/), so you fi
 
 Or skip the clone entirely: post `/drill AGL-101` with a python block in the
 [Simulator Arena](labs/ARENA.md) and a bot grades it in the thread, names the skill you demonstrated, and points
-at the next one. Trainers `/assign`; progress lands on the [scoreboard](labs/SCOREBOARD.md) and the
+at the next one. Trainers `/assign`; progress lands on the [scoreboard](https://github.com/akash-coded/aws-bedrock-agentcore-strands/wiki/Scoreboard) and the
 [Hands-on Tracker](https://github.com/users/akash-coded/projects/9).
 
 The catalog is **self-verifying**: CI proves every reference solution passes all three phases and every

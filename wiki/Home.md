@@ -25,7 +25,7 @@ Four surfaces, ~800 files, 66 discussion threads. This page exists because no si
 | **Know what it will cost** | **[Cost Log](Cost-Log)** |
 | **Find a specific thing** | **[Where do I find…?](Where-do-I-find-it)** |
 | **Ten minutes, one idea, graded** | A [drill](https://github.com/akash-coded/aws-bedrock-agentcore-strands/blob/main/labs/PATHWAY.md#the-drill-sequence) — post `/drill AGL-101` in the [Arena](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/75) |
-| **See who is doing hands-on** | [Scoreboard](https://github.com/akash-coded/aws-bedrock-agentcore-strands/blob/main/labs/SCOREBOARD.md) · [Hands-on Tracker](https://github.com/users/akash-coded/projects/9) |
+| **See who is doing hands-on** | [Scoreboard](Scoreboard) · [Hands-on Tracker](https://github.com/users/akash-coded/projects/9) |
 | **Get a lab graded without installing anything** | [Simulator Arena](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/75) — post a comment, a bot replies |
 | **Ask a person** | [Q&A](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/categories/q-a) — check the [answered ones](Community-Answers) first |
 

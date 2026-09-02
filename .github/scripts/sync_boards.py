@@ -5,7 +5,7 @@ Source of truth: `<!-- lab-ledger {...} -->` lines the bot leaves at the end of
 every grading and assignment reply in the Hands-on Labs category. This script
 never writes to Discussions; it only reads them and derives:
 
-  labs/SCOREBOARD.md        always (GITHUB_TOKEN is enough)
+  wiki page 'Scoreboard'    always (published by pulse.yml with GITHUB_TOKEN)
   Hands-on Tracker board    only when PROJECT_TOKEN is set (GITHUB_TOKEN cannot touch Projects v2)
   Repo Pulse board          same
 
@@ -266,7 +266,7 @@ def pulse_rows(summaries: list[dict], entries: list[dict]) -> list[dict]:
     if week:
         learners = {e.get("learner") for e in week}
         rows.append({"kind": "Arena activity", "title": f"🧪 {len(week)} Arena attempts by {len(learners)} learners this week", "heat": "🔥 Hot" if len(week) >= 5 else "Warm",
-                     "engagement": len(week), "last": NOW.strftime("%Y-%m-%d"), "area": "labs", "link": f"{URL}/blob/main/labs/SCOREBOARD.md"})
+                     "engagement": len(week), "last": NOW.strftime("%Y-%m-%d"), "area": "labs", "link": f"{URL}/wiki/Scoreboard"})
     return rows
 
 def rebuild_pulse(rows: list[dict], cfg: dict, token: str):
@@ -293,7 +293,7 @@ def rebuild_pulse(rows: list[dict], cfg: dict, token: str):
 # --------------------------------------------------------------------- main
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--scoreboard", default=str(ROOT / "labs" / "SCOREBOARD.md"))
+    ap.add_argument("--scoreboard", default="out/Scoreboard.md")
     ap.add_argument("--boards", action="store_true")
     ap.add_argument("--fixture", help="JSONL of ledger entries, instead of reading Discussions")
     a = ap.parse_args()
@@ -304,6 +304,7 @@ def main():
     else:
         entries, summaries = read_ledger_from_discussions()
     agg = aggregate(entries)
+    Path(a.scoreboard).parent.mkdir(parents=True, exist_ok=True)
     Path(a.scoreboard).write_text(scoreboard(agg), encoding="utf-8")
     print(f"scoreboard: {len(entries)} ledger entries → {len(agg['rows'])} learner×item rows → {a.scoreboard}")
     if a.boards:

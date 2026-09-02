@@ -34,7 +34,8 @@ MSG
   exit 1
 fi
 
-find "$TMP/wiki" -maxdepth 1 -name '*.md' -delete
+# Scoreboard.md is owned by the Pulse workflow, not this seed — leave it alone
+find "$TMP/wiki" -maxdepth 1 -name '*.md' ! -name 'Scoreboard.md' -delete
 cp "$HERE"/*.md "$TMP/wiki/"
 rm -f "$TMP/wiki/README.md"          # the seed README stays in the repo only
 

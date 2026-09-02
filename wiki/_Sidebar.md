@@ -6,6 +6,7 @@
 [Where do I find…?](Where-do-I-find-it)
 [Error Index](Error-Index)
 [Community Answers](Community-Answers)
+[Scoreboard](Scoreboard) 🧪
 
 **Plan your time**
 [Study Plans](Study-Plans)

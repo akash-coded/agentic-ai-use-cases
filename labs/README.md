@@ -192,7 +192,7 @@ Nine 8–12-minute drills in [`drills/`](drills/), thread-native and bot-graded,
 
 Each reply names the skill you demonstrated and points at the next one. Do them in the
 [Simulator Arena](ARENA.md) with nothing installed, or locally with `lab grade --lab AGL-101 --file mine.py`.
-Progress lands on the **[scoreboard](SCOREBOARD.md)**.
+Progress lands on the **[scoreboard](https://github.com/akash-coded/aws-bedrock-agentcore-strands/wiki/Scoreboard)**.
 
 ## Three ways to run a lab
 

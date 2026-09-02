@@ -17,7 +17,7 @@ out, because people bookmark deep links.
   misses get the drill's own diagnosis and one nudge, written per drill
 - **`/assign`** for maintainers, with per-learner briefs and tracked assignments
 - **A ledger in every bot reply**, making Discussions the source of truth for attempts
-- **`labs/SCOREBOARD.md`**, rebuilt every six hours and after every Arena run
+- **A live [Scoreboard](https://github.com/akash-coded/aws-bedrock-agentcore-strands/wiki/Scoreboard) wiki page**, rebuilt every six hours and after every Arena run
 - Boards: **Hands-on Tracker** (#9), **Repo Pulse** (#10), and **Agentic PDLC · Lifecycle Reference** (#8)
 - **Codespaces**: one-click environment, `lab` command with completion, VS Code tasks, welcome page
 - `labctl grade --json` and drill support in the runner and `verify`
