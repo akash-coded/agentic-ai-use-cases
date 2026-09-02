@@ -1,0 +1,8 @@
+[pass]
+message = "Name and arguments, order-insensitive, empty means no signal. That is the whole detector, and it is the difference between 'stuck after 2 steps, here is the tool that never answers' and 'exhausted after 10 steps, someone will raise the cap'. Same termination, opposite diagnosis."
+[partial]
+message = "The check that usually fails is the different-arguments one — you fingerprinted the tool name and not its input. The other common miss is order sensitivity: sort the calls before you build the tuple."
+hint = "Signature = tuple(sorted((name, tuple(sorted(input.items()))) for each toolUse))."
+[fail]
+message = "Build a list of (name, sorted input items) for every toolUse block, sort it, make it a tuple. Oscillation is that tuple being non-empty and equal to the previous one."
+hint = "tuple(sorted(...)) twice — once for the items, once for the calls."

@@ -18,7 +18,8 @@ your reasoning visible to other people.
 
 Either verb works for either kind. Drills are numbered `1xx` beside the lab they lead into, and chain with a
 **Next** pointer: `AGL-101 → AGL-102 → TOOL-101 → RET-101 → MEM-101 → EVAL-101 → MAS-101 → PROD-101 → PDL-101 → AGL-01`.
-Nine drills and you have touched every track once; the tenth step is your first full lab.
+Nineteen drills in two laps. Lap one touches every track once and ends at your first full lab; lap two starts at
+`BED-101` and goes one level deeper per track, ending at `AGL-02`. [The full sequence](PATHWAY.md#the-drill-sequence).
 
 ## The format
 
@@ -85,6 +86,16 @@ Practical consequences for you: **no network, no filesystem, no long-running wor
 to need none of those, so this only bites if you were doing something the lab did not ask for.
 
 ---
+
+## Three more commands
+
+| Command | Who | What you get |
+| --- | --- | --- |
+| `/leaderboard` | anyone | The top ten, with the hardest items right now. A pass after a retry outranks a first-time pass |
+| `/progress` | anyone | Your own rows: outcome, attempts, best score, and the next drill for anything you have passed |
+| `/assign …` | maintainers | Below |
+
+Every Monday a **weekly digest** is posted to Announcements — attempts, the hardest drill, unanswered questions, hot threads, what changed — built entirely from the repository's own activity.
 
 ## For trainers: assigning work
 

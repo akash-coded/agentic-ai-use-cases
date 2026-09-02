@@ -69,6 +69,22 @@ Each is one idea, one function, 8–12 minutes, graded in a comment box.
 | 9 | [PDL-101](drills/product/PDL-101/) A classifier that promotes by default | fix | Default down the ladder |
 | → | [AGL-01](catalog/agent-loop/AGL-01/) | lab | Your first full Learn → Apply → Break |
 
+### Lap two — the tracks that had none, and one deeper per track
+
+| # | Drill | Kind | Teaches |
+| --- | --- | --- | --- |
+| 1 | [BED-101](drills/bedrock/BED-101/) Predict the roles after two tool round trips | predict | The round-trip shape, before writing it |
+| 2 | [AGL-103](drills/agent-loop/AGL-103/) Detect a loop that is stuck, not slow | implement | Fingerprint name *and* arguments |
+| 3 | [TOOL-102](drills/tools/TOOL-102/) Catch a hallucinated argument | implement | Answer with the valid keys |
+| 4 | [MEM-102](drills/memory/MEM-102/) Predict which turns survive the trim | predict | Which user statement gets forgotten, and when |
+| 5 | [RET-102](drills/retrieval/RET-102/) A rank fusion that ranks the wrong way | fix | Why RRF uses a reciprocal |
+| 6 | [MAS-102](drills/multi-agent/MAS-102/) A swarm that does not know how to stop | fix | Bound rounds *and* tokens, in code |
+| 7 | [EVAL-102](drills/evaluation/EVAL-102/) Which properties does this golden set violate? | predict | Reading a confident number for what it is evidence of |
+| 8 | [PROD-102](drills/production/PROD-102/) Retryable or fatal | implement | An unknown error is fatal |
+| 9 | [PDL-102](drills/product/PDL-102/) Derive the abstention target | blank | The vital sign, as a number before launch |
+| 10 | [INT-101](drills/interop/INT-101/) Predict the A2A task lifecycle | predict | The pause a naïve client mistakes for a hang |
+| → | [AGL-02](catalog/agent-loop/AGL-02/) | lab | Close the loop, with a Break phase |
+
 ## Difficulty means something specific
 
 Not "how much code". Difficulty here is **how much judgement the lab withholds**.

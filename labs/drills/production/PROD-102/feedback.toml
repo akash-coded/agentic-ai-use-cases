@@ -1,0 +1,8 @@
+[pass]
+message = "The unknown case is the whole drill, and you chose fatal. It feels ungenerous; it is correct. An error you cannot classify is an error you do not understand, and retrying it across the chain costs five times as much to learn nothing — while hiding the real cause behind a longer attempt list."
+[partial]
+message = "Known classes are usually right; the unknown default is the miss. If your last branch returns 'retryable', flip it. Generosity here is expensive."
+hint = "Anything not in either set → 'fatal'."
+[fail]
+message = "Two sets of class names and a default. Match on type(exc).__name__. The only judgement call is the default, and the safe answer is fatal."
+hint = "return 'retryable' if name in RETRYABLE else 'fatal'."

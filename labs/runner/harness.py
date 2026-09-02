@@ -50,9 +50,9 @@ class CheckFailure(AssertionError):
     pass
 
 
-def expect(condition, message: str):
+def expect(condition, message: str = ""):
     if not condition:
-        raise CheckFailure(message)
+        raise CheckFailure(message or "the expectation this check makes did not hold")
 
 
 def expect_eq(actual, expected, message: str = ""):

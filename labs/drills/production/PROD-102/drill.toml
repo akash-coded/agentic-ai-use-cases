@@ -1,0 +1,12 @@
+id = "PROD-102"
+title = "Retryable or fatal — and what an unknown error is"
+track = "production"
+difficulty = "easy"
+kind = "implement"
+est_minutes = 8
+skill = "Classifying provider errors so retries help instead of doubling the damage"
+next = "PDL-102"
+prerequisites = ["EVAL-102"]
+[[reads]]
+label = "PROD-02 · Failover that cannot be silent (the full lab)"
+path = "labs/catalog/production/PROD-02/"

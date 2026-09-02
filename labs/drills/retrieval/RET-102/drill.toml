@@ -1,0 +1,12 @@
+id = "RET-102"
+title = "A rank fusion that ranks the wrong way"
+track = "retrieval"
+difficulty = "medium"
+kind = "fix"
+est_minutes = 12
+skill = "Reciprocal rank fusion — merging retrievers by rank, not by score"
+next = "MAS-102"
+prerequisites = ["MEM-102"]
+[[reads]]
+label = "RAG pipeline cheat sheet · hybrid + RRF"
+path = "cheatsheets/quick-reference/rag-pipeline.md#hybrid--rrf"

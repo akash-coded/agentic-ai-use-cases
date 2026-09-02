@@ -1,0 +1,8 @@
+[pass]
+message = "Five states, with the pause in the middle. And the sentence you were asked for: a task that sits in 'working' past a bound is a failure from A's side whatever B thinks — set the timeout before you integrate, and treat input-required as the only legitimate long wait. Each A2A hop is a full agent run on the other side, so it also multiplies your cost: see the Handoff Multiplier."
+[partial]
+message = "Two slips are common: dropping the second 'working' (input-required is a pause, and B resumes after it), or treating input-required as terminal. Read B's side: it asked, it got an answer, it went back to work."
+hint = "submitted → working → input-required → working → completed."
+[fail]
+message = "Follow B: it accepts (submitted), starts (working), asks for the fare class (input-required), gets it and continues (working), finishes (completed)."
+hint = "Five states; 'working' appears twice."

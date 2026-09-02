@@ -107,7 +107,8 @@ public and Break checks, and answered with a threaded reply.
 Hidden checks never run there — publishing their output would spoil the lab for everyone reading. Full
 mechanics and the sandbox design: [ARENA.md](https://github.com/akash-coded/aws-bedrock-agentcore-strands/blob/main/labs/ARENA.md).
 
-**Drills** are the 8–12-minute version (`/drill AGL-101`), nine of them chained across every track.
+**Drills** are the 8–12-minute version (`/drill AGL-101`), nineteen of them in two chained laps across every track.
+`/leaderboard` and `/progress` work in any Hands-on Labs thread, and a **weekly digest** lands in Announcements every Monday.
 **Maintainers assign** with `/assign @user AGL-101 --session "Day 3" --due 2026-09-05`; the bot briefs the
 learner and the item shows as *assigned, not yet attempted* on the
 [scoreboard](https://github.com/akash-coded/aws-bedrock-agentcore-strands/wiki/Scoreboard) until

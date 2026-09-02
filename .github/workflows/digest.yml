@@ -1,0 +1,37 @@
+name: Weekly Digest
+
+# Posts a digest to Announcements every Monday, built entirely from the
+# repository's own activity: Arena attempts, unanswered questions, hot
+# threads, and what changed. Nothing in it is written by hand.
+
+on:
+  schedule:
+    - cron: "0 8 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  discussions: write
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Build the digest
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: python3 .github/scripts/sync_boards.py --digest > digest.md
+      - name: Post it to Announcements
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          read -r REPO_ID CAT_ID < <(gh api graphql -f query='{repository(owner:"akash-coded",name:"aws-bedrock-agentcore-strands"){id discussionCategories(first:20){nodes{id slug}}}}' \
+            --jq '.data.repository | "\(.id) \(.discussionCategories.nodes[] | select(.slug=="announcements") | .id)"')
+          TITLE="Weekly digest · $(date -u +%d\ %b\ %Y)"
+          gh api graphql -F repo="$REPO_ID" -F cat="$CAT_ID" -F title="$TITLE" -F body=@digest.md -f query='
+            mutation($repo:ID!,$cat:ID!,$title:String!,$body:String!){
+              createDiscussion(input:{repositoryId:$repo,categoryId:$cat,title:$title,body:$body}){discussion{url}}}' \
+            --jq '.data.createDiscussion.discussion.url'

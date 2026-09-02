@@ -1,0 +1,12 @@
+id = "MAS-102"
+title = "A swarm that does not know how to stop"
+track = "multi-agent"
+difficulty = "medium"
+kind = "fix"
+est_minutes = 12
+skill = "Bounding an open-ended loop by rounds and by tokens, in code"
+next = "EVAL-102"
+prerequisites = ["RET-102"]
+[[reads]]
+label = "Cost Cliff Map · cliff 3, the unbounded swarm"
+path = "cheatsheets/frameworks/cost-cliff-map.md"

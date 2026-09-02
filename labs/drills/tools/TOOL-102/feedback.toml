@@ -1,0 +1,8 @@
+[pass]
+message = "You turned the most common dispatch crash into a message the model can act on. The load-bearing part is the advice naming the valid keys — 'invalid argument' alone produces the same wrong guess on the next turn, which is oscillation you caused."
+[partial]
+message = "Nearly there. The advice check is the usual miss: report unknown and missing keys, yes, but the sentence must also LIST the valid names. And None arguments must be treated as an empty dict, not a crash."
+hint = "valid = ', '.join(sorted(schema['properties'])) — put it in the advice string."
+[fail]
+message = "Three set operations: keys in args but not in properties (unknown), keys in required but not in args (missing), and a sentence listing sorted(properties). Start with args = args or {}."
+hint = "The ok case is simply: no unknown and no missing."

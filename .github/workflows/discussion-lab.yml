@@ -19,7 +19,9 @@ jobs:
       github.event.comment.user.login != 'github-actions[bot]' &&
       (contains(github.event.comment.body, '/lab ') ||
        contains(github.event.comment.body, '/drill ') ||
-       contains(github.event.comment.body, '/assign'))
+       contains(github.event.comment.body, '/assign') ||
+       contains(github.event.comment.body, '/leaderboard') ||
+       contains(github.event.comment.body, '/progress'))
     runs-on: ubuntu-latest
     permissions: {}
     timeout-minutes: 2
@@ -105,6 +107,32 @@ jobs:
           ASSIGN_JSON: ${{ needs.parse.outputs.assign }}
           DISCUSSION_NUMBER: ${{ github.event.discussion.number }}
         run: python3 .github/scripts/format_assignment.py > reply.md
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          DISCUSSION_ID: ${{ github.event.discussion.node_id }}
+          COMMENT_ID: ${{ github.event.comment.node_id }}
+        run: |
+          gh api graphql -F discussionId="$DISCUSSION_ID" -F replyToId="$COMMENT_ID" -F body=@reply.md -f query='
+            mutation($discussionId:ID!,$replyToId:ID!,$body:String!){
+              addDiscussionComment(input:{discussionId:$discussionId,replyToId:$replyToId,body:$body}){comment{url}}}' >/dev/null
+
+  board:
+    needs: parse
+    if: (needs.parse.outputs.mode == 'leaderboard' || needs.parse.outputs.mode == 'progress') && needs.parse.outputs.found == 'true'
+    runs-on: ubuntu-latest
+    permissions: { discussions: write }
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          MODE: ${{ needs.parse.outputs.mode }}
+          LEARNER: ${{ github.event.comment.user.login }}
+        run: |
+          if [ "$MODE" = "leaderboard" ]; then python3 .github/scripts/sync_boards.py --leaderboard > reply.md
+          else python3 .github/scripts/sync_boards.py --progress "$LEARNER" > reply.md; fi
       - env:
           GH_TOKEN: ${{ github.token }}
           DISCUSSION_ID: ${{ github.event.discussion.node_id }}

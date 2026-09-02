@@ -1,0 +1,12 @@
+id = "MEM-102"
+title = "Predict which turns survive the trim"
+track = "memory"
+difficulty = "medium"
+kind = "predict"
+est_minutes = 10
+skill = "Tracing an eviction policy by hand before trusting it with a conversation"
+next = "RET-102"
+prerequisites = ["TOOL-102"]
+[[reads]]
+label = "MEM-01 · A buffer that cannot overflow (the full lab)"
+path = "labs/catalog/memory/MEM-01/"

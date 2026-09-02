@@ -1,0 +1,15 @@
+id = "AGL-103"
+title = "Detect a loop that is stuck, not slow"
+track = "agent-loop"
+difficulty = "medium"
+kind = "implement"
+est_minutes = 12
+skill = "Telling oscillation from progress by fingerprinting tool calls"
+next = "TOOL-102"
+prerequisites = ["BED-101"]
+[[reads]]
+label = "AGL-03 · Stop the loop (the full lab)"
+path = "labs/catalog/agent-loop/AGL-03/"
+[[reads]]
+label = "Runbook · runaway loop"
+path = "cheatsheets/runbooks/incident-runaway-loop.md"

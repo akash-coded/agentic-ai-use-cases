@@ -36,8 +36,8 @@ lab start PDL-01 && lab show PDL-01
 
 If you would rather write code immediately: **[`AGL-01`](catalog/agent-loop/AGL-01/)**.
 
-Ten minutes or less? A **drill**: `lab show AGL-101`, then `lab grade --lab AGL-101 --file mine.py`. Nine of
-them chain through every track — see [PATHWAY.md](PATHWAY.md#the-drill-sequence).
+Ten minutes or less? A **drill**: `lab show AGL-101`, then `lab grade --lab AGL-101 --file mine.py`. Nineteen of
+them chain through every track in two laps — see [PATHWAY.md](PATHWAY.md#the-drill-sequence).
 
 ---
 

@@ -34,6 +34,12 @@ def known_ids():
 
 KNOWN = known_ids()
 
+# ------------------------------------------------------- /leaderboard, /progress
+if re.search(r"^/leaderboard\b", BODY, re.M):
+    emit(mode="leaderboard", found="true", reason="ok"); sys.exit(0)
+if re.search(r"^/progress\b", BODY, re.M):
+    emit(mode="progress", found="true", reason="ok"); sys.exit(0)
+
 # ---------------------------------------------------------------- /assign
 m = re.search(r"^/assign\b(.*)$", BODY, re.M)
 if m:

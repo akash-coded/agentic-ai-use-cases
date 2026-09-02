@@ -1,0 +1,8 @@
+[pass]
+message = "[S, t5, t6] — and yes, the wheelchair requirement in t5 survived, but only because keep_recent was 2. At keep_recent = 1 it would have been folded into S, and whether a summary preserves 'wheelchair' is exactly the thing summaries are unreliable about. That is the question to ask of every memory policy: which user statement does it forget, and when?"
+[partial]
+message = "The usual slip is running step 3 when it is not needed: after summarising, the total is 330, comfortably under 500. Or evicting from the wrong end. Recompute the total after the summary before deciding whether to evict."
+hint = "S(80) + t5(150) + t6(100) = 330."
+[fail]
+message = "Three steps, in order. Total is 650, over budget. Protect the last two (t5, t6). Summarise the rest into S. Now add up S + t5 + t6 and check against 500."
+hint = "The answer has three entries and starts with S."

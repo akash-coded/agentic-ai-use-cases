@@ -1,0 +1,8 @@
+[pass]
+message = "B, C, E. So the 96% is evidence that the agent agrees with a set curated to match it, after tuning against it, with every hard case removed. That is E2 on the Evidence Ladder wearing an E4 number. The fix is not a better agent — it is adding back the 'unclear' cases as abstention cases, sampling until 15% fail, and refreezing before the next tuning round."
+[partial]
+message = "The two most-missed are C and E. Removing 'unclear' cases feels like cleaning data; it is deleting the abstention slice. And 'finalised after tuning so it reflects current behaviour' sounds diligent; it is the definition of a mirror."
+hint = "Three properties are violated. A and D are the two the team actually got right."
+[fail]
+message = "Go property by property against the paragraph. Real tickets? Yes. Failing cases at freeze? One of sixty. Abstention cases? Removed. Adversarial via retrieval? Two. Frozen before tuning? After."
+hint = "The answer has three letters and none of them is A or D."

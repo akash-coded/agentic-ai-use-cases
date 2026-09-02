@@ -1,0 +1,8 @@
+[pass]
+message = "Six turns, strictly alternating. The pattern to keep: every tool round trip adds exactly one assistant message (the request, verbatim) and exactly one user message (every result for that turn). Get that into your head and the 'repeating tool call' bug stops being mysterious."
+[partial]
+message = "Usually one of two slips: counting the tool result as an assistant turn (it is input to the model, so it is 'user'), or forgetting that the model's request itself is a message that must be in history."
+hint = "Write the six messages out as a list before answering. Who produced each one?"
+[fail]
+message = "Walk it message by message: the question, then for each tool — the model's request, then its result — then the final answer. Six entries."
+hint = "user, assistant, user, assistant, user, assistant."

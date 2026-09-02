@@ -88,6 +88,7 @@ def read_ledger_from_discussions() -> tuple[list[dict], list[dict]]:
             pageInfo{hasNextPage endCursor}
             nodes{ number title url updatedAt createdAt isAnswered
               category{ slug isAnswerable }
+              labels(first:10){ nodes{ name } }
               comments(last:30){ totalCount nodes{ createdAt } } } } } }""" % (OWNER, REPO),
             **({"after": cursor} if cursor else {}))
         page = d["repository"]["discussions"]
@@ -97,7 +98,8 @@ def read_ledger_from_discussions() -> tuple[list[dict], list[dict]]:
                               "updated": n["updatedAt"], "created": n["createdAt"],
                               "category": n["category"]["slug"], "answerable": n["category"]["isAnswerable"],
                               "answered": n["isAnswered"], "comments": n["comments"]["totalCount"],
-                              "recent": recent})
+                              "recent": recent,
+                              "guide": any(l["name"] == "type: guide" for l in n["labels"]["nodes"])})
         if not page["pageInfo"]["hasNextPage"]: break
         cursor = page["pageInfo"]["endCursor"]
     return entries, summaries
@@ -136,7 +138,7 @@ def aggregate(entries: list[dict]) -> dict:
                      "attempts": len(a), "outcome": outcome,
                      "first": a[0]["ts"][:10] if a else "", "passed_on": first_pass["ts"][:10] if first_pass else "",
                      "last": a[-1]["ts"] if a else (asg or {}).get("ts", ""),
-                     "best": f"{max((x.get('passed',0) for x in a), default=0)}/{a[0].get('total','?') if a else '?'}",
+                     "best": (f"{max(x.get('passed', 0) for x in a)}/{a[0].get('total', '?')}" if a else "—"),
                      "session": (asg or {}).get("session", ""), "by": (asg or {}).get("by", ""),
                      "due": (asg or {}).get("due", ""), "url": (a[-1] if a else asg).get("_url", "")}
     return {"rows": rows, "labs": labs, "entries": entries}
@@ -194,6 +196,94 @@ def scoreboard(agg: dict) -> str:
       f"[Hands-on Labs]({URL}/discussions/categories/hands-on-labs) thread. Maintainers assign with `/assign`.")
     return "\n".join(L) + "\n"
 
+# --------------------------------------------------------------- leaderboard
+def leaderboard_md(agg: dict, top: int = 10) -> str:
+    rows = list(agg["rows"].values()); labs = agg["labs"]
+    by_l = defaultdict(list)
+    for r in rows: by_l[r["learner"]].append(r)
+    if not rows:
+        return "No attempts recorded yet. Post `/drill <ID>` with a ```python block and you will be the first row."
+    def score(rs):
+        p = len([r for r in rs if r["outcome"] == "Passed"]); pr = len([r for r in rs if r["outcome"] == "Passed after retry"])
+        return p * 2 + pr * 3           # a pass after a retry is worth more, on purpose
+    ranked = sorted(by_l.items(), key=lambda kv: (-score(kv[1]), -sum(r["attempts"] for r in kv[1])))
+    L = ["### 🏆 Leaderboard", "", "| # | Learner | Passed | After retry | In progress | Attempts |", "| --- | --- | --- | --- | --- | --- |"]
+    for i, (l, rs) in enumerate(ranked[:top], 1):
+        L.append(f"| {i} | @{l} | {len([r for r in rs if r['outcome']=='Passed'])} | {len([r for r in rs if r['outcome']=='Passed after retry'])} | "
+                 f"{len([r for r in rs if r['outcome'] in ('Attempted','Retrying')])} | {sum(r['attempts'] for r in rs)} |")
+    by_i = defaultdict(list)
+    for r in rows:
+        if r["attempts"]: by_i[r["item"]].append(r)
+    hard = sorted(by_i.items(), key=lambda kv: (len([r for r in kv[1] if r["outcome"].startswith("Passed")]) / len(kv[1]), -len(kv[1])))[:3]
+    if hard:
+        L += ["", "**Hardest right now:** " + " · ".join(
+            f"`{it}` ({100*len([r for r in rs if r['outcome'].startswith('Passed')])//len(rs)}% pass, {len(rs)} tried)" for it, rs in hard)]
+    L += ["", "<sub>Scoring: a pass after a retry outranks a first-time pass — retrying is the behaviour being rewarded. "
+          f"Full detail on the [scoreboard]({URL}/wiki/Scoreboard).</sub>"]
+    return "\n".join(L)
+
+def progress_md(agg: dict, learner: str) -> str:
+    rs = sorted([r for r in agg["rows"].values() if r["learner"] == learner.lower()], key=lambda r: (r["outcome"], r["item"]))
+    if not rs:
+        return (f"No attempts from @{learner} yet. Start with `/drill AGL-101` — eight minutes, no setup — "
+                f"or see [the sequence]({URL}/discussions/75).")
+    labs = agg["labs"]
+    L = [f"### 📊 @{learner}", "", "| Item | Outcome | Attempts | Best | Next |", "| --- | --- | --- | --- | --- |"]
+    icon = {"Passed": "✅", "Passed after retry": "✅🔁", "Retrying": "🔁", "Attempted": "🔁", "Assigned": "📌"}
+    for r in rs:
+        meta = labs.get(r["item"]); nxt = (meta.meta.get("next") if meta else "") or ""
+        L.append(f"| [`{r['item']}`]({r['url']}) {r['title'][:40]} | {icon.get(r['outcome'],'')} {r['outcome']} | {r['attempts']} | {r['best']} | "
+                 f"{('`/drill ' + nxt + '`') if nxt and r['outcome'].startswith('Passed') else ''} |")
+    todo = [r for r in rs if r["outcome"] == "Assigned"]
+    if todo: L += ["", f"**Assigned, not yet attempted:** " + ", ".join(f"`{r['item']}`" + (f" (due {r['due']})" if r["due"] else "") for r in todo)]
+    return "\n".join(L)
+
+def digest_md(agg: dict, summaries: list[dict]) -> str:
+    rows = list(agg["rows"].values()); ents = [e for e in agg["entries"] if e.get("type") == "attempt"]
+    week = [e for e in ents if _age_days(e.get("ts", "2000-01-01T00:00:00+00:00")) <= 7]
+    learners = {e.get("learner") for e in week}; passes = [e for e in week if e.get("ok")]
+    L = [f"Seven days to {NOW.strftime('%d %b %Y')}. Rebuilt from the repository's own activity; nothing here was written by hand.", ""]
+    # --- Arena
+    L += ["## 🧪 Arena", ""]
+    if week:
+        by_item = defaultdict(list)
+        for e in week: by_item[e["item"]].append(e)
+        hardest = sorted(by_item.items(), key=lambda kv: (sum(1 for e in kv[1] if e.get("ok")) / len(kv[1]), -len(kv[1])))[0]
+        busiest = max(by_item.items(), key=lambda kv: len(kv[1]))
+        pl = lambda n, w: f"{n} {w}" + ("" if n == 1 else "s")
+        L += [f"**{pl(len(week), 'attempt')}** by **{pl(len(learners), 'learner')}**, **{len(passes)} passed**. "
+              f"Most attempted: `{busiest[0]}` ({len(busiest[1])}). Hardest: `{hardest[0]}` "
+              f"({100*sum(1 for e in hardest[1] if e.get('ok'))//len(hardest[1])}% pass rate)."]
+        todo = [r for r in rows if r["outcome"] == "Assigned"]
+        if todo: L += ["", f"**{len(todo)} assigned items not yet attempted** — see the [scoreboard]({URL}/wiki/Scoreboard#assigned-not-yet-attempted)."]
+    else:
+        L += ["No attempts this week. The [drill sequence]({URL}/discussions/75) takes eight minutes to start.".replace("{URL}", URL)]
+    # --- questions
+    open_q = [s for s in summaries if s["category"] == "q-a" and s["answerable"] and not s["answered"] and not s.get("guide")]
+    L += ["", "## ❓ Questions waiting for an answer", ""]
+    if open_q:
+        for s in sorted(open_q, key=lambda s: s["created"])[:6]:
+            L.append(f"- [{s['title']}]({s['url']}) — {int(_age_days(s['created']))}d old, {s['comments']} replies")
+        L.append(""); L.append("If you know one of these, two minutes of your time saves someone an evening.")
+    else:
+        L.append("Every question has a marked answer. Rare, and worth saying.")
+    # --- hot threads
+    hot = sorted([s for s in summaries if s["recent"] >= 2 and s["category"] != "announcements"], key=lambda s: (-s["recent"], -s["comments"]))[:6]
+    if hot:
+        L += ["", "## 🔥 Where the conversation is", ""] + [f"- [{s['title']}]({s['url']}) — {s['recent']} new this week" for s in hot]
+    # --- content
+    log = subprocess.run(["git", "log", "--since=7 days ago", "--name-only", "--pretty=format:"], capture_output=True, text=True, cwd=ROOT).stdout
+    areas = defaultdict(int)
+    for f in filter(None, log.splitlines()):
+        top = f.split("/")[0]; areas[top if top in ("modules", "labs", "cheatsheets", "docs", "wiki") else "other"] += 1
+    n_commits = subprocess.run(["git", "rev-list", "--count", "--since=7 days ago", "HEAD"], capture_output=True, text=True, cwd=ROOT).stdout.strip()
+    if areas:
+        L += ["", "## 📝 What changed", "", f"{n_commits} commits. " + ", ".join(f"**{v}** files in `{k}/`" for k, v in sorted(areas.items(), key=lambda kv: -kv[1]) if k != "other") + f". [Changelog]({URL}/blob/main/CHANGELOG.md)."]
+    L += ["", "---", "", f"<sub>Posted automatically every Monday · [how the Arena works]({URL}/blob/main/labs/ARENA.md) · "
+          f"[Repo Pulse](https://github.com/users/{OWNER}/projects/10) · reply here if something looks wrong</sub>"]
+    return "\n".join(L)
+
+
 # ------------------------------------------------------------------- boards
 def _q(s): return json.dumps(str(s))
 def upsert_tracker(agg: dict, cfg: dict, token: str):
@@ -238,7 +328,7 @@ def pulse_rows(summaries: list[dict], entries: list[dict]) -> list[dict]:
     rows = []
     hot = []
     for s in summaries:
-        unanswered = s["answerable"] and not s["answered"] and s["category"] == "q-a" and _age_days(s["created"]) > 2
+        unanswered = s["answerable"] and not s["answered"] and s["category"] == "q-a" and not s.get("guide") and _age_days(s["created"]) > 2
         if unanswered:
             rows.append({"kind": "Unanswered Q&A", "title": f"❓ #{s['number']} {s['title']}", "heat": "🔥 Hot" if s["recent"] else "Warm",
                          "engagement": s["comments"], "last": s["updated"][:10], "area": "discussions", "link": s["url"]})
@@ -296,6 +386,9 @@ def main():
     ap.add_argument("--scoreboard", default="out/Scoreboard.md")
     ap.add_argument("--boards", action="store_true")
     ap.add_argument("--fixture", help="JSONL of ledger entries, instead of reading Discussions")
+    ap.add_argument("--leaderboard", action="store_true", help="print the leaderboard markdown and exit")
+    ap.add_argument("--progress", metavar="LOGIN", help="print one learner's progress markdown and exit")
+    ap.add_argument("--digest", action="store_true", help="print the weekly digest markdown and exit")
     a = ap.parse_args()
     if a.fixture:
         entries = [json.loads(l) for l in Path(a.fixture).read_text().splitlines() if l.strip()]
@@ -304,6 +397,12 @@ def main():
     else:
         entries, summaries = read_ledger_from_discussions()
     agg = aggregate(entries)
+    if a.leaderboard:
+        print(leaderboard_md(agg)); return
+    if a.progress:
+        print(progress_md(agg, a.progress)); return
+    if a.digest:
+        print(digest_md(agg, summaries)); return
     Path(a.scoreboard).parent.mkdir(parents=True, exist_ok=True)
     Path(a.scoreboard).write_text(scoreboard(agg), encoding="utf-8")
     print(f"scoreboard: {len(entries)} ledger entries → {len(agg['rows'])} learner×item rows → {a.scoreboard}")

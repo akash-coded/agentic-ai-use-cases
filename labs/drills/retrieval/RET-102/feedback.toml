@@ -1,0 +1,8 @@
+[pass]
+message = "1/(k + rank), accumulated. The broken version was not obviously wrong — it produced a full, plausible ordering every time — which is exactly why ranking bugs survive: nobody eyeballs a list and notices that rank 1 contributed the least. Your golden set's recall@k would have caught it. Nothing else would."
+[partial]
+message = "The direction is usually fixed but k is forgotten, or the reciprocal is taken of the rank alone. Each retriever contributes 1 / (k + rank), and k=60 is the conventional default that makes score scales irrelevant."
+hint = "scores[doc] += 1.0 / (k + rank)"
+[fail]
+message = "The bug is one line: adding the rank makes a top-ranked document score LOW, and then the descending sort puts the worst results first. Replace the rank with its reciprocal offset by k."
+hint = "Small rank must mean big contribution: 1 / (k + rank)."

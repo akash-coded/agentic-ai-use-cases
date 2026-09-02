@@ -1,0 +1,8 @@
+[pass]
+message = "Two bounds in code, and a stop that is honest about which one bound. Note the design detail the token check enforces: the round cap alone would have let six 30,000-token rounds through. Rounds and tokens are different axes, and a real swarm can blow either one first."
+[partial]
+message = "The round cap is usually right; the token budget is the usual gap — either not checked at all, or checked only after the loop has already exhausted its rounds. Check spent against max_tokens after every step."
+hint = "After spent += tokens: if spent > max_tokens: return the stopped outcome."
+[fail]
+message = "Count rounds. Loop while rounds < max_rounds. After each step, add tokens and check the budget. If done, return completed. If the loop exits without done, return stopped with the reason."
+hint = "Two ways out with 'stopped', one with 'completed'."

@@ -1,0 +1,12 @@
+id = "PDL-102"
+title = "Derive the abstention target from real traffic"
+track = "product"
+difficulty = "easy"
+kind = "blank"
+est_minutes = 8
+skill = "Turning a classified sample of real inputs into a target 'I don't know' rate"
+next = "INT-101"
+prerequisites = ["PROD-102"]
+[[reads]]
+label = "Abstention Budget"
+path = "cheatsheets/frameworks/abstention-budget.md"

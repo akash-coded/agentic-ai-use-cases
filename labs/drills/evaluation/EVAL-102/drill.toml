@@ -1,0 +1,15 @@
+id = "EVAL-102"
+title = "Which properties does this golden set violate?"
+track = "evaluation"
+difficulty = "medium"
+kind = "predict"
+est_minutes = 10
+skill = "Auditing a golden set against the five properties that make it evidence"
+next = "PROD-102"
+prerequisites = ["MAS-102"]
+[[reads]]
+label = "Evidence Ladder · the golden-set trap"
+path = "cheatsheets/frameworks/evidence-ladder.md"
+[[reads]]
+label = "How to build a golden set from real tickets"
+path = "cheatsheets/how-to/business-analysts/build-a-golden-set.md"

@@ -1,0 +1,12 @@
+id = "TOOL-102"
+title = "Catch a hallucinated argument before it crashes the tool"
+track = "tools"
+difficulty = "medium"
+kind = "implement"
+est_minutes = 12
+skill = "Validating model-supplied arguments and answering with the valid keys"
+next = "MEM-102"
+prerequisites = ["AGL-103"]
+[[reads]]
+label = "Tool Surface Audit · sufficiency and failure honesty"
+path = "cheatsheets/frameworks/tool-surface-audit.md"

@@ -1,0 +1,8 @@
+[pass]
+message = "34%, band 29–39. Now it is a number in the acceptance criteria instead of an accident. Two things to carry: adversarial inputs are resisted, not abstained on, so they stay out of the numerator; and a drop below the band after a prompt change usually means the agent got bolder, not better — check confident-wrong before celebrating."
+[partial]
+message = "The usual slip is the numerator — either including 'adversarial' (resisting is a different behaviour) or 'answerable' (obviously not). The denominator is every classified input, adversarial included."
+hint = "Numerator: ambiguous + out_of_scope + unretrievable. Denominator: sum(counts.values())."
+[fail]
+message = "Ask of each class: is the correct response to decline? Answerable, no. Ambiguous, yes. Out of scope, yes. Unretrievable, yes. Adversarial — resist, which is not the same. Then divide by everything."
+hint = "Three keys in the numerator; sum(counts.values()) below."

@@ -11,7 +11,8 @@ out, because people bookmark deep links.
 ## 2026-09-02 · Drills, assignments, and the boards that read the Arena
 
 ### Added
-- **Drills** — nine bite-sized, bot-graded items under `labs/drills/` in four kinds (implement, fix, blank,
+- **`/leaderboard`**, **`/progress`**, and a **weekly digest** posted to Announcements — all built from the ledger
+- **Drills** — nineteen bite-sized, bot-graded items under `labs/drills/` in two laps in four kinds (implement, fix, blank,
   predict), chained across every track and ending at the first full lab
 - **Skill-aware replies** — each Arena reply names the skill demonstrated, what to read, and the next item;
   misses get the drill's own diagnosis and one nudge, written per drill

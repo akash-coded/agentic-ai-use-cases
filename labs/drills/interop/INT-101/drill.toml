@@ -1,0 +1,15 @@
+id = "INT-101"
+title = "Predict the A2A task lifecycle"
+track = "interop"
+difficulty = "easy"
+kind = "predict"
+est_minutes = 8
+skill = "Reading an A2A exchange as a state machine, including the turn where the remote agent asks for more"
+next = "AGL-02"
+prerequisites = ["PDL-102"]
+[[reads]]
+label = "MCP and A2A cheat sheet"
+path = "cheatsheets/quick-reference/mcp-and-a2a.md"
+[[reads]]
+label = "A2A 2 · The two-agent handshake"
+path = "modules/12-a2a-and-a2ui-interop/"

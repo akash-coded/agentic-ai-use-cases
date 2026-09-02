@@ -1,0 +1,12 @@
+id = "BED-101"
+title = "Predict the roles after two tool round trips"
+track = "bedrock"
+difficulty = "easy"
+kind = "predict"
+est_minutes = 8
+skill = "Holding the Converse round-trip shape in your head"
+next = "AGL-103"
+prerequisites = []
+[[reads]]
+label = "Bedrock Converse API · the round trip everyone gets wrong"
+path = "cheatsheets/quick-reference/bedrock-converse.md#tool-use--the-round-trip-everyone-gets-wrong"
