@@ -40,7 +40,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if ! git diff --quiet -- labs/SCOREBOARD.md; then
+          # `git diff --quiet` ignores untracked files, which is exactly what a
+          # first-ever scoreboard is. `status --porcelain` covers both cases.
+          if [ -n "$(git status --porcelain -- labs/SCOREBOARD.md)" ]; then
             git add labs/SCOREBOARD.md
             git commit -m "Rebuild scoreboard from Arena replies"
             git push

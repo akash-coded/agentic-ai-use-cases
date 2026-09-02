@@ -230,15 +230,24 @@ def upsert_tracker(agg: dict, cfg: dict, token: str):
     return n_new, len(agg["rows"])
 
 def pulse_rows(summaries: list[dict], entries: list[dict]) -> list[dict]:
+    """A live view of what deserves attention — deliberately small.
+
+    Discussions appear only when they are hot (real engagement this week) or
+    are unanswered questions; a thread merely edited recently is not news.
+    """
     rows = []
+    hot = []
     for s in summaries:
-        heat = "🔥 Hot" if s["recent"] >= 3 or (_age_days(s["updated"]) < 2 and s["comments"]) else ("Warm" if _age_days(s["updated"]) < 14 else "Quiet")
-        if s["answerable"] and not s["answered"] and _age_days(s["created"]) > 2 and s["category"] == "q-a":
-            rows.append({"kind": "Unanswered Q&A", "title": f"❓ #{s['number']} {s['title']}", "heat": heat,
+        unanswered = s["answerable"] and not s["answered"] and s["category"] == "q-a" and _age_days(s["created"]) > 2
+        if unanswered:
+            rows.append({"kind": "Unanswered Q&A", "title": f"❓ #{s['number']} {s['title']}", "heat": "🔥 Hot" if s["recent"] else "Warm",
                          "engagement": s["comments"], "last": s["updated"][:10], "area": "discussions", "link": s["url"]})
-        elif heat != "Quiet":
-            rows.append({"kind": "Discussion", "title": f"#{s['number']} {s['title']}", "heat": heat,
-                         "engagement": s["comments"], "last": s["updated"][:10], "area": "discussions", "link": s["url"]})
+        elif s["recent"] >= 2 or (s["recent"] >= 1 and s["comments"] >= 3):
+            hot.append(s)
+    hot.sort(key=lambda s: (-s["recent"], -s["comments"]))
+    for s in hot[:12]:
+        rows.append({"kind": "Discussion", "title": f"🔥 #{s['number']} {s['title']}", "heat": "🔥 Hot",
+                     "engagement": s["comments"], "last": s["updated"][:10], "area": "discussions", "link": s["url"]})
     for kind, ep in (("Issue", "issues"), ("Pull request", "pulls")):
         r = subprocess.run(["gh", "api", f"repos/{OWNER}/{REPO}/{ep}?state=open&per_page=50"], capture_output=True, text=True)
         for it in (json.loads(r.stdout) if r.returncode == 0 else []):
