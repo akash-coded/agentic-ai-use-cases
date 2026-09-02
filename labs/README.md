@@ -183,6 +183,17 @@ difference between finishing exercises and being able to defend a design.
 
 ---
 
+## Drills — the bite-sized sequence
+
+Nine 8–12-minute drills in [`drills/`](drills/), thread-native and bot-graded, in four kinds: **implement**,
+**fix** (a planted bug), **blank**, and **predict** (say what the code does before running it). They chain:
+
+`AGL-101 → AGL-102 → TOOL-101 → RET-101 → MEM-101 → EVAL-101 → MAS-101 → PROD-101 → PDL-101 → AGL-01`
+
+Each reply names the skill you demonstrated and points at the next one. Do them in the
+[Simulator Arena](ARENA.md) with nothing installed, or locally with `lab grade --lab AGL-101 --file mine.py`.
+Progress lands on the **[scoreboard](SCOREBOARD.md)**.
+
 ## Three ways to run a lab
 
 | | Setup | You get |

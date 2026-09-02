@@ -281,9 +281,14 @@ fail when a tool returns `[]` and the model reads it as "nothing applies". So ev
 | **A** | Apply | A spec, public checks you can see, hidden checks on submit. Every check explains what it teaches when it fails |
 | **B** | Break | `SystemExit` from a library. A chunk bigger than the whole budget. A footnote `[1]` corrupting your citation map. Survive them |
 
-**[10 labs across 8 tracks](labs/)**, ordered by a [justified pathway](labs/PATHWAY.md) — and the decision
+**[10 labs and 9 drills across 8 tracks](labs/)**, ordered by a [justified pathway](labs/PATHWAY.md) — and the decision
 inside each one accumulates into the [seven PRD artefacts](docs/prd/), so you finish with a working system
 *and* the paperwork to defend it.
+
+Or skip the clone entirely: post `/drill AGL-101` with a python block in the
+[Simulator Arena](labs/ARENA.md) and a bot grades it in the thread, names the skill you demonstrated, and points
+at the next one. Trainers `/assign`; progress lands on the [scoreboard](labs/SCOREBOARD.md) and the
+[Hands-on Tracker](https://github.com/users/akash-coded/projects/9).
 
 The catalog is **self-verifying**: CI proves every reference solution passes all three phases and every
 starter fails, so no lab can ship with TODOs that do not need doing. Fork the repo, commit your solutions,
@@ -362,6 +367,9 @@ Corrections, better explanations, new exercises and updates for changed AWS beha
   the [answered Q&A](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/categories/q-a),
   or [where to post what](docs/DISCUSSIONS.md)
 - 🤝 **Want to contribute?** [`CONTRIBUTING.md`](CONTRIBUTING.md)
+- 🏛️ **How should a project like this be run?** The [Agentic PDLC · Lifecycle Reference](https://github.com/users/akash-coded/projects/8)
+  board — the repo's seven artefacts and four gates, cross-mapped to AiDD, BMAD and AWS AI-DLC
+- 📈 **What's happening right now?** [Repo Pulse](https://github.com/users/akash-coded/projects/10)
 - 🗺️ **What's next?** The [extension roadmap](docs/extension-roadmap.md) and its
   [public board](https://github.com/users/akash-coded/projects/6) — five phases, most items open to contributors
 - 📜 **What changed?** [`CHANGELOG.md`](CHANGELOG.md)

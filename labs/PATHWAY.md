@@ -51,6 +51,24 @@ meaningful thresholds for a system you have not built.
 
 ---
 
+## The drill sequence
+
+Before the labs, or between them: nine drills that touch every track once and end at the first full lab.
+Each is one idea, one function, 8–12 minutes, graded in a comment box.
+
+| # | Drill | Kind | Teaches |
+| --- | --- | --- | --- |
+| 1 | [AGL-101](drills/agent-loop/AGL-101/) Pull the answer out of a model message | implement | Reading the message shape, not the demo |
+| 2 | [AGL-102](drills/agent-loop/AGL-102/) Two bugs in a working dispatcher | fix | A dispatcher is a boundary; boundaries catch everything |
+| 3 | [TOOL-101](drills/tools/TOOL-101/) Fill in the honest empty result | blank | "Found nothing" ≠ "could not look" |
+| 4 | [RET-101](drills/retrieval/RET-101/) Predict what fits in the budget | predict | Tracing a token budget by hand |
+| 5 | [MEM-101](drills/memory/MEM-101/) The summariser that runs every turn | fix | Threshold, not schedule; never evict the newest |
+| 6 | [EVAL-101](drills/evaluation/EVAL-101/) Which bars are absolute? | blank | A safety miss is not a rounding error |
+| 7 | [MAS-101](drills/multi-agent/MAS-101/) Cost this topology by hand | predict | H× including the merge call |
+| 8 | [PROD-101](drills/production/PROD-101/) Log the field that makes failover visible | implement | The vital sign |
+| 9 | [PDL-101](drills/product/PDL-101/) A classifier that promotes by default | fix | Default down the ladder |
+| → | [AGL-01](catalog/agent-loop/AGL-01/) | lab | Your first full Learn → Apply → Break |
+
 ## Difficulty means something specific
 
 Not "how much code". Difficulty here is **how much judgement the lab withholds**.

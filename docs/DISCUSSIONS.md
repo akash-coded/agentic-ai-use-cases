@@ -107,6 +107,14 @@ public and Break checks, and answered with a threaded reply.
 Hidden checks never run there — publishing their output would spoil the lab for everyone reading. Full
 mechanics and the sandbox design: [ARENA.md](https://github.com/akash-coded/aws-bedrock-agentcore-strands/blob/main/labs/ARENA.md).
 
+**Drills** are the 8–12-minute version (`/drill AGL-101`), nine of them chained across every track.
+**Maintainers assign** with `/assign @user AGL-101 --session "Day 3" --due 2026-09-05`; the bot briefs the
+learner and the item shows as *assigned, not yet attempted* on the
+[scoreboard](https://github.com/akash-coded/aws-bedrock-agentcore-strands/blob/main/labs/SCOREBOARD.md) until
+they submit. Every bot reply carries an invisible ledger line — Discussions are the source of truth for
+attempts, and the [Hands-on Tracker](https://github.com/users/akash-coded/projects/9) and
+[Repo Pulse](https://github.com/users/akash-coded/projects/10) boards are rebuilt from it.
+
 ---
 
 ## For maintainers

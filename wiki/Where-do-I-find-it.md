@@ -22,6 +22,8 @@ A lookup table across all four surfaces. If you know what you want but not where
 | To build RAG properly | [Module 10](https://github.com/akash-coded/aws-bedrock-agentcore-strands/tree/main/modules/10-rag-opensearch-litellm) · [`ragkit`](https://github.com/akash-coded/aws-bedrock-agentcore-strands/tree/main/modules/10-rag-opensearch-litellm/labs/rag-labs/ragkit) |
 | To deploy an agent as a service | [Module 11](https://github.com/akash-coded/aws-bedrock-agentcore-strands/tree/main/modules/11-bedrock-agentcore) · [deploy how-to](https://github.com/akash-coded/aws-bedrock-agentcore-strands/blob/main/cheatsheets/how-to/engineers/deploy-any-agent-to-agentcore.md) |
 | Graded practice | [L.A.B. Simulator](https://github.com/akash-coded/aws-bedrock-agentcore-strands/tree/main/labs) — or [one click in Codespaces](https://codespaces.new/akash-coded/aws-bedrock-agentcore-strands?quickstart=1) |
+| The ideal lifecycle for a project like this | [Agentic PDLC · Lifecycle Reference](https://github.com/users/akash-coded/projects/8) — artefacts and gates mapped to AiDD, BMAD, AI-DLC |
+| What is active in the repo right now | [Repo Pulse](https://github.com/users/akash-coded/projects/10) |
 | Graded practice with nothing installed | [Simulator Arena](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/75) |
 | Practice with other people's answers | [Discussion index](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/64) |
 

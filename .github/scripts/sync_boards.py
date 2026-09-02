@@ -43,10 +43,44 @@ def gh(query: str, token: str | None = None, **vars) -> dict:
 LEDGER_RE = re.compile(r"<!--\s*lab-ledger\s+(\{.*?\})\s*-->", re.S)
 
 # ------------------------------------------------------------------ collect
+def _category_id(slug: str) -> str | None:
+    d = gh('{repository(owner:"%s",name:"%s"){discussionCategories(first:20){nodes{id slug}}}}' % (OWNER, REPO))
+    for c in d["repository"]["discussionCategories"]["nodes"]:
+        if c["slug"] == slug: return c["id"]
+    return None
+
 def read_ledger_from_discussions() -> tuple[list[dict], list[dict]]:
-    """Return (ledger entries, discussion summaries for the pulse)."""
+    """Two queries, sized under GitHub's 500k-node budget.
+
+    Ledger: only the Hands-on Labs category, deep (comments + replies).
+    Pulse:  every category, shallow (no replies) — just enough for heat.
+    """
     entries, summaries = [], []
-    cursor = "null"
+    cat = _category_id("hands-on-labs")
+    cursor = None
+    while cat:
+        d = gh("""
+        query($after:String,$cat:ID!){ repository(owner:"%s",name:"%s"){
+          discussions(first:15, after:$after, categoryId:$cat, orderBy:{field:UPDATED_AT,direction:DESC}){
+            pageInfo{hasNextPage endCursor}
+            nodes{ number url
+              comments(first:60){ nodes{ author{login}
+                replies(first:30){ nodes{ author{login} body } } } } } } } }""" % (OWNER, REPO),
+            **({"cat": cat} | ({"after": cursor} if cursor else {})))
+        page = d["repository"]["discussions"]
+        for n in page["nodes"]:
+            for c in n["comments"]["nodes"]:
+                for rp in c["replies"]["nodes"]:
+                    if (rp["author"] or {}).get("login") in BOT:
+                        for m in LEDGER_RE.finditer(rp["body"] or ""):
+                            try:
+                                e = json.loads(m.group(1)); e["_url"] = n["url"]; entries.append(e)
+                            except json.JSONDecodeError:
+                                pass
+        if not page["pageInfo"]["hasNextPage"]: break
+        cursor = page["pageInfo"]["endCursor"]
+
+    cursor = None
     while True:
         d = gh("""
         query($after:String){ repository(owner:"%s",name:"%s"){
@@ -54,22 +88,11 @@ def read_ledger_from_discussions() -> tuple[list[dict], list[dict]]:
             pageInfo{hasNextPage endCursor}
             nodes{ number title url updatedAt createdAt isAnswered
               category{ slug isAnswerable }
-              comments(first:100){ totalCount nodes{ createdAt author{login}
-                replies(first:100){ nodes{ createdAt author{login} body } } } } } } } }""" % (OWNER, REPO),
-            **({} if cursor == "null" else {"after": cursor}))
+              comments(last:30){ totalCount nodes{ createdAt } } } } } }""" % (OWNER, REPO),
+            **({"after": cursor} if cursor else {}))
         page = d["repository"]["discussions"]
         for n in page["nodes"]:
-            recent = 0
-            for c in n["comments"]["nodes"]:
-                if _age_days(c["createdAt"]) <= 7: recent += 1
-                for rp in c["replies"]["nodes"]:
-                    if _age_days(rp["createdAt"]) <= 7: recent += 1
-                    if (rp["author"] or {}).get("login") in BOT:
-                        for m in LEDGER_RE.finditer(rp["body"] or ""):
-                            try:
-                                e = json.loads(m.group(1)); e["_url"] = n["url"]; entries.append(e)
-                            except json.JSONDecodeError:
-                                pass
+            recent = sum(1 for c in n["comments"]["nodes"] if _age_days(c["createdAt"]) <= 7)
             summaries.append({"number": n["number"], "title": n["title"], "url": n["url"],
                               "updated": n["updatedAt"], "created": n["createdAt"],
                               "category": n["category"]["slug"], "answerable": n["category"]["isAnswerable"],

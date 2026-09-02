@@ -8,6 +8,24 @@ out, because people bookmark deep links.
 
 ---
 
+## 2026-09-02 · Drills, assignments, and the boards that read the Arena
+
+### Added
+- **Drills** — nine bite-sized, bot-graded items under `labs/drills/` in four kinds (implement, fix, blank,
+  predict), chained across every track and ending at the first full lab
+- **Skill-aware replies** — each Arena reply names the skill demonstrated, what to read, and the next item;
+  misses get the drill's own diagnosis and one nudge, written per drill
+- **`/assign`** for maintainers, with per-learner briefs and tracked assignments
+- **A ledger in every bot reply**, making Discussions the source of truth for attempts
+- **`labs/SCOREBOARD.md`**, rebuilt every six hours and after every Arena run
+- Boards: **Hands-on Tracker** (#9), **Repo Pulse** (#10), and **Agentic PDLC · Lifecycle Reference** (#8)
+- **Codespaces**: one-click environment, `lab` command with completion, VS Code tasks, welcome page
+- `labctl grade --json` and drill support in the runner and `verify`
+
+### Needs a secret
+- The two live boards are synced only when `PROJECT_TOKEN` (a fine-grained PAT with Projects read/write)
+  exists. `GITHUB_TOKEN` cannot access Projects v2. The scoreboard works without it.
+
 ## 2026-09-01 · The field guide
 
 ### Added
