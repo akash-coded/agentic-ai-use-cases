@@ -8,6 +8,7 @@ Do these in order. The first one has a waiting step, so start it early.
 | 2️⃣ | **[Cost controls](cost-controls.md)** | Budget alarm and the teardown checklist. **Read before you create anything** |
 | 3️⃣ | **[Local environment](local-environment.md)** | Python, virtual environments, per-module requirements, notebook hygiene |
 | 🔑 | **[Board sync token](project-token.md)** | Maintainers only: the one secret that turns on the tracker and pulse boards |
+| 📮 | **[Contact relay](../../site/contact-relay/README.md)** | Maintainers only: the AWS backend for the site's contact form, one command to deploy |
 | 🧯 | **[Troubleshooting](troubleshooting.md)** | The errors this curriculum actually produces, in the order you meet them |
 
 ---

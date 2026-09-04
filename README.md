@@ -16,12 +16,14 @@
 [![L.A.B. Simulator](https://img.shields.io/badge/L.A.B.%20simulator-auto--graded-2e8b57.svg)](labs/)
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/akash-coded/aws-bedrock-agentcore-strands?quickstart=1)
 [![Discussions](https://img.shields.io/badge/discussions-open-8b5cf6.svg)](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions)
+[![SkyWays Architect](https://img.shields.io/badge/SkyWays%20Architect-live%20simulator-5B6B8C.svg)](https://akash-coded.github.io/aws-bedrock-agentcore-strands/)
 
 **[▶ Start here](docs/START-HERE.md)** &nbsp;·&nbsp;
 **[🗺️ Learning paths](docs/learning-paths/)** &nbsp;·&nbsp;
 **[🏛️ Architecture](docs/architecture/)** &nbsp;·&nbsp;
 **[🧭 Field guide](cheatsheets/)** &nbsp;·&nbsp;
 **[🧪 L.A.B. Simulator](labs/)** &nbsp;·&nbsp;
+**[🛫 SkyWays Architect](https://akash-coded.github.io/aws-bedrock-agentcore-strands/)** &nbsp;·&nbsp;
 **[⚙️ Setup](docs/setup/aws-account-setup.md)** &nbsp;·&nbsp;
 **[📖 Wiki](https://github.com/akash-coded/aws-bedrock-agentcore-strands/wiki)** &nbsp;·&nbsp;
 **[💬 Discussions](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions)**
@@ -298,6 +300,26 @@ and [the workflow grades your pull request](.github/workflows/labs.yml).
 
 ---
 
+## 🛫 SkyWays Architect — the lifecycle, as a simulator
+
+One agentic feature, a disruption assistant for a fictional airline, taken through the agentic PDLC. Six
+architect decisions, thirty-eight scenarios, the artefacts each team produces, and a design ledger that
+becomes your audit trail. Then the same feature by role — product manager, solution architect, engineering
+and QA — eighteen steps each, P0 to P3, from a pain you will recognise to what to do on Monday.
+
+[![SkyWays Architect — the agentic PDLC in one simulation](docs/assets/skyways-architect.png)](https://akash-coded.github.io/aws-bedrock-agentcore-strands/)
+
+**[→ Open SkyWays Architect](https://akash-coded.github.io/aws-bedrock-agentcore-strands/)** &nbsp;·&nbsp;
+[Pitch an idea](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/101) &nbsp;·&nbsp;
+[Write to me](https://akash-coded.github.io/aws-bedrock-agentcore-strands/?contact) &nbsp;·&nbsp;
+[How the site is built](site/)
+
+SkyWays Architect is an original work and the intellectual property of Akash Das, open-sourced here under the
+MIT licence for knowledge and experience sharing. Keep the attribution when you reuse it. It runs entirely in
+your browser: nothing you click is sent anywhere, and the contact form says exactly where a message goes.
+
+---
+
 ## Design documents
 
 Because "how do I design one of these" is the question the demos never answer.
@@ -330,6 +352,7 @@ Because "how do I design one of these" is the question the demos never answer.
 │   ├── interviews/           6 role guides, both sides of the table
 │   └── how-to/               17 recipes across 6 roles
 ├── wiki/             seed for the wiki — living notes, kept out of docs/ on purpose
+├── site/             SkyWays Architect on GitHub Pages — the tool, its frame, the contact relay
 ├── docs/
 │   ├── START-HERE.md         entry point
 │   ├── learning-paths/       5 paths by role and time budget
@@ -399,7 +422,9 @@ AWS moves quickly. If something here no longer matches reality, that is a bug wo
 ## Licence and credits
 
 MIT — see [`LICENSE`](LICENSE). Built by [Akash Das](https://github.com/akash-coded) from material
-developed and delivered across three professional training cohorts.
+developed and delivered across three professional training cohorts. [SkyWays Architect](https://akash-coded.github.io/aws-bedrock-agentcore-strands/),
+the simulator on the project site, is an original work and the intellectual property of Akash Das, released
+under the same licence; keep the attribution when you reuse it.
 
 If this was useful, a ⭐ helps other people find it.
 

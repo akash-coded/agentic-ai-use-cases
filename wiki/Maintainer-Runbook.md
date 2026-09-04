@@ -113,7 +113,22 @@ No versions — this is teaching material, not a library. Instead:
 | "AWS changed" | **Highest priority.** Nothing degrades this material faster |
 | Question | Q&A. Mark the answer. Add a row to [Community Answers](Community-Answers) |
 | Idea | Ideas → [extension board](https://github.com/users/akash-coded/projects/6) if adopted |
+| Contact-form message | Arrives by e-mail (reply-to is the sender) and as an issue in the private `inbox` repo. Reply, then close the issue |
 | New error | [Error Index](Error-Index); promote to `troubleshooting.md` once seen twice |
+
+---
+
+## The site: SkyWays Architect
+
+Live at https://akash-coded.github.io/aws-bedrock-agentcore-strands/ · source in [`site/`](https://github.com/akash-coded/aws-bedrock-agentcore-strands/tree/main/site)
+
+| Task | How |
+| --- | --- |
+| Update the tool | Replace `site/app/SkyWays-Architect.html` with the new export and push. The `Pages` workflow builds and deploys |
+| Change the footer, disclaimer or links | `site/frame/frame.js` (text) and `site/frame/config.js` (links, contact delivery) |
+| Turn the contact relay on | `site/contact-relay/deploy.sh` in your own AWS account → click the SES verification link → paste the Function URL into `site/frame/config.js` |
+| Mirror messages into GitHub | Create the `skyways-contact-relay/github` secret in Secrets Manager with a fine-grained token limited to the `inbox` repo (Issues: read/write) |
+| Preview locally | `python site/build.py && python -m http.server -d site/_site 8000` |
 
 ---
 

@@ -38,3 +38,8 @@ Thumbs.db
 # L.A.B. Simulator — local progress only
 labs/.progress.json
 labs/catalog/**/_starter_probe.py
+
+# Site build output and packaged relay template
+site/_site/
+site/contact-relay/.packaged.yaml
+site/contact-relay/.aws-sam/

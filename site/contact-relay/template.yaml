@@ -1,0 +1,125 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >-
+  Contact relay for the SkyWays Architect site (akash-coded/aws-bedrock-agentcore-strands).
+  A Lambda Function URL receives the form, stores the message in DynamoDB, e-mails the owner through SES,
+  and optionally mirrors it as an issue in a private GitHub repository. Runs comfortably inside the free tier.
+
+Parameters:
+  NotifyEmail:
+    Type: String
+    Default: mfs.akash@gmail.com
+    Description: Where messages are e-mailed. Also the SES sender identity; verify it once via the link SES sends.
+  AllowedOrigin:
+    Type: String
+    Default: https://akash-coded.github.io
+    Description: The only browser origin allowed to post to the relay (CORS).
+  CreateEmailIdentity:
+    Type: String
+    Default: "true"
+    AllowedValues: ["true", "false"]
+    Description: Create the SES e-mail identity for NotifyEmail. Set to false if it already exists in this account and region.
+  GitHubSecretName:
+    Type: String
+    Default: skyways-contact-relay/github
+    Description: >-
+      Secrets Manager secret holding {"token": "...", "repo": "owner/name"} for the optional private-issue mirror.
+      The relay works without it; create it later to switch the mirror on.
+  PerIpPerTenMinutes:
+    Type: Number
+    Default: 5
+    Description: Messages accepted from one network address per ten minutes (per warm container).
+  DailyCap:
+    Type: Number
+    Default: 300
+    Description: Messages accepted per UTC day across all visitors. Keeps a bad day inside the SES sandbox limit.
+  ReservedConcurrency:
+    Type: Number
+    Default: 0
+    Description: Reserved concurrent executions for the relay (0 = none). Leave at 0 on accounts with a small Lambda concurrency limit.
+
+Conditions:
+  MakeIdentity: !Equals [!Ref CreateEmailIdentity, "true"]
+  HasReserved: !Not [!Equals [!Ref ReservedConcurrency, 0]]
+
+Resources:
+  Messages:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - { AttributeName: id, AttributeType: S }
+      KeySchema:
+        - { AttributeName: id, KeyType: HASH }
+      PointInTimeRecoverySpecification: { PointInTimeRecoveryEnabled: true }
+      SSESpecification: { SSEEnabled: true }
+      Tags:
+        - { Key: project, Value: skyways-contact-relay }
+
+  EmailIdentity:
+    Type: AWS::SES::EmailIdentity
+    Condition: MakeIdentity
+    Properties:
+      EmailIdentity: !Ref NotifyEmail
+
+  RelayLogs:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      RetentionInDays: 30
+
+  Relay:
+    Type: AWS::Serverless::Function
+    Properties:
+      Description: Receives the SkyWays Architect contact form, stores, e-mails and mirrors each message
+      Runtime: python3.12
+      Handler: handler.handler
+      CodeUri: ./src
+      Architectures: [arm64]
+      MemorySize: 256
+      Timeout: 10
+      ReservedConcurrentExecutions: !If [HasReserved, !Ref ReservedConcurrency, !Ref AWS::NoValue]
+      LoggingConfig:
+        LogGroup: !Ref RelayLogs
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref Messages
+          NOTIFY_EMAIL: !Ref NotifyEmail
+          GITHUB_SECRET_NAME: !Ref GitHubSecretName
+          PER_IP_LIMIT: !Ref PerIpPerTenMinutes
+          DAILY_CAP: !Ref DailyCap
+          SITE_NAME: SkyWays Architect
+      FunctionUrlConfig:
+        AuthType: NONE
+        Cors:
+          AllowOrigins: [!Ref AllowedOrigin]
+          AllowMethods: [POST]
+          AllowHeaders: [content-type]
+          MaxAge: 86400
+      Policies:
+        - Version: "2012-10-17"
+          Statement:
+            - Effect: Allow
+              Action: [dynamodb:PutItem, dynamodb:UpdateItem]
+              Resource: !GetAtt Messages.Arn
+            - Effect: Allow
+              Action: ses:SendEmail
+              Resource: !Sub arn:${AWS::Partition}:ses:${AWS::Region}:${AWS::AccountId}:identity/${NotifyEmail}
+            - Effect: Allow
+              Action: secretsmanager:GetSecretValue
+              Resource: !Sub arn:${AWS::Partition}:secretsmanager:${AWS::Region}:${AWS::AccountId}:secret:${GitHubSecretName}-*
+
+Outputs:
+  FunctionUrl:
+    Description: Paste this into site/frame/config.js as contact.endpoint
+    Value: !GetAtt RelayUrl.FunctionUrl
+  TableName:
+    Description: Every message, including the ones that could not be e-mailed
+    Value: !Ref Messages
+  NextSteps:
+    Description: What is left to do by hand
+    Value: !Sub >-
+      1) Open the SES verification e-mail sent to ${NotifyEmail} and click the link.
+      2) Set contact.endpoint in site/frame/config.js to the FunctionUrl output and push.
+      3) Optional: create the ${GitHubSecretName} secret to mirror messages into a private GitHub repository.

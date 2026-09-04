@@ -9,6 +9,7 @@ A lookup table across all four surfaces. If you know what you want but not where
 | What an agent actually is, vs a workflow | [Module 00](https://github.com/akash-coded/aws-bedrock-agentcore-strands/tree/main/modules/00-agentic-foundations) · [Autonomy Ladder](https://github.com/akash-coded/aws-bedrock-agentcore-strands/blob/main/cheatsheets/frameworks/autonomy-ladder.md) |
 | How LLMs work, without maths | [Module 01](https://github.com/akash-coded/aws-bedrock-agentcore-strands/tree/main/modules/01-llm-and-aws-bridge) · [LLM Intuition Bank](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/2) |
 | What transfers off AWS | [Portability matrix](https://github.com/akash-coded/aws-bedrock-agentcore-strands/blob/main/docs/concepts/portability-matrix.md) |
+| The agentic PDLC, as one simulation with six decisions and thirty-eight scenarios | [SkyWays Architect](https://akash-coded.github.io/aws-bedrock-agentcore-strands/) · [ideas thread](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/101) |
 | A definition of a term | [Glossary](https://github.com/akash-coded/aws-bedrock-agentcore-strands/blob/main/docs/concepts/glossary.md) |
 | Which AWS service does what | [AWS service map](https://github.com/akash-coded/aws-bedrock-agentcore-strands/blob/main/docs/concepts/aws-service-map.md) |
 

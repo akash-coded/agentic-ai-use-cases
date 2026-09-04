@@ -8,6 +8,7 @@ Four surfaces, ~800 files, 66 discussion threads. This page exists because no si
 | 🧭 **[Field guide](https://github.com/akash-coded/aws-bedrock-agentcore-strands/tree/main/cheatsheets)** | 77 reference pages — frameworks, runbooks, playbooks, interview guides | [Frameworks index](https://github.com/akash-coded/aws-bedrock-agentcore-strands/tree/main/cheatsheets/frameworks) |
 | 🧪 **[L.A.B. Simulator](https://github.com/akash-coded/aws-bedrock-agentcore-strands/tree/main/labs)** | Auto-graded labs · Learn → Apply → Break | `python labs/runner/labctl.py next` |
 | 💬 **[Discussions](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions)** | 66 threads, all tagged by track and level | [Index of every exercise and lab](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/64) |
+| 🛫 **[SkyWays Architect](https://akash-coded.github.io/aws-bedrock-agentcore-strands/)** | The agentic PDLC as a simulator — six architect decisions, thirty-eight scenarios, role deep dives P0 to P3 | [Open it](https://akash-coded.github.io/aws-bedrock-agentcore-strands/) · [pitch an idea](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/101) |
 
 **New here and want one link?** [START-HERE](https://github.com/akash-coded/aws-bedrock-agentcore-strands/blob/main/docs/START-HERE.md).
 
@@ -24,6 +25,7 @@ Four surfaces, ~800 files, 66 discussion threads. This page exists because no si
 | **Fit this around a job** | **[Study Plans](Study-Plans)** |
 | **Know what it will cost** | **[Cost Log](Cost-Log)** |
 | **Find a specific thing** | **[Where do I find…?](Where-do-I-find-it)** |
+| **Walk one feature through the whole lifecycle, by role** | [SkyWays Architect](https://akash-coded.github.io/aws-bedrock-agentcore-strands/) — in the browser, nothing to install |
 | **Ten minutes, one idea, graded** | A [drill](https://github.com/akash-coded/aws-bedrock-agentcore-strands/blob/main/labs/PATHWAY.md#the-drill-sequence) — post `/drill AGL-101` in the [Arena](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/75) |
 | **See who is doing hands-on** | [Scoreboard](Scoreboard) · [Hands-on Tracker](https://github.com/users/akash-coded/projects/9) |
 | **Get a lab graded without installing anything** | [Simulator Arena](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/75) — post a comment, a bot replies |

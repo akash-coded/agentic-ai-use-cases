@@ -8,6 +8,29 @@ out, because people bookmark deep links.
 
 ---
 
+## 2026-09-04 · SkyWays Architect on GitHub Pages
+
+### Added
+- **[SkyWays Architect](https://akash-coded.github.io/aws-bedrock-agentcore-strands/)** now lives on the project site: the agentic PDLC as an interactive
+  simulator — six architect decisions, thirty-eight scenarios, role deep dives P0 to P3. The tool is published
+  byte-for-byte from [`site/app/`](site/app/); [`site/build.py`](site/build.py) layers attribution, the licence
+  and disclaimer, the ideas invitation and a contact form around it at build time, and refuses to build if the
+  tool's own bytes changed
+- A **contact form** with three delivery modes: the visitor's mail app (default, nothing to configure), the
+  [contact relay](site/contact-relay/) — Lambda Function URL, DynamoDB, SES and a private GitHub mirror, as
+  CloudFormation with offline tests — or a hosted form service
+- **Ideas thread** [#101](https://github.com/akash-coded/aws-bedrock-agentcore-strands/discussions/101) as the open door for suggestions, corrections and disagreements
+- A private `akash-coded/inbox` repository where mirrored messages become issues, one per message
+- `Pages` workflow: builds and deploys on every push that touches `site/`; a frameless copy of the tool is
+  served at [`app/SkyWays-Architect.html`](https://akash-coded.github.io/aws-bedrock-agentcore-strands/app/SkyWays-Architect.html)
+
+### Needs your hands
+- The relay is not deployed. Run `site/contact-relay/deploy.sh` in your own AWS account, click the SES
+  verification link, paste the Function URL into `site/frame/config.js`. Until then the form opens the
+  visitor's mail app, which works everywhere
+
+---
+
 ## 2026-09-02 · Drills, assignments, and the boards that read the Arena
 
 ### Added
